@@ -94,13 +94,28 @@ export class CollisionSystem {
         const minDist = (e.radius || 10) + (other.radius || 10);
 
         if (dist < minDist) {
-          const overlap = (minDist - dist) / 2;
+          const overlap = (minDist - dist);
           const nx = dx / dist;
           const ny = dy / dist;
-          e.x -= nx * overlap;
-          e.y -= ny * overlap;
-          other.x += nx * overlap;
-          other.y += ny * overlap;
+          const eIsPlayer = (e === player);
+          const oIsPlayer = (other === player);
+
+          if (eIsPlayer && !oIsPlayer) {
+            // Player pushes creature away, player doesn't move
+            other.x += nx * overlap;
+            other.y += ny * overlap;
+          } else if (oIsPlayer && !eIsPlayer) {
+            // Creature pushes player — only creature moves away, player stays put
+            e.x -= nx * overlap;
+            e.y -= ny * overlap;
+          } else {
+            // Two creatures: push apart equally
+            const half = overlap / 2;
+            e.x -= nx * half;
+            e.y -= ny * half;
+            other.x += nx * half;
+            other.y += ny * half;
+          }
         }
       }
     }
