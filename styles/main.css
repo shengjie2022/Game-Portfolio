@@ -1034,3 +1034,159 @@ img { max-width: 100%; display: block; }
   .game-card-body { padding: 24px 20px; }
   .about-grid { grid-template-columns: 1fr; }
 }
+
+
+/* =========================================
+   策划文档区 — docs-section
+   ========================================= */
+.docs-section {
+  padding: 100px 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.docs-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.4), transparent);
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .docs-grid { grid-template-columns: 1fr; }
+}
+
+.doc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.doc-card:hover {
+  border-color: rgba(255, 107, 0, 0.5);
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.doc-card-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.doc-card-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(255, 107, 0, 0.12);
+  color: #ff8c42;
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+.doc-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.doc-card-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+  font-family: var(--font-mono);
+}
+
+.doc-card-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+.doc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.doc-card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.doc-card-meta-item span:first-child {
+  font-size: 14px;
+}
+
+.doc-card-chapters {
+  background: rgba(255, 107, 0, 0.06);
+  border: 1px solid rgba(255, 107, 0, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.doc-card-chapters-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ff8c42;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.doc-card-chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-card-chapters-list li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding-left: 12px;
+  position: relative;
+}
+
+.doc-card-chapters-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 107, 0, 0.5);
+}
+
+.doc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.doc-card-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
