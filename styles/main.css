@@ -1190,3 +1190,147 @@ img { max-width: 100%; display: block; }
   font-size: 12px;
   color: var(--text-muted);
 }
+
+
+/* =========================================
+   游戏时光区 — games-collection-section
+   ========================================= */
+.games-collection-section {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.games-collection-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.4), transparent);
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .collection-grid { grid-template-columns: 1fr; }
+}
+
+.collection-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  transition: all var(--transition);
+  cursor: default;
+}
+
+.collection-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.1);
+}
+
+.collection-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.collection-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.collection-card-platform {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--accent-1);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  font-family: var(--font-mono);
+}
+
+.collection-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.collection-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.collection-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.collection-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* 单列/纯时长卡 */
+.collection-card-simple {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition);
+}
+
+.collection-card-simple:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.08);
+}
+
+.collection-simple-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.collection-simple-hours {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  color: var(--accent-1);
+  font-weight: 700;
+}
+
+/* 总览条 */
+.collection-overview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(108, 99, 255, 0.05);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.collection-overview strong {
+  color: var(--accent-1);
+  font-weight: 700;
+}
