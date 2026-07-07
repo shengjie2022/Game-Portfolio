@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肥鹅健身房 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="肥鹅健身房 — 微信小游戏·休闲合成类游戏策划案，合成+健身主题+关卡消除双核心循环">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html#games" class="nav-link">全部作品</a>
+        <a href="../index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="game-page-header" style="background: linear-gradient(135deg, #FF6B00 0%, #FF8C42 50%, #FFB347 100%);">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span class="tag tag-genre">休闲合成</span>
+        <span class="tag tag-genre">健身主题</span>
+        <span class="tag tag-tech">Cocos Creator</span>
+        <span class="tag tag-biz">广告+内购</span>
+        <span class="tag" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);">独立策划</span>
+      </div>
+      <h1 class="game-page-title">肥鹅健身房</h1>
+      <p class="game-page-subtitle">
+        Fat Goose Gym · 微信小游戏·休闲合成类<br>
+        帮胖鹅减肥！合成道具体验 + 关卡闯关双循环<br>
+        4 条合成链 · 200 关卡 · IP 化运营 · 2026.07 策划完成
+      </p>
+      <div class="game-page-actions">
+        <a href="#gdd" class="btn btn-ghost" style="background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.4);color:#fff;">
+          <span>📄 查看完整策划案</span>
+        </a>
+        <a href="#competitive" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">
+          <span>📊 查看竞品分析</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目概况 -->
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Project Overview</div>
+        <h2>项目概况</h2>
+      </div>
+      <div class="doc-card-grid">
+        <div class="doc-card">
+          <div class="doc-icon">🎮</div>
+          <h3>游戏类型</h3>
+          <p>休闲合成闯关游戏。玩家在网格棋盘上合并道具获取更高级健身器材，为胖鹅建造健身房，同时在关卡中完成目标挑战推进剧情。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">🔄</div>
+          <h3>核心循环</h3>
+          <p>合成道具体验 → 获取高阶道具 → 为健身房供能 → 完成关卡目标 → 获得资源奖励 → 继续合成，双循环互相供能形成闭环。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">💰</div>
+          <h3>商业化模型</h3>
+          <p>激励视频广告（体力双倍/道具福袋）+ 月卡 + 赛季通行证 + 皮肤内购，非付费用户完整游戏体验，付费仅用于加速。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">📅</div>
+          <h3>当前进度</h3>
+          <p>2026.07 策划案 V1.0 完成，含完整玩法设计、数值体系、商业化方案、技术规格与运营规划，待开发落地。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心玩法 -->
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Core Mechanics</div>
+        <h2>核心玩法设计</h2>
+        <p>合成系统 · 关卡设计 · 任务系统</p>
+      </div>
+
+      <!-- 合成系统 -->
+      <div class="doc-card" style="margin-bottom:32px;">
+        <div class="doc-icon">🧩</div>
+        <h3>合成系统 — Merge Mechanic</h3>
+        <p>8×8 或 9×9 网格棋盘，通过拖拽或点击交换相邻道具，将 3 个或以上相同道具合并为更高级道具。合成公式遵循阶梯递进逻辑：</p>
+        <table class="data-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th>合成链</th>
+              <th>T1 基础</th>
+              <th>T2</th>
+              <th>T3</th>
+              <th>T4 高级</th>
+              <th>T5 稀有</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🍳 食品链</td>
+              <td>鸡蛋</td><td>煎蛋</td><td>面包</td><td>能量棒</td><td>鸡胸肉套餐</td>
+            </tr>
+            <tr>
+              <td>🏋️ 器材链</td>
+              <td>哑铃</td><td>杠铃</td><td>跑步机</td><td>划船机</td><td>全套健身器</td>
+            </tr>
+            <tr>
+              <td>🧘 装饰链</td>
+              <td>瑜伽垫</td><td>瑜伽球</td><td>拳击手套</td><td>运动水壶</td><td>金牌奖杯</td>
+            </tr>
+            <tr>
+              <td>✨ 特殊链</td>
+              <td>肥鹅便便</td><td>清洁刷</td><td>肥皂</td><td>毛巾</td><td>健身教练卡</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="about-tag">T1 白色</span>
+          <span class="about-tag" style="background:rgba(111,207,68,0.15);color:#6fcf44;border:1px solid rgba(111,207,68,0.3);">T2 绿色</span>
+          <span class="about-tag" style="background:rgba(54,162,235,0.15);color:#36a2eb;border:1px solid rgba(54,162,235,0.3);">T3 蓝色</span>
+          <span class="about-tag" style="background:rgba(155,89,182,0.15);color:#9b59b6;border:1px solid rgba(155,89,182,0.3);">T4 紫色</span>
+          <span class="about-tag" style="background:rgba(255,107,0,0.15);color:#ff6b00;border:1px solid rgba(255,107,0,0.3);">T5 橙色</span>
+        </div>
+        <p style="margin-top:12px;font-size:13px;color:var(--text-secondary);">
+          <strong style="color:var(--accent-2);">合成规则：</strong>最低 3 个相同道具相邻即可合成（含斜向不相邻）；合成高阶道具后有概率掉落能量气泡，用于激活特殊技能；棋盘满格且无可合成项时游戏失败。
+        </p>
+      </div>
+
+      <!-- 关卡设计 -->
+      <div class="doc-card" style="margin-bottom:32px;">
+        <div class="doc-icon">🎯</div>
+        <h3>关卡设计 — Level System</h3>
+        <p>每个关卡在限定步数内完成特定消除目标，同时棋盘上方显示倒计时与进度条。关卡类型分为四类：</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px;">
+          <div style="background:var(--bg-secondary);padding:16px;border-radius:8px;border-left:3px solid var(--accent-1);">
+            <div style="font-weight:600;margin-bottom:6px;">🎯 收集型</div>
+            <div style="font-size:12px;color:var(--text-secondary);">在限定步数内收集指定数量的特定道具<br><strong>例：消除 25 个煎蛋</strong></div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:16px;border-radius:8px;border-left:3px solid var(--accent-2);">
+            <div style="font-weight:600;margin-bottom:6px;">❄️ 消除型</div>
+            <div style="font-size:12px;color:var(--text-secondary);">消除所有目标区域或带有标记的格子<br><strong>例：清除所有冰块格子</strong></div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:16px;border-radius:8px;border-left:3px solid var(--accent-3);">
+            <div style="font-weight:600;margin-bottom:6px;">⚡ 组合型</div>
+            <div style="font-size:12px;color:var(--text-secondary);">同时包含收集目标与障碍物清除<br><strong>例：收集15个能量棒+清除所有箱子</strong></div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:16px;border-radius:8px;border-left:3px solid var(--accent-4);">
+            <div style="font-weight:600;margin-bottom:6px;">🦴 Boss 型</div>
+            <div style="font-size:12px;color:var(--text-secondary);">消除大型障碍物（胖鹅堆积的脂肪方块）<br><strong>例：3步内消除所有脂肪方块</strong></div>
+          </div>
+        </div>
+        <table class="data-table" style="margin-top:20px;">
+          <thead><tr><th>阶段</th><th>关卡范围</th><th>步数</th><th>目标复杂度</th><th>特征</th></tr></thead>
+          <tbody>
+            <tr><td>教程期</td><td>1–30 关</td><td>15–20 步</td><td>单一目标</td><td>引导清晰，步数充足</td></tr>
+            <tr><td>成长爬坡</td><td>31–100 关</td><td>12–15 步</td><td>引入障碍物</td><td>步数递减，需要策略</td></tr>
+            <tr><td>策略期</td><td>101–200 关</td><td>10–12 步</td><td>多目标并行</td><td>需要规划合成顺序</td></tr>
+            <tr><td>挑战期</td><td>201+ 关</td><td>8–10 步</td><td>随机事件+加成</td><td>高难度，技巧性强</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 任务系统 -->
+      <div class="doc-card">
+        <div class="doc-icon">📋</div>
+        <h3>任务系统 — Quest System</h3>
+        <p>三大任务体系驱动玩家持续活跃：</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px;">
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;color:var(--accent-1);">📅 每日任务</div>
+            <div style="font-size:12px;color:var(--text-secondary);">每天重置：完成3关、合成5次T3道具体验等，奖励金币与体力</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;color:var(--accent-3);">🏆 成就任务</div>
+            <div style="font-size:12px;color:var(--text-secondary);">一次性达成，奖励永久头像框、背景、称号等</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;color:var(--accent-4);">⚔️ 赛季任务</div>
+            <div style="font-size:12px;color:var(--text-secondary);">配合赛季活动，奖励限定装扮（春节舞狮/万圣节南瓜等）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 游戏系统 -->
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Game Systems</div>
+        <h2>配套游戏系统</h2>
+        <p>装扮系统 · 剧情系统 · 社交系统</p>
+      </div>
+      <div class="doc-card-grid">
+        <div class="doc-card">
+          <div class="doc-icon">👕</div>
+          <h3>装备/装扮系统</h3>
+          <p>玩家使用收集的道具为胖鹅解锁健身房装备（跑步机/拳击台/杠铃架/饮水区/休息沙发），解锁后胖鹅有专属健身动画。赛季限定皮肤增加商业化深度。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">📖</div>
+          <h3>剧情系统</h3>
+          <p>每通关 20 关解锁一个剧情章节，以胖鹅日记漫画形式呈现，讲述减肥历程趣事。全程配音（每章节约 30 秒语音），配合 Q 版动画提供情感共鸣。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">👥</div>
+          <h3>微信社交系统</h3>
+          <p>好友排行榜 / 体力赠送（每日 10 次上限）/ 邀请助力分享 / 微信状态同步。轻社交设计，避免强制绑定，降低用户流失风险。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商业化设计 -->
+  <section class="game-page-section" id="gdd">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Monetization</div>
+        <h2>商业化设计</h2>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon">💰</div>
+        <h3>付费点与广告设计</h3>
+        <p>采用「免费增值 + 轻量内购」模式，严格避免 pay-to-win，核心内容均可通过时间投入解锁：</p>
+        <table class="data-table" style="margin-top:16px;">
+          <thead><tr><th>付费类型</th><th>内容描述</th><th>单价</th><th>频次</th></tr></thead>
+          <tbody>
+            <tr><td>体力购买</td><td>立即补充 5 点体力</td><td>¥6</td><td>日常</td></tr>
+            <tr><td>道具礼包</td><td>随机 T3–T5 道具福袋</td><td>¥6 / ¥30</td><td>日常</td></tr>
+            <tr><td>首充礼包</td><td>6元首充得60钻+限定皮肤</td><td>¥6</td><td>一次性</td></tr>
+            <tr><td>月卡</td><td>每日30体力+100金币</td><td>¥30/月</td><td>月订阅</td></tr>
+            <tr><td>赛季通行证</td><td>赛季专属道具+限定胖鹅皮肤</td><td>¥68/赛季</td><td>赛季</td></tr>
+          </tbody>
+        </table>
+        <div class="quote-block" style="margin-top:20px;">
+          「激励视频广告（体力双倍/道具福袋/步数加成）为核心收入来源，非强制，用户主动选择，整体设计保证免费用户体验完整。」
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 竞品分析入口 -->
+  <section class="game-page-section" id="competitive" style="padding-top:20px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Competitive Analysis</div>
+        <h2>配套竞品分析报告</h2>
+        <p>深度覆盖 5 款直接竞品 + 4 款间接竞品，附差异化矩阵与 SWOT 分析</p>
+      </div>
+      <div class="doc-card" style="border-left:3px solid var(--accent-4);">
+        <div class="doc-icon">📊</div>
+        <h3>竞品分析报告 — 核心结论</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px;">
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;">🎯 市场空白</div>
+            <div style="font-size:12px;color:var(--text-secondary);">微信小游戏健身题材几乎为空白，合成品类竞争激烈但无健身主题竞品</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;">⭐ 差异化核心</div>
+            <div style="font-size:12px;color:var(--text-secondary);">IP 化运营（胖鹅形象）是弯道超车唯一路径，合成+关卡双循环比单循环更有深度</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;">⏰ 窗口期</div>
+            <div style="font-size:12px;color:var(--text-secondary);">大厂随时可入局复制，6 个月内可能出现模仿者，窗口期是生死线</div>
+          </div>
+          <div style="background:var(--bg-secondary);padding:14px;border-radius:8px;">
+            <div style="font-weight:600;margin-bottom:6px;">💡 战略建议</div>
+            <div style="font-size:12px;color:var(--text-secondary);">上线前快速建立 IP 认知，上线后精细化女性用户运营，内容护城河持续深化</div>
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="competitive-analysis.html" class="btn btn-primary"><span>📄 阅读完整竞品分析报告</span></a>
+          <a href="competitive-analysis.html#direct" class="btn btn-ghost">🔍 直接竞品深度分析</a>
+          <a href="competitive-analysis.html#matrix" class="btn btn-ghost">📊 差异化矩阵</a>
+          <a href="competitive-analysis.html#swot" class="btn btn-ghost">🎯 SWOT 分析</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文档导航 -->
+  <section class="game-page-section" style="padding-top:20px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Full Document</div>
+        <h2>完整策划案文档</h2>
+      </div>
+      <div class="doc-card" style="border-left:3px solid var(--accent-1);">
+        <h3>《肥鹅健身房》游戏策划案 V1.0</h3>
+        <p style="margin-top:8px;color:var(--text-secondary);font-size:14px;">
+          完整策划案包含：九章完整内容 + 12 张数据表格 + 封面信息页。<br>
+          DOCX 格式，可直接用于内部汇报或对外提案。
+        </p>
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#" class="btn btn-outline" style="opacity:0.6;cursor:not-allowed;">
+            <span>📄 下载策划案 DOCX</span>
+            <small style="display:block;font-size:10px;opacity:0.7;margin-top:2px;">（本地文件路径见 Mavis 对话）</small>
+          </a>
+          <a href="../index.html#games" class="btn btn-ghost"><span>← 返回作品集</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技术规格 -->
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Technical Specs</div>
+        <h2>技术规格</h2>
+      </div>
+      <div class="doc-card-grid">
+        <div class="doc-card">
+          <div class="doc-icon">⚡</div>
+          <h3>开发引擎</h3>
+          <p>Cocos Creator 3.x（推荐）/ 白鹭引擎 / 原生微信小程序，包体目标 ≤ 5 MB。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">🚀</div>
+          <h3>性能要求</h3>
+          <p>首屏 ≤ 3 秒（Wi-Fi）/ ≤ 5 秒（4G），稳定 60 FPS，低端机（Android 5.0）最低 30 FPS。</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">🔒</div>
+          <h3>反作弊</h3>
+          <p>服务端步数验证，道具合成结果服务端校验，确保游戏公平性。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo"><span class="logo-bracket">[</span>盛洁 · 游戏策划<span class="logo-bracket">]</span></div>
+          <p>深圳技术大学 · 计算机科学与技术 · 应届生</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+          <span class="footer-dot">·</span>
+          <a href="tel:13414470758">13414470758</a>
+          <span class="footer-dot">·</span>
+          <span>深圳</span>
+        </div>
+      </div>
+      <div class="footer-copy"><p>作品集 · 2026</p></div>
+    </div>
+  </footer>
+
+</body>
+</html>
