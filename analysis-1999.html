@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>重返未来1999 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #9b59b6;
+      --accent-2: #8e44ad;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(40,20,60,0.96); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .logo-bracket { color: #9b59b6; }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.5); }
+    .nav-link { color: rgba(255,255,255,0.75); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #9b59b6; border-color: #9b59b6; }
+    .nav-contact:hover { background: #9b59b6; color: #fff; }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #9b59b6; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(155,89,182,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(155,89,182,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(155,89,182,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(155,89,182,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于822天深度体验，分析《重返未来1999》的叙事设计、版本连续性与"9味"美学，并以牙仙和1.4-1.9版本叙事弧为例，拆解手游叙事的可能性。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#1a1030;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(155,89,182,0.15);color:#c39bd3;border:1px solid rgba(155,89,182,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">重返未来1999</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        叙事美学 × 版本连续性 × "9味"二游画风<br>
+        旅行 822 天 · 角色 111 位
+      </p>
+      <div class="stat-row" style="max-width:400px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">822</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">旅行天数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">111</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">箱中角色</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">250</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">成就数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#1a1030;font-size:1.1rem;margin-bottom:1rem;">"9味"：一种很难被复制的美学</h3>
+      <p>重返未来1999有一个很难被量化的标签，叫"9味"。这个词的意思是：它的视觉风格和叙事调性，建立了属于自己的一种二游审美标准，而且这个标准只有它自己在用。</p>
+      <p>立绘是它最直接的感官冲击——复古+哥特+超现实，颜色搭配有一种"看了会记住"的独特性。这种视觉风格让它在众多二游里不是"又一个"，而是"这一个"。</p>
+      <p>对于竞品来说，模仿它的视觉容易，模仿它这种"复古但当代"的叙事气质难。</p>
+
+      <h3 style="color:#1a1030;font-size:1.1rem;margin:1.5rem 0 1rem;">版本连续性叙事：把玩家当成认真在看故事的人</h3>
+      <p>重返未来1999的版本叙事有一个很突出的特点：它的每个版本之间是有叙事连续性的。不是"这个版本的剧情和上个版本完全独立"，而是1.4→1.7→1.9这整条叙事线有一个内在的起承转合。</p>
+      <p>这种设计在手游里是奢侈的——它需要策划团队在写每个版本的剧情之前，就想清楚整个叙事弧的走向，而不是临时起意。对于习惯了"每个版本独立剧情"的手游玩家来说，这种连续叙事是有门槛的，但一旦接受了这个门槛，粘性会非常强。</p>
+
+      <h3 style="color:#1a1030;font-size:1.1rem;margin:1.5rem 0 1rem;">福利好的底气：从商业逻辑看</h3>
+      <p>重返未来1999被人称赞的一个点是"福利好、资源多、不怎么需要氪"。</p>
+      <p>这背后的商业逻辑可能是：它很清楚自己的用户画像是"剧情向、情感投入型"玩家，这类玩家对"强度焦虑"的敏感度低，但对付费体验的感知很敏锐。给足福利可以让这类玩家保持好感度，而不必用逼氪来维持流水——因为这类玩家一旦好感度够高，愿意为喜欢的内容付钱，而且付得心甘情愿。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>牙仙：有一种角色的好感是不需要理由的</h3>
+        <p>牙仙是我最喜欢的重返未来1999角色。</p>
+        <p>说实话，如果要我在策划文档里写"牙仙为什么吸引我"，我能写出来的理由可能都很泛——温柔、可靠、有故事感。但这些词不是我喜欢她的原因，她是我的原因才是这些词。</p>
+        <p>有些角色的设计就是这样：她不需要做什么特别的事，她只需要在故事的某个瞬间出现在那里，你就会觉得"这个角色是真实的"。</p>
+        <div class="quote-block">
+          玩家对角色的感情不是来自"她有哪些属性"，而是来自"她在我脑海里留下了什么画面"。牙仙留给我的画面，是她站在那里的样子，不需要台词。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>1.4到1.9：叙事弧线为什么让我追到现在</h3>
+        <p>洞穴的囚徒、今夜星光灿烂、孤独之歌——这三个版本是连在一起的。</p>
+        <p>我不知道制作组是不是一开始就想好了要这样写，但如果不是的话，那他们的版本衔接能力也太强了；如果是的话，那这个叙事规划的提前量是相当大的。</p>
+        <p>这让我意识到一件事：<strong>手游的叙事设计，本质上是在"计划性和即兴发挥"之间找平衡</strong>。重返未来1999明显偏向计划性——它的版本与版本之间有钩子，让你想知道下一章会发生什么。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>版本之间留钩子这件事，核心不在于"留悬念"，而在于"让玩家相信这个故事值得追下去"。悬念是技术，信任是结果。如果玩家相信你会在后面给出好的答案，他们才会对钩子有反应。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>从重返未来学到的三件事</h3>
+        <ul>
+          <li><strong>美学是可以成为护城河的：</strong>"9味"不是营销词汇，是它真的有不可替代性。其他游戏可以学它的复古元素，但复制不了它的整体气质</li>
+          <li><strong>叙事连续性是长线IP的必备：</strong>连续叙事比独立叙事更难做，但一旦做成，用户的"想看后续"会变成稳定的留存因子</li>
+          <li><strong>福利好的底气来自用户画像清晰：</strong>知道自己的用户是谁，才知道什么策略是有效的。对剧情向玩家逼氪是最蠢的商业化方式</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

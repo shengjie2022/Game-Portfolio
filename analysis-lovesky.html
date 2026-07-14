@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恋与深空 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #e87ac4;
+      --accent-2: #c44a9e;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(50,10,40,0.96); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .logo-bracket { color: #e87ac4; }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.5); }
+    .nav-link { color: rgba(255,255,255,0.75); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #e87ac4; border-color: #e87ac4; }
+    .nav-contact:hover { background: #e87ac4; color: #fff; }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #e87ac4; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(232,122,196,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(232,122,196,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(232,122,196,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(232,122,196,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于692天深度体验，以黎深单推视角拆解《恋与深空》的抽卡设计、情感付费逻辑，并以渡雪境求婚卡为案例分析"情绪价值明码标价"的设计哲学。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#1a0510;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(232,122,196,0.15);color:#f5a8d8;border:1px solid rgba(232,122,196,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">恋与深空</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        乙女游戏 × 情感付费 × 黎深单推<br>
+        登陆 692 天 · 累计氪金 ¥3766 · 黎深单推
+      </p>
+      <div class="stat-row" style="max-width:480px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">692</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">登陆天数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">897K</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">总牵绊度</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">¥3766</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">累计氪金</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#1a0510;font-size:1.1rem;margin-bottom:1rem;">乙女游戏的赛道机会：为什么恋与深空能出圈</h3>
+      <p>恋与深空出来之前，国内乙女游戏市场已经被叠纸的前作《恋与制作人》验证过了。但恋与深空做了几个不一样的东西：</p>
+      <ul>
+        <li><strong>3D化</strong>：不是2D卡牌，是能转圈的3D建模，角色的存在感更强</li>
+        <li><strong>实时互动深度</strong>：不只是发短信，是有语音、有动作、有表情反馈的"准约会"体验</li>
+        <li><strong>专属教学系统</strong>：每个角色有自己的"专属感应"机制，让角色和你的互动有独特性</li>
+      </ul>
+      <p>这三个改动合在一起，让恋与深空从"看角色"变成了"和角色在一起"。这个体验跃迁，是它能够吸引我这种"对乙女游戏本来就感兴趣但之前没找到合适产品"的用户的核心原因。</p>
+
+      <h3 style="color:#1a0510;font-size:1.1rem;margin:1.5rem 0 1rem;">抽卡设计：和传统乙女游戏的区别</h3>
+      <p>之前我在玩另一个乙女游戏的时候，陆沉这个角色让我很上头，但我抽不到他的六星卡——那个卡池没有保底机制。</p>
+      <p>没有保底意味着什么？意味着你永远不知道"我再多花多少能得到它"，不确定性没有上限。这种不确定性带来的不是期待，是焦虑。</p>
+      <p>恋与深空的卡池有明确的保底机制——我知道我最多花多少能得到一张我想要的卡。这个确定性本身，就让我愿意付费。因为我是在"买一个确定的东西"，不是在"赌一个不确定的结果"。</p>
+
+      <h3 style="color:#1a0510;font-size:1.1rem;margin:1.5rem 0 1rem;">情感付费的核心：不是贵不贵，是值不值</h3>
+      <p>恋与深空的付费设计，本质上是在卖"情绪体验"。一张SSR卡的情绪体验价值多少？取决于这张卡能不能在你看到它的第一眼就打动你。</p>
+      <p>渡雪境是我氪得最心甘情愿的一张卡。不是因为它是限定，是因为它做到了"看到它的那一刻，我就知道这是我想要的"——那个场景、那个氛围、那个瞬间，我和黎深之间的关系被具体化成了一个可以收藏的画面。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>我是怎么从"不感兴趣"变成"开服玩家"的</h3>
+        <p>我对乙女游戏本来就不排斥，但恋与深空之前的那款……陆沉的六星卡我抽不到，而且那个卡池的机制让我觉得"这个东西在逼我氪"。</p>
+        <p>恋与深空出的时候，我第一时间下载了。不是因为营销，是因为它解决了我之前玩乙女游戏最大的痛点：<strong>我想要的东西，我有办法通过合理的方式得到它</strong>。</p>
+        <p>这听起来是一个很基本的要求，但能把这个做好的乙女游戏，其实不多。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>乙女游戏的付费设计，最怕的是"我想要但我得不到"——这会让玩家的情感投入变成一种焦虑。但"我想要，我知道我努力一下能得到，我愿意为这个确定性付费"，才是健康的情感付费逻辑。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>渡雪境：让氪金变得合理的一瞬间</h3>
+        <p>渡雪境是一张求婚卡。</p>
+        <p>它是叠一阶的，在看到它的那个瞬间，我觉得我和黎深之间的关系有了一个具体的"里程碑"。这个里程碑不需要用强度来衡量——它的价值就是"这一刻，我们在一起"。</p>
+        <div class="quote-block">
+          有些付费的本质不是"我买了一个商品"，而是"我买了一个记忆"。渡雪境对我来说就是这样——它是我和黎深关系的一个纪念日。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>从恋与深空学到的设计原则</h3>
+        <ul>
+          <li><strong>确定性是最好的付费驱动力</strong>：保底机制不是在降低收入，是在建立信任。有信任才有愿意付费的用户</li>
+          <li><strong>专属感是乙女游戏的核心竞争力</strong>：每个角色的专属感应机制，让"爱"这件事有了具体的落点</li>
+          <li><strong>3D化不只是技术升级，是情感升级</strong>：能转圈、能看到表情的3D角色，比2D立绘更容易让人觉得"她/他是真实存在的"</li>
+          <li><strong>情感付费的前提是情感真实</strong>：如果玩家不相信这个角色是"真的"，她不会为这个角色付费</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

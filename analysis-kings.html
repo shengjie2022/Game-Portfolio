@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王者荣耀 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #c89b3c;
+      --accent-2: #7a5c1a;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(60,60,60,0.96); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .logo-bracket { color: #c89b3c; }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.5); }
+    .nav-link { color: rgba(255,255,255,0.75); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #c89b3c; border-color: #c89b3c; }
+    .nav-contact:hover { background: #c89b3c; color: #fff; }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #c89b3c; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(200,155,60,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(200,155,60,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(200,155,60,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(200,155,60,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于1813天深度体验，以辅助玩家视角分析《王者荣耀》的皮肤设计、社群生态与社交粘性，兼谈瑶的核心定位与新年福利策略。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#1a1500;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(200,155,60,0.15);color:#e0be6a;border:1px solid rgba(200,155,60,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">王者荣耀</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        皮肤生态 × 社交MOBA × 辅助玩家视角<br>
+        活跃 1813 天 · 皮肤 125 个 · 辅助-瑶
+      </p>
+      <div class="stat-row" style="max-width:480px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">1813</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">活跃天数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">125</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">皮肤数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">1719</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">总对战场次</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#1a1500;font-size:1.1rem;margin-bottom:1rem;">皮肤不只是外观，是IP价值的实体化</h3>
+      <p>在王者荣耀里，皮肤是一门独立的生意。但它的意义不只是"好看的皮肤能卖钱"——皮肤是玩家对某个角色的情感投入的<strong>外在证明</strong>。</p>
+      <p>我买一个皮肤，不是为了那10点攻击力加成，是因为我喜欢这个英雄，我希望每次选到这个英雄的时候，有一层"这是我的"的仪式感。这种情感需求和原神里抽角色是同一个逻辑，只是王者荣耀把它拆得更碎了——你不需要花150块抽一个角色，只需要花60块买一件"这件衣服"。</p>
+
+      <h3 style="color:#1a1500;font-size:1.1rem;margin:1.5rem 0 1rem;">社交MOBA的粘性来源：不是游戏，是关系链</h3>
+      <p>王者荣耀能维持1813天的活跃，核心不是因为它的玩法有多好——是因为我和朋友在这个游戏里有<strong>共同记忆</strong>。</p>
+      <p>MOBA天然是社交游戏。每一局都是合作，每一次开黑都是关系维护。这种粘性不是游戏机制给的，是人给的。这也是为什么王者荣耀的电竞生态那么重要——它不只是在卖皮肤，它是在持续生产"我们一起看过的比赛"这种共同记忆。</p>
+
+      <h3 style="color:#1a1500;font-size:1.1rem;margin:1.5rem 0 1rem;">辅助-瑶：最小单位的高光设计</h3>
+      <p>瑶是一个很有意思的角色设计——她完全依赖队友存活，但她有自己不可替代的独特性。</p>
+      <p>这种"强依赖性+独特机制"的组合，在设计上是有风险的：玩家会觉得"这个角色没有我就没有存在感"。但瑶的处理方式是把高光时刻做得足够短、足够亮——每一次附身、每一次刷盾、每一次关键时刻解控，都是一个微小但完整的高光。</p>
+      <p>这不是大型的高光，但足够频繁。频繁的高光可以让每一个玩家都觉得自己"在做贡献"。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>皮肤为什么让人愿意买</h3>
+        <p>我玩了1813天，皮肤买了125个。我不是那种为了强度氪金的人，我买皮肤只有一个原因：<strong>我觉得这个皮肤好看，而且它代表的那个角色我确实在用</strong>。</p>
+        <p>这让我意识到一个设计逻辑：皮肤购买决策的核心是"使用频率 × 情感认同"，不是"性价比"。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>皮肤这种商品和游戏本体不同，它没有使用价值（买了皮肤不会让你的角色变强），只有情绪价值。情绪价值的定价逻辑是：这个皮肤让我感觉好多少？好一点点就值这个价。所以皮肤设计最重要的不是加多少特效，是能不能在选择界面里被一眼看中。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>我为什么把王者荣耀当副游玩</h3>
+        <p>说起来也奇怪，我玩王者荣耀1719场，但从来不追赛季、不冲段位、有喜欢的皮肤就买、没有就偶尔打两把。</p>
+        <p>我能在这种"不追进度"的状态下坚持这么久，是因为王者荣耀的社交粘性足够强——不是因为游戏本身，而是因为朋友在玩。这种"用社交关系维持游戏活跃"的逻辑，是王者荣耀最难被复制的护城河。</p>
+        <p>新年版本的福利活动是另一个留存点。福利多的版本我会多上线几次，不是因为福利本身有多值钱，是因为"大家一起领福利"本身是一种社交仪式感。</p>
+      </div>
+
+      <div class="think-section">
+        <h3>作为策划，我怎么看王者荣耀</h3>
+        <ul>
+          <li><strong>皮肤生态是独立的产品线</strong>：皮肤不依赖游戏版本更新，可以随时发售，这让王者荣耀的商业化不完全依赖内容更新</li>
+          <li><strong>辅助设计的范本</strong>：瑶证明了"高频小高光"比"低频大高光"更适合休闲/辅助玩家，不需要多操作，但能持续感受到"我在做贡献"</li>
+          <li><strong>皮肤购买的核心驱动</strong>：不是性价比，是"我现在用不用这个英雄"——这是我在设计任何内购系统时都应该记住的</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>明日方舟：终末地 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #4a7a5a;
+      --accent-2: #2d5a3a;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(20,40,30,0.96); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .logo-bracket { color: #4a9a6a; }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.5); }
+    .nav-link { color: rgba(255,255,255,0.75); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #4a9a6a; border-color: #4a9a6a; }
+    .nav-contact:hover { background: #4a9a6a; color: #fff; }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #4a9a6a; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(74,154,106,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(74,154,106,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(74,154,106,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(74,154,106,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于305小时深度体验，分析《明日方舟：终末地》从QQ人进化到精致建模的视觉跃迁、工业系统设计，并以"国家电网终末地分局"玩家视角分享拉电线的乐趣。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#0a1a10;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(74,154,106,0.15);color:#6dc98a;border:1px solid rgba(74,154,106,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">明日方舟：终末地</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        工业系统 × 探索建造 × 从QQ人到精致建模<br>
+        游戏时长 305 小时
+      </p>
+      <div class="stat-row" style="max-width:480px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">305h</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">游戏时长</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">24</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">干员数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">360</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">档案数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#0a1a10;font-size:1.1rem;margin-bottom:1rem;">从QQ人到精致建模：明日方舟IP的视觉进化</h3>
+      <p>明日方舟本体的视觉风格是以"QQ人"（可爱小方块）为核心的，这个风格帮助它在早期吸引了大量用户，但也形成了某种"天花板"的印象。</p>
+      <p>终末地直接把视觉语言推倒重建——精致的3D建模、电影感的镜头语言、细腻的场景渲染。这意味着它不是在"做一个更好的明日方舟"，而是在"探索明日方舟这个IP能承载什么样的视觉体验"。</p>
+      <p>对于一个老IP来说，这个转变是冒险的，但也是必要的。IP的生命力需要新的视觉表达来延续，不能永远靠"萌"来打天下。</p>
+
+      <h3 style="color:#0a1a10;font-size:1.1rem;margin:1.5rem 0 1rem;">工业系统：探索建造类游戏的"真实感"设计</h3>
+      <p>终末地的工业系统（拉电线、接管道、建工厂）是它最独特的玩法标签。</p>
+      <p>这类系统的设计难点在于：它必须足够简单让玩家能上手，但又必须足够复杂让玩家有优化空间。终末地的处理方式是——<strong>用物理约束来创造挑战</strong>：电力传输有损耗、管道长度有上限、生产流程需要平衡。</p>
+      <p>这些约束让"建工厂"变成了一道开放题，而不是照着教程点按钮。玩家可以有自己的解法，这正是探索建造类游戏最吸引人的地方。</p>
+
+      <h3 style="color:#0a1a10;font-size:1.1rem;margin:1.5rem 0 1rem;">玩法转型：从战棋到动作——去掉的是门槛，不是深度</h3>
+      <p>明日方舟本体的战棋玩法，对于不熟悉的玩家来说是有门槛的——你需要理解职业配合、站位仇恨、费用分配这些概念。</p>
+      <p>终末地换成动作+探索的玩法，等于是在说：我们不需要这些门槛，我们用别的方式让游戏有深度。这个决策让终末地能吸引到更多"想体验明日方舟世界观但玩不来战棋"的玩家。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>拉电线为什么会上瘾</h3>
+        <p>说起来有点好笑——我玩终末地305个小时，有相当一部分时间是在拉电线。</p>
+        <p>不是那种"我强迫自己上线"的拉电线，是真的觉得"我今天要把这片区域的电网优化一下"的拉电线。</p>
+        <p>它让我上瘾的原因我觉得是：<strong>这个系统给我一个明确的"我想做到"的目标，然后让我自己去找怎么做到</strong>。不是任务提示告诉我"去那里拉一根电线"，而是我自己发现了"如果我从这里接电，整个工厂效率能提升30%"。</p>
+        <div class="quote-block">
+          好的探索建造系统，给玩家的不是"我要做什么"，而是"我想要什么"。前者是任务，后者是梦想。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>终末地让我想通的设计原则</h3>
+        <p>终末地让我对"探索建造"这个品类有了新的理解：</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>探索建造类游戏的核心不是"建造"，是"探索"。玩家需要先对"我要建什么"有想法，然后建造过程才是有意义的。终末地把工业系统的学习曲线做得很平缓，让玩家在早期就能体验到"我自己搭了一个能用的系统"的成就感，这才是持续玩下去的动力。
+        </div>
+        <p>另外，终末地的玩法转型（从战棋到动作）也让我意识到一件事：<strong>IP是可以改玩法的，只要新的玩法能更好地服务IP的内核</strong>。明日方舟的内核不是"战棋"，是"塔卫世界观的角色们在危机中互相支撑"——动作+探索的玩法，一样可以讲好这个故事。</p>
+      </div>
+
+      <div class="think-section">
+        <h3>305小时里，我学到了什么</h3>
+        <ul>
+          <li><strong>IP的视觉进化需要勇气：</strong>从QQ人到精致建模是冒险的，但也是IP保持生命力的必要投资</li>
+          <li><strong>工业系统的核心是"约束设计"：</strong>有约束才有挑战，有挑战才有优化空间，有优化空间才有上瘾感</li>
+          <li><strong>好的建造系统先给"想做的目标"再给"做到的方法"：</strong>玩家的主动性比教程更重要</li>
+          <li><strong>玩法可以改变，但世界观内核不能变：</strong>终末地换了玩法，但明日方舟的故事感还在，这是它成功的关键</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

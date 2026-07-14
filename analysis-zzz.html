@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绝区零 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-secondary: #f5f2ee;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #ffa500;
+      --accent-2: #ff6b00;
+      --accent-3: #ff3b3b;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(255,80,0,0.96); border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .logo-bracket { color: rgba(255,255,255,0.5); }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.65); }
+    .nav-link { color: rgba(255,255,255,0.85); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .nav-contact:hover { background: rgba(255,255,255,0.15); }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #ffa500; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(255,165,0,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(255,165,0,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(255,165,0,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(255,165,0,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于491天深度体验，分析《绝区零》的动作战斗设计、邦布系统与副游定位，并以玩家视角分享伊埃斯为什么让人上头。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#1a1000;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(255,165,0,0.15);color:#ffc04d;border:1px solid rgba(255,165,0,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">绝区零</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        动作战斗 × 邦布系统 × 副游定位<br>
+        活跃 491 天 · 角色 33 位
+      </p>
+      <div class="stat-row" style="max-width:400px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">491</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">活跃天数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">33</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">角色数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">312</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">成就数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#1a1000;font-size:1.1rem;margin-bottom:1rem;">三个游戏，三种定位</h3>
+      <p>米哈游旗下三个游戏——原神、星铁、绝区零——放在一起看的时候，能很清晰地看到定位差异：</p>
+      <ul>
+        <li><strong>原神</strong>：开放世界 × 角色驱动，大内容量，高时间投入</li>
+        <li><strong>星铁</strong>：回合制 × 副游定位，碎片时间友好，角色驱动</li>
+        <li><strong>绝区零</strong>：动作战斗 × 邦布系统，强调操作爽感与陪伴感</li>
+      </ul>
+      <p>绝区零的核心战斗差异化是<strong>快速切换+邦布协战</strong>。这和原神的元素反应、星铁的回合策略完全不同——它追求的是"打起来好看、打起来顺手"，而不是"打起来有策略深度"。</p>
+
+      <h3 style="color:#1a1000;font-size:1.1rem;margin:1.5rem 0 1rem;">橡皮管画面：一件被低估的设计决策</h3>
+      <p>绝区零的角色建模被人戏称为"橡皮管"——四肢细长、关节圆润、表情夸张。这个视觉风格不是技术限制，是<strong>有意为之的品牌差异化</strong>。</p>
+      <p>它让绝区零在视觉上就和市面上大多数"写实系"二次元手游拉开了距离。有了这个视觉基础，不管出什么角色、什么场景，代入感都是统一的。</p>
+      <p>而且橡皮管风格对动画表演来说是加分项——它夸张但不违和，动作的弹性感和幽默感都可以做得很好。</p>
+
+      <h3 style="color:#1a1000;font-size:1.1rem;margin:1.5rem 0 1rem;">邦布：不只是宠物，是陪伴系统</h3>
+      <p>邦布（Bangboo）是绝区零的一个设计亮点。它不是传统意义上的"宠物"——它可以参与战斗、在钓鱼系统里当工具、还会在日常界面里做一些小动作。</p>
+      <p>这种"一个物件多种场景"的陪伴感设计，比单纯养一只宠物要有粘性得多。用户和邦布的互动不限于某一个系统，这让它的存在是"弥漫在整个游戏体验里的"，而不是只在特定场景里出现。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>伊埃斯（邦布）：可爱是一种设计能力</h3>
+        <p>说实话，我玩绝区零，伊埃斯功不可没。</p>
+        <p>不是那种"强度很高所以我必须带"的功利性需求，是"看到这个邦布就想多看两眼"的真实情感。邦布是一种很特别的陪伴设计——它不是人，但它的反应是拟人的；它不是战斗核心，但它的存在让战斗多了一层情绪价值。</p>
+        <div class="quote-block">
+          一个好的陪伴型设计，不需要有多复杂的世界观，也不需要有多少剧情铺垫。它只需要做到一件事：让人觉得它是活的。
+        </div>
+        <p>伊埃斯做到了。它的待机动作、它的语音反馈、它在战斗里冲出去帮忙的样子——合在一起就是"有灵魂"。</p>
+      </div>
+
+      <div class="think-section">
+        <h3>绝区零让我想通的一件事：动作游戏不等于硬核</h3>
+        <p>我以前以为动作游戏是给操作水平高的人玩的。但绝区零告诉我：动作游戏也可以做副游。</p>
+        <p>它的操作上限可以很高（极限闪避、连携技、切换时机），但日常内容不需要达到上限也能完成。也就是说，它把"操作深度"和"内容可及性"做了分层——硬核玩家有东西可钻研，普通玩家也能顺畅体验剧情。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>分层设计是动作游戏做副游定位的关键。把操作难度和内容难度分开——玩家可以选择挑战自己的操作极限，也可以选择只体验核心内容。这比直接降低难度要有尊严得多。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>动作战斗和其他游戏的差异</h3>
+        <p>和原神相比：原神的战斗是"环境+元素"的策略感，绝区零是纯操作反馈感。</p>
+        <p>和星铁相比：星铁是"决策爽感"，绝区零是"执行爽感"。</p>
+        <p>这两种爽感的区别在于：决策爽感可以暂停思考，执行爽感要求即时反应。绝区零选择后者，和它的橡皮管画面、快的战斗节奏是一脉相承的——它整个产品都在说：我们追求的是"当下这一刻的爽"。</p>
+        <div class="card-simple">
+          <h4>从绝区零学到的设计原则</h4>
+          <p>动作游戏也可以轻量化，只要把"操作深度"和"内容难度"分层；陪伴系统的价值在于"弥漫感"，而不是某个单一场景的出现；视觉风格是有战略意义的，它决定了产品的气质上限。</p>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

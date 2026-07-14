@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>饼干人王国 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #e67e22;
+      --accent-2: #d35400;
+      --border: #e0ddd8;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(50,30,0,0.96); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .logo-bracket { color: #e67e22; }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.5); }
+    .nav-link { color: rgba(255,255,255,0.75); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #e67e22; border-color: #e67e22; }
+    .nav-contact:hover { background: #e67e22; color: #fff; }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #e67e22; }
+
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(230,126,34,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(230,126,34,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(230,126,34,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(230,126,34,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+    .think-section .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 1rem 0; }
+    .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
+    .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于长期体验，以玩家视角分析《冲呀！饼干人：王国》的家园/矿山系统粘性逻辑与福利设计，兼谈黑影牛奶饼干的角色吸引力。">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background:#1a0e00;">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(230,126,34,0.15);color:#f5b460;border:1px solid rgba(230,126,34,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#fff;">冲呀！饼干人：王国</h1>
+      <p class="game-page-subtitle" style="color:rgba(255,255,255,0.65);">
+        家园系统 × 矿山系统 × 饼干收集<br>
+        王国繁荣度 #3838 · 饼干 143 个
+      </p>
+      <div class="stat-row" style="max-width:480px;margin-top:20px;">
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">#3838</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">王国繁荣度</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">143</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">饼干数</div>
+        </div>
+        <div class="stat-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <div class="num" style="color:#fff;">122</div>
+          <div class="label" style="color:rgba(255,255,255,0.5);">服装数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body" style="max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
+    </div>
+
+    <div id="panel-analysis" class="tab-panel active">
+
+      <h3 style="color:#1a0e00;font-size:1.1rem;margin-bottom:1rem;">家园系统：让"不上线"变得有代价</h3>
+      <p>饼干人王国的家园系统做了一件很聪明的事：它的核心资源（饼干币、增益buff）有一部分是离线积累的，但需要你上线收取。</p>
+      <p>这创造了一种独特的"每日仪式感"：不是"我今天必须打副本"，而是"我昨天的产出还在那里等我"。这种"等着你回来"的粘性，比"不玩就亏"要温和得多，但同样有效。</p>
+      <p>而且家园内容本身是深度可扩展的——建筑升级、装饰摆放、饼干工坊的配方解锁，每一个都有独立的成长空间。你可以不推进主线，但家园不会让你无聊。</p>
+
+      <h3 style="color:#1a0e00;font-size:1.1rem;margin:1.5rem 0 1rem;">矿山系统：重复劳动里的正反馈设计</h3>
+      <p>矿山系统是另一个让我愿意每天上线的原因。</p>
+      <p>挖矿这件事本身是重复的，但它的奖励是即时的——每一镐下去，都有东西出来。这种"立刻看到回报"的反馈节奏，是最简单也最有效的行为强化机制。</p>
+      <p>加上矿山产出的资源可以用于家园建设和饼干强化，所以挖矿不是一个孤立的小游戏，而是整个经济循环的一个环节。这让重复劳动有了"使命感"：我挖的不是石头，是我的王国的未来。</p>
+
+      <h3 style="color:#1a0e00;font-size:1.1rem;margin:1.5rem 0 1rem;">福利好的市场策略</h3>
+      <p>饼干人王国被人称赞的另一点是"福利好、资源多、基本上不用氪"。</p>
+      <p>这个策略的前提是：它的主要收入来源不是"逼氪"，而是"皮肤+饼干外观"的 cosmetics 付费。当核心游戏内容是免费的时候，用户基数会更大，而更大的用户基数意味着，即使是小比例的付费用户，总量也足够可观。</p>
+
+    </div>
+
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>黑影牛奶饼干：上头不需要理由，但一定有原因</h3>
+        <p>黑影牛奶饼干是我在饼干人王国最喜欢的饼干。</p>
+        <p>要说为什么，我给不出一个很系统的理由——可能是因为她的技能组很实用，可能是因为她的立绘刚好戳中了我的审美，可能是因为第一次看到她的时候正好心情好。</p>
+        <p>但如果非要找一个原因的话，我觉得是<strong>她的"辨识度"很高</strong>。在143个饼干里，黑影牛奶饼干是可以一眼认出来的——不是因为她最强，而是因为她的视觉设计足够独特。</p>
+        <div class="quote-block">
+          角色/道具的辨识度，比强度更重要。用户记住一个东西，往往不是因为它最强，而是因为它最特别。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>家园+矿山：为什么这种"养老"系统会让人上瘾</h3>
+        <p>饼干人王国是我玩得最"养老"的游戏之一——不上班、不冲排名、不追最新版本，但每天都会上来收一下产出、逛一下矿山。</p>
+        <p>这种状态之所以能持续，是因为它的核心循环是<strong>低压力、高正反馈</strong>的：</p>
+        <ul>
+          <li>家园产出是离线积累的，上线就有收获</li>
+          <li>矿山每一镐都有即时回报，不需要等待</li>
+          <li>饼干收集没有尽头，但每个新饼干的出现都是一个小型惊喜</li>
+        </ul>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>"养老"系统的核心设计逻辑不是"降低难度"，而是"提高回报频率、降低失败成本"。让玩家每次上线都有正反馈，哪怕正反馈很小。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>从饼干人王国学到的</h3>
+        <ul>
+          <li><strong>离线积累+即时收取是一种温柔的留存机制</strong>：它不说"你不来就亏了"，它说"你的产出一直在那里等你"</li>
+          <li><strong>重复劳动要有即时正反馈</strong>：矿山每一镐都有东西出来，这种设计让"肝"变得可以接受</li>
+          <li><strong>辨识度是角色的灵魂</strong>：143个饼干里能被记住的，一定是最有辨识度的那些</li>
+          <li><strong>福利好的底气来自商业模式的清晰</strong>：不逼氪不代表不赚钱，只是把变现点换到了 cosmetics 上</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
