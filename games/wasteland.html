@@ -39,9 +39,11 @@
         接单 → 规划路线 → 旅途事件 → 交易改装，完整闭环设计<br>
         程序化地图生成 · Deck Building 改装系统 · 经济套利逻辑
       </p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0 0 16px;">程序、美术均独立完成，程序使用 Electron 引擎自研</p>
       <div class="game-page-actions">
         <a href="#play" class="btn btn-primary"><span>🎮 立即游玩</span></a>
         <a href="#design" class="btn btn-ghost"><span>📐 策划文档</span></a>
+        <a href="wasteland-design.html" class="btn btn-ghost" style="background:rgba(255,230,109,0.12);border-color:rgba(255,230,109,0.3);color:#ffe66d;"><span>⚙️ 系统设计文档</span></a>
         <a href="https://github.com/shengjie2022/wasteland-express" target="_blank" class="btn btn-outline">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.62.87 1.08 1.845 2.835 1.31 3.53 1.005.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           源码
@@ -171,6 +173,95 @@
           事件结果与当前改装状态挂钩（装甲等级决定劫匪战斗胜率，轮胎决定恶劣路况速度等），让改装投入可见化。
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Config Example</div>
+        <h2>配置文档示例</h2>
+        <p>道具配置表（部分） · 城镇商品价格配置</p>
+      </div>
+
+      <div class="doc-card" style="margin-bottom:24px;">
+        <div class="doc-icon">🧰</div>
+        <h3>道具零件配置表示例</h3>
+        <p style="color:var(--text-secondary);font-size:14px;margin:8px 0 16px;">每种零件在游戏中的实际定义格式，策划可独立增删调整，程序读取后自动渲染。</p>
+        <pre style="background:var(--bg-secondary);border-radius:8px;padding:20px;overflow-x:auto;font-size:12px;color:#a8d8b0;line-height:1.7;margin:0;font-family:'JetBrains Mono',monospace;"><code>{
+  "id": "part_heavy_armor",
+  "name": "重型护甲板",
+  "display_name": "装甲板 Lv.2",
+  "slot": "defense",          // 所属槽位
+  "rarity": "rare",           // 普通 / 稀有 / 传说
+  "price_base": 95,           // 基础售价（金币）
+  "price_range": [80, 120],   // 价格波动区间
+  "stats": {
+    "armor": 30,              // 装甲值
+    "speed": -15,             // 速度惩罚
+    "capacity": -10            // 载货量惩罚
+  },
+  "effects": [
+    { "trigger": "combat_start", "armor_bonus": 0.1 }  // 战斗开始时额外10%装甲
+  ],
+  "set_bonus": {              // 套装属性
+    "set_id": "tank",
+    "required": 2,
+    "bonus": { "armor": 20 }
+  },
+  "unlock_condition": "player_level >= 3",
+  "source": ["black_market", "event_loot"]
+}</code></pre>
+      </div>
+
+      <div class="doc-card" style="margin-bottom:24px;">
+        <div class="doc-icon">🏪</div>
+        <h3>城镇商品价格配置表示例</h3>
+        <p style="color:var(--text-secondary);font-size:14px;margin:8px 0 16px;">不同城镇对每种商品有不同的基础价格和波动范围，玩家行为会实时影响实际成交价。</p>
+        <table class="data-table" style="margin-top:0;">
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>安全区A镇</th>
+              <th>资源镇B镇</th>
+              <th>黑市C镇</th>
+              <th>设计意图</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>绷带</td>
+              <td>¥5（低价产地）</td>
+              <td>¥8</td>
+              <td>¥15（高需求地）</td>
+              <td>低价区买入 → 高价区卖出套利</td>
+            </tr>
+            <tr>
+              <td>燃油桶</td>
+              <td>¥12</td>
+              <td>¥6（燃料产地）</td>
+              <td>¥20</td>
+              <td>长途路线必须先在B镇补油</td>
+            </tr>
+            <tr>
+              <td>机械零件</td>
+              <td>¥18</td>
+              <td>¥25</td>
+              <td>¥35（稀缺）</td>
+              <td>改装件不建议长途搬运，收益有限</td>
+            </tr>
+            <tr>
+              <td>废土情报</td>
+              <td>¥10</td>
+              <td>¥8</td>
+              <td>¥5（信息过载）</td>
+              <td>信息类商品价格反向波动</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color:var(--text-muted);font-size:12px;margin:12px 0 0;">* 表格中价格为基准参考值，实际成交价受玩家购买量、市场波动系数动态影响</p>
+      </div>
+
     </div>
   </section>
 

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>废土快递 · 系统设计文档 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="废土快递 Wasteland Express — 系统设计文档：程序化地图 · 经济系统 · Deck Building改装">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html#games" class="nav-link">全部作品</a>
+        <a href="../index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="game-page-header" style="background: linear-gradient(135deg, #2e1a0a 0%, #4e2d1b 50%, #5c3317 100%);">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span class="tag tag-genre">系统设计</span>
+        <span class="tag tag-genre">经济系统</span>
+        <span class="tag tag-tech">Electron自研引擎</span>
+      </div>
+      <h1 class="game-page-title">废土快递 · 系统设计文档</h1>
+      <p class="game-page-subtitle">
+        这个游戏想解决的是：Roguelike怎么做出"规划感"？<br>
+        不是走一步看一步，是走之前就已经想好了这条路线值不值得走。
+      </p>
+      <div class="game-page-actions">
+        <a href="wasteland.html" class="btn btn-ghost" style="background:rgba(255,230,109,0.2);border-color:rgba(255,230,109,0.4);color:#ffe66d;">
+          <span>🎮 先去玩一下</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设计目标 -->
+  <section style="padding:60px 0 40px;">
+    <div class="container" style="max-width:760px;margin:0 auto;">
+
+      <h2 style="font-size:24px;font-weight:700;color:#e8e8f0;margin:0 0 24px;">这个游戏要解决什么问题</h2>
+
+      <p style="color:#9898b8;font-size:15px;line-height:1.9;margin:0 0 24px;">
+        玩过很多废土题材的Roguelike，基本上都是一个模式：遇到啥就打啥，打赢了捡东西，打输了重来。没有"规划"这回事，运气成分太大。
+      </p>
+      <p style="color:#9898b8;font-size:15px;line-height:1.9;margin:0 0 40px;">
+        我想做的不是随机遭遇，而是一个有"路线规划"感的游戏——玩家在出发前就能看到这条路线值不值得走、有什么风险、预期收益是多少。运气依然存在，但玩家能用规划来对抗运气，而不是完全被运气支配。
+      </p>
+
+      <h3 style="color:#ffe66d;font-size:16px;font-weight:600;margin:0 0 16px;">设计目标</h3>
+      <div style="background:#17172a;border-radius:12px;padding:20px 24px;border:1px solid #2a2a4a;">
+        <ul style="color:#9898b8;font-size:14px;line-height:2.2;margin:0;padding-left:20px;">
+          <li>路线信息<strong style="color:#e8e8f0;">完整透明</strong>——玩家能看到路线危险度、预期耗时、沿途资源点，而不是开盲盒</li>
+          <li>改装系统提供<strong style="color:#e8e8f0;">真实策略</strong>——不是越多越好，而是"这条路我需要防御，那个任务我需要速度"</li>
+          <li>经济系统有<strong style="color:#e8e8f0;">套利空间</strong>——不同城镇物价不同，低买高卖是核心盈利手段，但存在市场波动</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 核心规则 -->
+  <section style="padding:40px 0;">
+    <div class="container" style="max-width:760px;margin:0 auto;">
+
+      <h2 style="font-size:24px;font-weight:700;color:#e8e8f0;margin:0 0 32px;">核心系统是怎么设计的</h2>
+
+      <h3 style="color:#ffe66d;font-size:15px;font-weight:600;margin:0 0 12px;">1. 程序化地图生成</h3>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 16px;">
+        地图不是随机撒点，是用最小生成树算法生成的——确保任意两个城镇之间都有可达路径，同时地图上存在"快捷路线"的探索空间。玩家可以选择走主路（安全但收益低）或探索捷径（危险但可能有意外收获）。
+      </p>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 32px;">
+        城镇分5类：安全区（无战斗）、资源镇（低价出售特定商品）、黑市（可买到其他地方买不到的东西）、危险镇（怪物密集但奖励高）、废墟（完全随机，高风险高回报）。每次重开城镇类型和位置都会变化，但类型分布比例保持稳定。
+      </p>
+
+      <h3 style="color:#ffe66d;font-size:15px;font-weight:600;margin:0 0 12px;">2. Deck Building 改装系统</h3>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 16px;">
+        改装不是"买装备"，而是"构建你的卡组"。货车有5个槽位，每个槽位对应不同功能区域（动力系统、防护系统、武器系统、储物系统、通讯系统）。每个槽位可以装多个零件，零件以"卡"的形式在旅途中打出——某些情况自动触发。
+      </p>
+
+      <div style="background:#0c0c1a;border-radius:10px;padding:20px;margin:0 0 24px;font-size:13px;color:#a8d8b0;line-height:1.8;font-family:'JetBrains Mono',monospace;">
+        <p style="margin:0 0 10px;color:#ffe66d;">// 零件配置表示例</p>
+        {<br>
+        &nbsp;&nbsp;"id": "part_heavy_armor",<br>
+        &nbsp;&nbsp;"name": "重型护甲板",<br>
+        &nbsp;&nbsp;"slot": "defense",<br>
+        &nbsp;&nbsp;"effect": { "armor": +30, "speed": -15 },<br>
+        &nbsp;&nbsp;"rarity": "rare",<br>
+        &nbsp;&nbsp;"price_range": [80, 120]<br>
+        }
+      </div>
+
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 16px;">
+        5套装的逻辑是：同套装零件达到一定数量会激活套装效果。比如"废土求生套装"凑齐3件后，燃油消耗降低20%——鼓励玩家不要只追求单件数值，而是考虑整体构建思路。
+      </p>
+
+      <h3 style="color:#ffe66d;font-size:15px;font-weight:600;margin:0 0 12px;">3. 经济系统</h3>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 16px;">
+        10种商品在不同城镇有不同价格，且价格会随玩家行为波动——如果玩家大量购买某商品，该商品在这个城镇的价格会上涨。设计目的是让玩家需要"记住"自己在哪些城镇买了什么，而不是无脑全买。
+      </p>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 16px;">
+        三重消耗（燃油、耐久、理智）形成决策约束：跑更多路线意味着更多消耗，但不跑就没钱赚。玩家需要在"跑更多"和"控成本"之间找到平衡点。
+      </p>
+
+      <div style="background:#17172a;border-radius:10px;padding:16px;border:1px solid #2a2a4a;margin:0 0 24px;">
+        <p style="color:#e8e8f0;font-size:13px;font-weight:600;margin:0 0 10px;">商品套利示例</p>
+        <p style="color:#9898b8;font-size:13px;line-height:1.8;margin:0;">
+          安全区A镇：绷带 5金币 ← 便宜产地<br>
+          资源镇B镇：绷带 8金币<br>
+          黑市C镇：绷带 15金币 ← 高需求地<br>
+          玩家在A镇买入10个绷带（50金），去C镇卖出（150金），一趟净赚100金
+        </p>
+      </div>
+
+      <h3 style="color:#ffe66d;font-size:15px;font-weight:600;margin:0 0 12px;">4. 旅途事件系统</h3>
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0 0 24px;">
+        旅途事件分三类：遭遇战（触发战斗）、随机事件（商人、流浪者、天气变化等）、资源点（自动发现额外物资）。三类事件根据路线危险度动态配比——危险度越高，遭遇战概率越大，但也更容易触发稀有事件。
+      </p>
+
+    </div>
+  </section>
+
+  <!-- 子系统关系 -->
+  <section style="padding:40px 0;">
+    <div class="container" style="max-width:760px;margin:0 auto;">
+
+      <h2 style="font-size:24px;font-weight:700;color:#e8e8f0;margin:0 0 32px;">系统之间的关系</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div style="background:#17172a;border-radius:10px;padding:16px;border:1px solid #2a2a4a;">
+          <p style="color:#ffe66d;font-size:13px;font-weight:600;margin:0 0 6px;">地图生成系统</p>
+          <p style="color:#9898b8;font-size:12px;line-height:1.6;margin:0;">决定城镇分布、路线结构、危险度分布，为玩家提供"规划原材料"</p>
+        </div>
+        <div style="background:#17172a;border-radius:10px;padding:16px;border:1px solid #2a2a4a;">
+          <p style="color:#4ecdc4;font-size:13px;font-weight:600;margin:0 0 6px;">经济系统</p>
+          <p style="color:#9898b8;font-size:12px;line-height:1.6;margin:0;">管理物价、交易逻辑、三重消耗，是玩家"规划"的核心约束</p>
+        </div>
+        <div style="background:#17172a;border-radius:10px;padding:16px;border:1px solid #2a2a4a;">
+          <p style="color:#ff8a8a;font-size:13px;font-weight:600;margin:0 0 6px;">改装系统</p>
+          <p style="color:#9898b8;font-size:12px;line-height:1.6;margin:0;">决定玩家的能力边界，坦克型玩家适合高危路线，商人型玩家适合低危跑商</p>
+        </div>
+        <div style="background:#17172a;border-radius:10px;padding:16px;border:1px solid #2a2a4a;">
+          <p style="color:#a89fff;font-size:13px;font-weight:600;margin:0 0 6px;">旅途事件系统</p>
+          <p style="color:#9898b8;font-size:12px;line-height:1.6;margin:0;">读取地图系统的路线信息，在旅途中插入随机变量，制造"规划之外"的变化</p>
+        </div>
+      </div>
+
+      <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0;">
+        核心循环：玩家查看地图（地图系统）→ 规划路线（结合经济系统）→ 改装车辆（改装系统）→ 出发 → 旅途事件随机介入 → 回到城镇交易 → 更新改装 → 再出发。
+      </p>
+
+    </div>
+  </section>
+
+  <!-- 后续迭代 -->
+  <section style="padding:40px 0 80px;">
+    <div class="container" style="max-width:760px;margin:0 auto;">
+
+      <h2 style="font-size:24px;font-weight:700;color:#e8e8f0;margin:0 0 32px;">后续想做的</h2>
+
+      <div style="border-left:3px solid #ffe66d;padding-left:20px;margin-bottom:20px;">
+        <p style="color:#e8e8f0;font-weight:600;margin:0 0 6px;">v1.1 · 货运任务系统</p>
+        <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0;">
+          从"自由跑商"升级到"任务+自由混合"。NPC发布货运任务（指定起点终点、有时间限制、奖励加成），玩家可以选择接任务（有目标感）或继续自由跑商（有灵活性）。任务失败有惩罚，但奖励也更丰厚。
+        </p>
+      </div>
+
+      <div style="border-left:3px solid #4ecdc4;padding-left:20px;margin-bottom:20px;">
+        <p style="color:#e8e8f0;font-weight:600;margin:0 0 6px;">v1.2 · 城镇关系系统</p>
+        <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0;">
+          城镇之间有派系关系（比如A镇和B镇是敌对关系，玩家在A镇买的东西运到B镇卖会触发特殊事件）。派系关系会随游戏进程变化，玩家可以主动介入派系冲突，用自己的货运能力改变废土的势力格局。
+        </p>
+      </div>
+
+      <div style="border-left:3px solid #a89fff;padding-left:20px;">
+        <p style="color:#e8e8f0;font-weight:600;margin:0 0 6px;">DLC · 多人联机货运</p>
+        <p style="color:#9898b8;font-size:14px;line-height:1.8;margin:0;">
+          一个玩家负责开车护送，另一个玩家扮演"废土电台"提供情报——哪里有危险、哪个城镇缺货、哪个路线被封锁。联机不改变核心玩法，而是增加了一个"协作规划"的维度。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="background:#12121f;padding:40px 0;">
+    <div class="container" style="text-align:center;">
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="wasteland.html" class="btn btn-outline" style="border-color:#ffe66d;color:#ffe66d;">🎮 游玩 Demo</a>
+        <a href="https://github.com/shengjie2022/wasteland-express" target="_blank" class="btn btn-outline" style="border-color:#6c63ff;color:#a89fff;">源码 →</a>
+        <a href="../index.html" class="btn btn-outline" style="border-color:#9898b8;color:#9898b8;">返回全部作品</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+          <span class="footer-dot">·</span>
+          <a href="tel:13414470758">13414470758</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

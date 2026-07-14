@@ -40,9 +40,11 @@
         吞噬万物，自由进化，拥抱或反抗你的「蟹化宿命」<br>
         42 节点进化树 · 4 大生物群系 · 39 种生态关系 · 2026.01 开发中
       </p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0 0 16px;">程序、美术均独立完成，程序使用 Electron 引擎自研</p>
       <div class="game-page-actions">
         <a href="#play" class="btn btn-primary"><span>🎮 立即游玩</span></a>
         <a href="#design" class="btn btn-ghost"><span>📐 策划文档</span></a>
+        <a href="crab-evolution-design.html" class="btn btn-ghost" style="background:rgba(255,107,107,0.12);border-color:rgba(255,107,107,0.3);color:#ff8a8a;"><span>⚙️ 系统设计文档</span></a>
         <a href="https://github.com/shengjie2022/carcinization-evolution-2" target="_blank" class="btn btn-outline">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.62.87 1.08 1.845 2.835 1.31 3.53 1.005.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           源码
@@ -215,6 +217,85 @@
           「Gene Bank 是整个商业模型的核心——玩家知道'死掉的努力不会白费'，才愿意反复挑战。」
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 配置文档示例 -->
+  <section class="game-page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Config Example</div>
+        <h2>配置文档示例</h2>
+        <p>进化节点配置 · AI状态机配置</p>
+      </div>
+
+      <div class="doc-card" style="margin-bottom:24px;">
+        <div class="doc-icon">🧬</div>
+        <h3>进化节点配置表示例</h3>
+        <p style="color:var(--text-secondary);font-size:14px;margin:8px 0 16px;">每个进化节点的具体定义，策划可在配置表里调整属性数值、解锁条件、前置节点，程序读取后自动更新进化树UI。</p>
+        <pre style="background:var(--bg-secondary);border-radius:8px;padding:20px;overflow-x:auto;font-size:12px;color:#a8d8b0;line-height:1.7;margin:0;font-family:'JetBrains Mono',monospace;"><code>{
+  "node_id": "node_12_heavy_claw",
+  "name": "重甲蟹钳",
+  "tier": 2,
+  "biome": "shallow_sea",
+  "prerequisites": ["node_08_base_claw"],
+  "crab_value": 3,           // 蟹化值 +3
+  "stats": {
+    "attack": 15,
+    "armor": 20,
+    "speed": -5
+  },
+  "abilities": ["claw_attack_heavy", "armor_passive"],
+  "visual": "heavy_claw_sprite",
+  "evolution_to": ["node_18_titan_claw", "node_20_defensive_shell"],
+  "description": "钳子演化为厚重的甲壳状武器，牺牲速度换取极致防御",
+  "ai_priority": "defensive",
+  "unlock_zone": "shallow_sea_depth_3"
+}</code></pre>
+      </div>
+
+      <div class="doc-card" style="margin-bottom:24px;">
+        <div class="doc-icon">🤖</div>
+        <h3>AI状态机配置表示例</h3>
+        <p style="color:var(--text-secondary);font-size:14px;margin:8px 0 16px;">每种生物的AI行为逻辑，定义在各种状态下会做什么、以及状态之间的转换条件。</p>
+        <pre style="background:var(--bg-secondary);border-radius:8px;padding:20px;overflow-x:auto;font-size:12px;color:#a8d8b0;line-height:1.7;margin:0;font-family:'JetBrains Mono',monospace;"><code>{
+  "species_id": "deer_01",
+  "name": "荒野鹿",
+  "states": {
+    "idle": {
+      "action": "graze",
+      "duration": [5, 12],          // 持续时间随机范围（秒）
+      "transitions": [
+        { "to": "alert", "condition": "detect_player" },
+        { "to": "flee", "condition": "player_distance < 30" }
+      ]
+    },
+    "alert": {
+      "action": "look_around",
+      "duration": [1, 3],
+      "transitions": [
+        { "to": "flee", "condition": "player_distance < 50" },
+        { "to": "idle", "condition": "no_threat_timer > 3" }
+      ]
+    },
+    "flee": {
+      "action": "run_away",
+      "speed_multiplier": 1.8,
+      "transitions": [
+        { "to": "idle", "condition": "player_distance > 80" }
+      ]
+    },
+    "feed": {
+      "action": "eat",
+      "priority": 2,                // 优先级，数值越高越优先
+      "transitions": [
+        { "to": "territorial", "condition": "player_distance < 20 AND player_enters_territory" }
+      ]
+    }
+  }
+}</code></pre>
+      </div>
+
     </div>
   </section>
 
