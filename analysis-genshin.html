@@ -3,516 +3,451 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>原神 产品分析报告 & 策划思考 - 盛洁 Portfolio</title>
-  <meta name="description" content="基于1583天深度体验，分析《原神》从开放世界探索驱动到角色养成+剧情驱动的产品转型路径，拆解双循环架构与商业化演进，并从玩家视角分享对角色设计、抽卡体验与反馈系统的真实思考。">
-  <meta property="og:title" content="《原神》产品分析报告 - 盛洁 Portfolio">
-  <meta property="og:description" content="从探索驱动到角色驱动的转型路径分析，涵盖产品定位、核心循环、商业化设计。">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="zh_CN">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
-  <link rel="stylesheet" href="styles.css">
+  <title>原神 分析 & 思考 · 盛洁游戏作品集</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --bg-primary: #fff;
+      --bg-card: #f9f8f6;
+      --text-primary: #3a3a3a;
+      --text-secondary: #7a7a7a;
+      --text-muted: #a0a0a0;
+      --accent-1: #4ecdc4;
+      --accent-2: #ff6b6b;
+      --border: #e0ddd8;
+      --header-accent: #1a7a70;
+      --header-accent-light: #5aab9a;
+    }
+    body { background: #fff; }
+    .site-header { background: rgba(78,205,196,0.96); border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .logo-bracket { color: rgba(255,255,255,0.6); }
+    .logo-name { color: #fff; }
+    .logo-role { color: rgba(255,255,255,0.65); }
+    .nav-link { color: rgba(255,255,255,0.85); }
+    .nav-link:hover { color: #fff; }
+    .nav-contact { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .nav-contact:hover { background: rgba(255,255,255,0.15); }
+    .site-footer { background: #0c0c14; }
+    .footer-logo { color: #fff; }
+    .footer-links a { color: #9898b8; }
+    .footer-links a:hover { color: #4ecdc4; }
+
+    /* Hero */
+    .game-page-header {
+      padding: 60px 0 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .game-page-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #2d1b69 0%, #1a0a3a 50%, #0a1a2a 100%);
+    }
+    .game-page-hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(78,205,196,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(255,107,107,0.1) 0%, transparent 50%);
+    }
+    .game-page-hero-content { position: relative; z-index: 1; }
+    .game-page-meta { margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .game-page-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 10px; line-height: 1.3; }
+    .game-page-subtitle { font-size: 1rem; font-weight: 300; margin: 0; line-height: 1.7; }
+    .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .stat-chip { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
+    .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: #fff; display: block; }
+    .stat-chip .label { font-size: 0.78rem; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; }
+
+    /* Tab nav */
+    .tab-nav { display: flex; gap: 10px; margin: 1.5rem auto; max-width: 680px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { padding: 9px 22px; border: 2px solid var(--accent-1); border-radius: 22px; background: transparent; color: var(--accent-1); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; }
+    .tab-btn:hover { background: rgba(78,205,196,0.08); transform: translateY(-1px); }
+    .tab-btn.active { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Article body */
+    .article-body { padding: 0 1.5rem 4rem; max-width: 760px; margin: 0 auto; }
+    .article-body h3 { color: #1a1a2e; font-size: 1.05rem; margin: 1.5rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(78,205,196,0.2); }
+    .article-body h4 { color: #2d3748; font-size: 0.95rem; margin: 1.2rem 0 0.6rem; }
+    .article-body p { color: #4a5568; line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .article-body strong { color: #2d3748; }
+    .article-body ul { padding-left: 1.4rem; color: #4a5568; line-height: 1.9; font-size: 0.9rem; }
+    .article-body li { margin-bottom: 0.4rem; }
+
+    /* Tables */
+    .table-wrapper { overflow-x: auto; margin: 1rem 0; border-radius: 10px; border: 1px solid var(--border); }
+    .table-wrapper table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .table-wrapper th { background: #1a1a2e; color: #fff; padding: 10px 12px; text-align: center; font-weight: 600; }
+    .table-wrapper td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: center; color: #4a5568; }
+    .table-wrapper tr:nth-child(even) td { background: var(--bg-card); }
+
+    /* Flow diagram */
+    .flow-diagram { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
+    .flow-step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 0.88rem; color: #4a5568; white-space: nowrap; }
+    .flow-step.highlight { background: rgba(78,205,196,0.1); border-color: rgba(78,205,196,0.3); color: #2d9e92; font-weight: 600; }
+    .flow-arrow { color: #a0a0a0; font-size: 1rem; }
+
+    /* Info boxes */
+    .info-box { border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .info-box.warning { background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.2); }
+    .info-box.warning p { color: #7f1d1d; margin: 0; font-size: 0.9rem; }
+    .info-box.highlight { background: rgba(78,205,196,0.08); border: 1px solid rgba(78,205,196,0.2); }
+    .info-box.highlight ul { margin: 0; padding-left: 1.2rem; }
+    .info-box.highlight li { margin-bottom: 0.3rem; font-size: 0.88rem; }
+
+    /* Insight block */
+    .insight-block { background: linear-gradient(135deg, rgba(78,205,196,0.06) 0%, rgba(255,107,107,0.06) 100%); border-left: 4px solid var(--accent-1); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .insight-label { font-size: 0.75rem; font-weight: 700; color: var(--accent-1); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .insight-block p { color: #3a3a3a; font-size: 0.93rem; margin: 0; }
+
+    .section-divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+    /* Think section */
+    .think-section { margin-bottom: 2.5rem; }
+    .think-section h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid rgba(78,205,196,0.2); }
+    .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 0.8rem; font-size: 0.93rem; }
+    .think-section .highlight-text { background: rgba(78,205,196,0.07); border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; color: var(--text-primary); }
+    .think-section .card-simple { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    .think-section .card-simple h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .think-section .card-simple p { margin-bottom: 0; font-size: 0.88rem; }
+    .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(78,205,196,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
+    .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
+    .think-section li { margin-bottom: 0.4rem; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="基于1583天深度体验，分析《原神》从开放世界探索驱动到角色养成+剧情驱动的产品转型路径，拆解双循环架构与商业化演进，并以艾尔海森为案例分享角色设计的真实思考。">
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand"><span class="dot"></span>盛洁 Portfolio</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">首页</a></li>
-      <li><a href="prd.html">PRD</a></li>
-      <li><a href="analysis-star-rail.html">星穹铁道</a></li>
-      <li><a href="analysis-kings.html">王者荣耀</a></li>
-      <li><a href="analysis-genshin.html" class="active">原神</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Article Hero -->
-<section class="article-hero">
-  <div class="article-hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">首页</a> / 竞品分析
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bracket">[</span><span class="logo-name">盛洁</span><span class="logo-role">· 游戏策划</span><span class="logo-bracket">]</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#games" class="nav-link">全部作品</a>
+        <a href="index.html#about" class="nav-link">关于我</a>
+        <a href="mailto:sj200403272021@163.com" class="nav-link nav-contact">联系我</a>
+      </nav>
     </div>
-    <h1>《原神》产品分析报告：从"开放世界探索驱动"到"角色养成+剧情驱动"的转型路径</h1>
-    <div class="meta">
-      <span>分析人：盛洁</span>
-      <span>活跃：1583天</span>
-      <span>版本跨度：3.0-5.0</span>
-      <span>分析日期：2026年6月</span>
-    </div>
-  </div>
-</section>
+  </header>
 
-  <!-- Tab Navigation -->
-  <div class="tab-nav">
-    <button class="tab-btn active" data-tab="analysis">竞品分析</button>
-    <button class="tab-btn" data-tab="think">策划思考</button>
-  </div>
-
-  <!-- Article Content -->
-  <article class="article-container">
-
-  <!-- Analysis Panel -->
-  <div id="panel-analysis" class="tab-panel active">
-  <!-- Analysis Framework Tags -->
-  <div class="tag-list">
-    <span class="tag blue">产品定位</span>
-    <span class="tag green">核心循环</span>
-    <span class="tag purple">商业化设计</span>
-    <span class="tag orange">运营节奏</span>
-    <span class="tag blue">可迁移洞察</span>
-  </div>
-
-  <!-- 一、产品定位 -->
-  <h2>一、产品定位</h2>
-
-  <h3>1.1 初始定位（1.0-2.0版本）</h3>
-  <p>《原神》上线初期以"开放世界探索驱动"为核心卖点：</p>
-  <ul>
-    <li><strong>目标用户：</strong>主机/PC端开放世界游戏玩家（《塞尔达传说》受众）</li>
-    <li><strong>核心体验：</strong>大地图探索、解谜、元素交互、世界任务叙事</li>
-    <li><strong>差异化：</strong>跨平台（PC/手机/主机）+ 免费游玩 + 持续内容更新</li>
-    <li><strong>留存逻辑：</strong>探索新鲜感 &rarr; 地图100%收集成就感</li>
-  </ul>
-
-  <h3>1.2 转型定位（3.0-5.0版本）</h3>
-  <p>逐步转向"角色养成+剧情驱动"：</p>
-  <ul>
-    <li><strong>目标用户扩展：</strong>移动端泛二次元用户、剧情向玩家</li>
-    <li><strong>核心体验转移：</strong>角色抽取与培养 &rarr; 主线/支线剧情沉浸 &rarr; 周期性深渊挑战</li>
-    <li><strong>底层逻辑变化：</strong>从"内容消耗型"（探索完即流失）转向"角色资产积累型"（持续投入养成）</li>
-  </ul>
-
-  <h3>1.3 转型动因分析</h3>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>维度</th>
-          <th>开放世界驱动的问题</th>
-          <th>角色养成驱动的优势</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>内容产能</td>
-          <td>大地图开发成本高、周期长（6个月/国）</td>
-          <td>角色产出周期短（6周/角色），可持续</td>
-        </tr>
-        <tr>
-          <td>付费转化</td>
-          <td>探索内容免费，付费点模糊</td>
-          <td>角色抽取直接关联付费，转化路径清晰</td>
-        </tr>
-        <tr>
-          <td>用户留存</td>
-          <td>探索完成后进入"长草期"，流失率高</td>
-          <td>角色养成是长期过程，留存曲线更平缓</td>
-        </tr>
-        <tr>
-          <td>社区生态</td>
-          <td>攻略内容同质化</td>
-          <td>角色二创、厨力讨论、同人内容爆发</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-divider"></div>
-
-  <!-- 二、核心循环 -->
-  <h2>二、核心循环</h2>
-
-  <h3>2.1 初始核心循环（1.0-2.0）</h3>
-  <div class="flow-diagram">
-    <div class="flow-step">探索地图</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">发现解谜</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">获取宝箱/神瞳</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">提升体力上限</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step highlight">探索更远区域</div>
-  </div>
-  <p><strong>支线分支：</strong>世界任务叙事（弱关联角色）</p>
-
-  <div class="info-box warning">
-    <p><strong>问题：</strong>循环终点是"地图100%"，完成后缺乏持续目标。</p>
-  </div>
-
-  <h3>2.2 转型后核心循环（3.0+）</h3>
-  <div class="flow-diagram">
-    <div class="flow-step">版本更新</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">新剧情/新角色UP</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step highlight">抽卡获取角色</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">养成(材料/圣遗物)</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-step">深渊验证强度</div>
-  </div>
-  <p><strong>循环增强：</strong>社区讨论/二创发酵 &rarr; 情感投入加深</p>
-
-  <h4>关键变化</h4>
-  <ul>
-    <li><strong>剧情成为角色"售前介绍"：</strong>角色PV + 传说任务 &rarr; 建立情感连接 &rarr; 驱动抽取意愿</li>
-    <li><strong>深渊成为"养成终点验证"：</strong>周期性重置 + 环境BUFF &rarr; 刺激新角色需求</li>
-    <li><strong>圣遗物系统：</strong>随机词条提供"无限养成深度"，延长角色培养周期</li>
-  </ul>
-
-  <h3>2.3 双循环架构</h3>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>循环类型</th>
-          <th>目标</th>
-          <th>周期</th>
-          <th>付费关联</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>外循环：内容消费</td>
-          <td>剧情体验、地图探索</td>
-          <td>6周/版本</td>
-          <td>低（免费内容）</td>
-        </tr>
-        <tr>
-          <td>内循环：角色养成</td>
-          <td>角色抽取、培养、验证</td>
-          <td>每日/每周</td>
-          <td>高（抽卡付费）</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="insight-block">
-    <div class="insight-label">核心洞察</div>
-    <p>转型本质：将外循环的"内容新鲜感"转化为内循环的"角色资产积累"。</p>
-  </div>
-
-  <div class="section-divider"></div>
-
-  <!-- 三、商业化设计 -->
-  <h2>三、商业化设计</h2>
-
-  <h3>3.1 付费结构演变</h3>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>版本阶段</th>
-          <th>主要付费点</th>
-          <th>设计逻辑</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1.0-2.0</td>
-          <td>月卡 + 首充 + 角色池</td>
-          <td>探索期用户付费意愿低，依赖"性价比"诱导</td>
-        </tr>
-        <tr>
-          <td>3.0-4.0</td>
-          <td>角色池（双UP）+ 武器池 + 皮肤</td>
-          <td>角色成为核心资产，剧情驱动抽取决策</td>
-        </tr>
-        <tr>
-          <td>5.0+</td>
-          <td>角色池 + 武器池 + 皮肤 + 礼包矩阵</td>
-          <td>成熟付费体系，分层收割不同付费能力用户</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>3.2 "深渊"作为商业化杠杆</h3>
-  <p><strong>机制设计：</strong>每15天重置，每期配置"环境BUFF"（特定元素/角色伤害加成）</p>
-
-  <h4>商业逻辑</h4>
-  <div class="info-box highlight">
-    <ul>
-      <li><strong>环境BUFF &rarr; 暗示"当期UP角色适配"：</strong>刺激抽取</li>
-      <li><strong>满星压力 &rarr; 强度焦虑：</strong>驱动命座/武器抽取</li>
-      <li><strong>免费原石投放 &rarr; "差一点就能抽到"：</strong>制造心理落差</li>
-    </ul>
-  </div>
-
-  <h3>3.3 付费体验优化</h3>
-  <ul>
-    <li><strong>保底机制：</strong>90抽小保底/180抽大保底，降低"沉没成本"焦虑</li>
-    <li><strong>月卡设计：</strong>每日登录领取，强化留存习惯</li>
-    <li><strong>首充双倍：</strong>降低首次付费门槛，建立付费习惯</li>
-  </ul>
-
-  <div class="section-divider"></div>
-
-  <!-- 四、运营节奏 -->
-  <h2>四、运营节奏</h2>
-
-  <h3>4.1 版本运营闭环</h3>
-  <div class="flow-diagram" style="flex-direction: column; align-items: stretch;">
-    <div class="flow-step">前瞻直播（版本前1周）</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">社区预热/二创征集</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step highlight">版本更新（周三）</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">新剧情/新地图开放</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">角色UP池开放（版本第1天/第21天）</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step highlight">付费峰值</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">社区二创发酵（版本第2-4周）</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">情感强化/口碑传播</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step highlight">下版本前瞻预告（版本第5周）</div>
-    <span class="flow-arrow" style="text-align:center;">&darr;</span>
-    <div class="flow-step">期待感转移/防止流失</div>
-  </div>
-
-  <h3>4.2 限时活动运营策略（以"海灯节"为例）</h3>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>活动设计</th>
-          <th>运营目标</th>
-          <th>可迁移逻辑</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>登录即送10连抽</td>
-          <td>回流用户激活</td>
-          <td>低门槛福利降低回归阻力</td>
-        </tr>
-        <tr>
-          <td>限定剧情/角色互动</td>
-          <td>情感唤醒</td>
-          <td>利用IP情感资产唤醒沉默用户</td>
-        </tr>
-        <tr>
-          <td>累计签到奖励</td>
-          <td>留存拉升</td>
-          <td>连续登录习惯养成</td>
-        </tr>
-        <tr>
-          <td>社交分享活动</td>
-          <td>拉新/裂变</td>
-          <td>利用现有用户社交网络扩散</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>4.3 内容营销协同</h3>
-  <ul>
-    <li><strong>角色PV：</strong>版本前2周发布，建立情感预期</li>
-    <li><strong>角色演示：</strong>展示技能特效与战斗爽感，刺激抽取</li>
-    <li><strong>拾枝杂谈：</strong>补充角色背景故事，深化IP价值</li>
-    <li><strong>二创激励：</strong>官方提供素材/奖金，驱动UGC内容生产</li>
-  </ul>
-
-  <div class="section-divider"></div>
-
-  <!-- 五、可迁移洞察 -->
-  <h2>五、可迁移洞察</h2>
-
-  <h3>5.1 对独立游戏《蟹化进化2》的启示</h3>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>《原神》策略</th>
-          <th>迁移至独立游戏</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>剧情驱动角色价值</td>
-          <td>用"蟹化值"叙事包装进化分支，让每个选择有情感重量</td>
-        </tr>
-        <tr>
-          <td>周期性内容更新</td>
-          <td>DLC矩阵规划（新生态群落/新结局），保持用户期待</td>
-        </tr>
-        <tr>
-          <td>社区二创生态</td>
-          <td>提供世界观设定集/角色原画，激励UGC内容</td>
-        </tr>
-        <tr>
-          <td>免费+内购的付费教育</td>
-          <td>买断制+DLC的"一次性决策" vs 持续付费的心理差异</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>5.2 通用产品方法论</h3>
-  <div class="insight-block">
-    <div class="insight-label">方法论洞察</div>
-    <p>内容型产品的"双循环"设计：免费外循环拉新，付费内循环留存变现。</p>
-  </div>
-  <div class="insight-block">
-    <div class="insight-label">方法论洞察</div>
-    <p>情感资产积累：用户投入的时间/情感越多，流失成本越高。</p>
-  </div>
-  <div class="insight-block">
-    <div class="insight-label">方法论洞察</div>
-    <p>周期性焦虑制造：通过限时/重置机制创造持续付费场景。</p>
-  </div>
-  <div class="insight-block">
-    <div class="insight-label">方法论洞察</div>
-    <p>社区即产品：UGC内容不仅是营销，更是产品体验的延伸。</p>
-  </div>
-
-  <h3>5.3 PM能力映射</h3>
-  <ul>
-    <li><strong>需求分析：</strong>识别"探索驱动"的留存瓶颈，提出"角色驱动"转型方案</li>
-    <li><strong>数据验证：</strong>追踪版本付费峰值、角色抽取率、深渊通关率验证设计效果</li>
-    <li><strong>跨团队协作：</strong>协调文案、美术、程序、运营实现"剧情-角色-付费"闭环</li>
-  </ul>
-
-  <div class="section-divider"></div>
-
-  <!-- 署名 -->
-  <p style="text-align: center; color: var(--text-light); font-size: 0.9rem; margin-top: 2rem;">
-    <strong>分析人：盛洁</strong> &nbsp;|&nbsp; 深度体验时长：1583天 &nbsp;|&nbsp; 分析日期：2026年6月
-  </p>
-
-  </div><!-- end panel-analysis -->
-
-  <!-- 策划思考 Panel -->
-  <div id="panel-think" class="tab-panel">
-    <style>
-      .think-section { margin-bottom: 3rem; }
-      .think-section h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary-lighter); }
-      .think-section p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 1rem; font-size: 0.95rem; }
-      .think-section .highlight-text { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.2rem 0; font-size: 0.95rem; color: var(--text); }
-      .think-section .card-simple { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1rem; }
-      .think-section .card-simple h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 0.5rem; }
-      .think-section .card-simple p { margin-bottom: 0; font-size: 0.9rem; }
-      .think-section .quote-block { border-left: 4px solid var(--info); padding: 1rem 1.2rem; background: var(--primary-lighter); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.95rem; }
-      .think-section ul { padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.95rem; }
-      .think-section li { margin-bottom: 0.5rem; }
-    </style>
-
-    <div class="think-section">
-      <h3>抽卡沉船：兹白歪了的那天</h3>
-      <p>说实话，我氪过大月卡小月卡，但真正让我"心死"的一次，是兹白池子里歪了的那一刻。不是因为损失了多少钱，而是那种"我明明已经很努力在攒、在规划了，结果还是没得到"的无力感。</p>
-      <p>但冷静下来想想，这种挫败感本身，也是抽卡设计的一部分。歪了才会更珍惜下一次不歪的时候——原神用概率的不确定性，把"抽到"这件事的情绪价值拉满了。情绪价值本身是可以明码标价的，这话听起来功利，但我的实际体验告诉我确实如此。</p>
-      <div class="highlight-text">
-        <strong>策划视角：</strong>如果是我在设计抽卡系统，我会更关注"沉船后的情绪修复"机制。比如歪了之后给一个小的进度积累提示（"下次保底不歪的概率提升至80%"），让玩家觉得"虽然这次输了，但下一次我离赢更近了"，而不是一棍子打死。
+  <section class="game-page-header" style="background:linear-gradient(135deg, #e0f4f0 0%, #f0fffc 100%);">
+    <div class="game-page-hero-bg"></div>
+    <div class="game-page-hero-content container">
+      <div class="game-page-meta">
+        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">竞品分析</span>
+        <span style="background:rgba(78,205,196,0.15);color:#7ee8df;border:1px solid rgba(78,205,196,0.25);font-size:12px;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:4px;">策划思考</span>
+      </div>
+      <h1 class="game-page-title" style="color:#1a1a2e;">原神</h1>
+      <p class="game-page-subtitle" style="color:#4a5568;">
+        开放世界 × 角色驱动 × 产品转型路径<br>
+        活跃 1583 天 · 角色 88 位
+      </p>
+      <div class="stat-row" style="max-width:480px;margin-top:20px;">
+        <div class="stat-chip">
+          <div class="num">1583</div>
+          <div class="label">活跃天数</div>
+        </div>
+        <div class="stat-chip">
+          <div class="num">88</div>
+          <div class="label">角色数</div>
+        </div>
+        <div class="stat-chip">
+          <div class="num">1314</div>
+          <div class="label">成就数</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="think-section">
-      <h3>艾尔海森：理性的人为什么会让我觉得真实</h3>
-      <p>他是我最有感触的角色，不是因为他有多强，而是因为他的故事里有一种很稀缺的价值观：<strong>他不是没有能力改变世界，而是清楚自己愿意为改变付出多少代价</strong>。</p>
-      <p>传说任务里，他当代理贤者是因为"不想让更糟糕的人来做这件事"，但干完该干的事，他立刻就辞了。他不是不在乎——他只是不愿意为了"看起来很厉害"而付出超过他认为值得的代价。他和室友卡维吵架，本质上是两种价值观的碰撞：卡维觉得有才华的人应该去改变更多人，艾尔海森觉得管好自己已经够累了。</p>
-      <p>这种冲突比很多游戏里"正邪对立"的叙事要真实得多。</p>
-      <div class="quote-block">
-        艾尔海森最后选择辞职，不是因为他不在乎，而是因为他太清楚自己愿意为改变付出多少代价。这种理性又自私的选择，反而比"为了拯救世界牺牲一切"更打动我。
-      </div>
+  <article class="article-body">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="analysis">竞品分析</button>
+      <button class="tab-btn" data-tab="think">策划思考</button>
     </div>
 
-    <div class="think-section">
-      <h3>让我真正佩服的细节：配件背后的性格语言</h3>
-      <p>很多人说原神的角色设计好看，但我觉得真正厉害的不只是好不好看，而是<strong>你能不能从角色身上的每一个物件读出这个人的故事</strong>。</p>
-      <p>艾尔海森胸前挂着的那个绿色书签，是须弥知识之神的象征，对应他书记官的身份和学者气质；迪希雅耳环上那朵沙漠之花，代表她来自沙漠佣兵团的出身；荒泷一斗系着的"荒泷派"头巾，就是他这个帮派大哥的性格证明。</p>
-      <p>这种细节不是装饰，是角色真实感的来源。如果一个角色身上的每一样东西都能让人讲出一个故事，那这个角色就活了。</p>
-      <div class="card-simple">
-        <h4>如果我在设计角色配件</h4>
-        <p>我会问自己：玩家第一次注意到这个配件时，能不能猜到它代表什么？猜对了，说明它有记忆点；猜错了但看完解释觉得"合理"，说明它有深度。最糟糕的是玩家根本注意不到它——那它就只是贴图，不是设计。</p>
-      </div>
-    </div>
+    <!-- ===== 竞品分析 ===== -->
+    <div id="panel-analysis" class="tab-panel active">
 
-    <div class="think-section">
-      <h3>圣遗物改动：官方做了，但我有别的想法</h3>
-      <p>官方确实在优化圣遗物体验：5.5版本的祝圣之霜能让强化的副词条至少命中2条，6.0开始还能在强化前看到第4词条是什么。这些改动在减少"纯看脸"的比例，方向是对的。</p>
-      <p>但说实话，这些改动没有解决我的核心问题。我的痛苦不是"不知道会不会歪"，而是<strong>"我已经刷了三百次秘境了，我的角色到底有没有变强"</strong>——这个进展感，太模糊了。</p>
-      <p>对比之下，艾尔海森传说任务给我的体验就很完整：帮助伊利亚斯恢复记忆 → 揭开真相 → 每个谜题解开都有反馈 → 赛诺出场，爽感递进 → 最后艾尔海森辞职，情感落点清晰。每一步都知道自己在做什么。</p>
-      <div class="highlight-text">
-        <strong>如果是我来设计圣遗物：</strong>与其继续优化"强化的确定性"，不如做"强化的反馈感"——比如强化有视觉特效、每10级解锁一个小型角色动作变化、或者有专门的"养成记录"页面让你看到自己角色从0到毕业的全路径。这样玩家看到的不只是"还差多少"，还有"已经走了多远"。
-      </div>
-    </div>
+      <h3>一、产品定位</h3>
 
-    <div class="think-section">
-      <h3>从玩家到策划：我在原神里学到了什么</h3>
+      <h4>1.1 初始定位（1.0-2.0版本）</h4>
+      <p>《原神》上线初期以"开放世界探索驱动"为核心卖点：</p>
       <ul>
-        <li><strong>角色即内容：</strong>每个角色附带专属剧情和PV，形成"追番式"期待，这是比任何广告都强的付费驱动</li>
-        <li><strong>弱压力环境的价值：</strong>无PVP、无排行榜，让社恐玩家也能长期留存，这部分用户的付费转化往往更高（因为没有竞争焦虑，只有纯粹的喜欢）</li>
-        <li><strong>反馈设计的优先级：</strong>确定性不如反馈感重要，玩家需要知道自己走了多远，而不只是知道终点在哪里</li>
-        <li><strong>配件是性格语言：</strong>每个物件都应该能让人读出故事，否则它就只是贴图</li>
+        <li><strong>目标用户：</strong>主机/PC端开放世界游戏玩家（《塞尔达传说》受众）</li>
+        <li><strong>核心体验：</strong>大地图探索、解谜、元素交互、世界任务叙事</li>
+        <li><strong>差异化：</strong>跨平台（PC/手机/主机）+ 免费游玩 + 持续内容更新</li>
+        <li><strong>留存逻辑：</strong>探索新鲜感 → 地图100%收集成就感</li>
       </ul>
-    </div>
-  </div><!-- end panel-think -->
+
+      <h4>1.2 转型定位（3.0-5.0版本）</h4>
+      <p>逐步转向"角色养成+剧情驱动"：</p>
+      <ul>
+        <li><strong>目标用户扩展：</strong>移动端泛二次元用户、剧情向玩家</li>
+        <li><strong>核心体验转移：</strong>角色抽取与培养 → 主线/支线剧情沉浸 → 周期性深渊挑战</li>
+        <li><strong>底层逻辑变化：</strong>从"内容消耗型"（探索完即流失）转向"角色资产积累型"（持续投入养成）</li>
+      </ul>
+
+      <h4>1.3 转型动因分析</h4>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>开放世界驱动的问题</th>
+              <th>角色养成驱动的优势</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>内容产能</td>
+              <td>大地图开发成本高、周期长（6个月/国）</td>
+              <td>角色产出周期短（6周/角色），可持续</td>
+            </tr>
+            <tr>
+              <td>付费转化</td>
+              <td>探索内容免费，付费点模糊</td>
+              <td>角色抽取直接关联付费，转化路径清晰</td>
+            </tr>
+            <tr>
+              <td>用户留存</td>
+              <td>探索完成后进入"长草期"，流失率高</td>
+              <td>角色养成是长期过程，留存曲线更平缓</td>
+            </tr>
+            <tr>
+              <td>社区生态</td>
+              <td>攻略内容同质化</td>
+              <td>角色二创、厨力讨论、同人内容爆发</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <h3>二、核心循环</h3>
+
+      <h4>2.1 初始核心循环（1.0-2.0）</h4>
+      <div class="flow-diagram">
+        <div class="flow-step">探索地图</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">发现解谜</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">获取宝箱/神瞳</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">提升体力上限</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step highlight">探索更远区域</div>
+      </div>
+
+      <div class="info-box warning">
+        <p><strong>问题：</strong>循环终点是"地图100%"，完成后缺乏持续目标。</p>
+      </div>
+
+      <h4>2.2 转型后核心循环（3.0+）</h4>
+      <div class="flow-diagram">
+        <div class="flow-step">版本更新</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">新剧情/新角色UP</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step highlight">抽卡获取角色</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">养成(材料/圣遗物)</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">深渊验证强度</div>
+      </div>
+
+      <ul>
+        <li><strong>剧情成为角色"售前介绍"：</strong>角色PV + 传说任务 → 建立情感连接 → 驱动抽取意愿</li>
+        <li><strong>深渊成为"养成终点验证"：</strong>周期性重置 + 环境BUFF → 刺激新角色需求</li>
+        <li><strong>圣遗物系统：</strong>随机词条提供"无限养成深度"，延长角色培养周期</li>
+      </ul>
+
+      <h4>2.3 双循环架构</h4>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>循环类型</th>
+              <th>目标</th>
+              <th>周期</th>
+              <th>付费关联</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>外循环：内容消费</td>
+              <td>剧情体验、地图探索</td>
+              <td>6周/版本</td>
+              <td>低（免费内容）</td>
+            </tr>
+            <tr>
+              <td>内循环：角色养成</td>
+              <td>角色抽取、培养、验证</td>
+              <td>每日/每周</td>
+              <td>高（抽卡付费）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight-block">
+        <div class="insight-label">核心洞察</div>
+        <p>转型本质：将外循环的"内容新鲜感"转化为内循环的"角色资产积累"。</p>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <h3>三、商业化设计</h3>
+
+      <h4>3.1 付费结构演变</h4>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>版本阶段</th>
+              <th>主要付费点</th>
+              <th>设计逻辑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1.0-2.0</td><td>月卡 + 首充 + 角色池</td><td>探索期用户付费意愿低，依赖"性价比"诱导</td></tr>
+            <tr><td>3.0-4.0</td><td>角色池（双UP）+ 武器池 + 皮肤</td><td>角色成为核心资产，剧情驱动抽取决策</td></tr>
+            <tr><td>5.0+</td><td>角色池 + 武器池 + 皮肤 + 礼包矩阵</td><td>成熟付费体系，分层收割不同付费能力用户</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>3.2 "深渊"作为商业化杠杆</h4>
+      <p><strong>机制设计：</strong>每15天重置，每期配置"环境BUFF"（特定元素/角色伤害加成）</p>
+
+      <div class="info-box highlight">
+        <ul>
+          <li><strong>环境BUFF → 暗示"当期UP角色适配"：</strong>刺激抽取</li>
+          <li><strong>满星压力 → 强度焦虑：</strong>驱动命座/武器抽取</li>
+          <li><strong>免费原石投放 → "差一点就能抽到"：</strong>制造心理落差</li>
+        </ul>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <h3>四、可迁移洞察</h3>
+
+      <h4>4.1 对独立游戏《蟹化进化2》的启示</h4>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>《原神》策略</th><th>迁移至独立游戏</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>剧情驱动角色价值</td><td>用"蟹化值"叙事包装进化分支，让每个选择有情感重量</td></tr>
+            <tr><td>周期性内容更新</td><td>DLC矩阵规划（新生态群落/新结局），保持用户期待</td></tr>
+            <tr><td>社区二创生态</td><td>提供世界观设定集/角色原画，激励UGC内容</td></tr>
+            <tr><td>免费+内购的付费教育</td><td>买断制+DLC的"一次性决策" vs 持续付费的心理差异</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight-block">
+        <div class="insight-label">方法论洞察</div>
+        <p>内容型产品的"双循环"设计：免费外循环拉新，付费内循环留存变现。</p>
+      </div>
+      <div class="insight-block">
+        <div class="insight-label">方法论洞察</div>
+        <p>情感资产积累：用户投入的时间/情感越多，流失成本越高。</p>
+      </div>
+      <div class="insight-block">
+        <div class="insight-label">方法论洞察</div>
+        <p>社区即产品：UGC内容不仅是营销，更是产品体验的延伸。</p>
+      </div>
+
+    </div><!-- end analysis panel -->
+
+    <!-- ===== 策划思考 ===== -->
+    <div id="panel-think" class="tab-panel">
+
+      <div class="think-section">
+        <h3>抽卡沉船：兹白歪了的那天</h3>
+        <p>说实话，我氪过大月卡小月卡，但真正让我"心死"的一次，是兹白池子里歪了的那一刻。不是因为损失了多少钱，而是那种"我明明已经很努力在攒、在规划了，结果还是没得到"的无力感。</p>
+        <p>但冷静下来想想，这种挫败感本身，也是抽卡设计的一部分。歪了才会更珍惜下一次不歪的时候——原神用概率的不确定性，把"抽到"这件事的情绪价值拉满了。情绪价值本身是可以明码标价的，这话听起来功利，但我的实际体验告诉我确实如此。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>如果是我在设计抽卡系统，我会更关注"沉船后的情绪修复"机制。比如歪了之后给一个小的进度积累提示（"下次保底不歪的概率提升至80%"），让玩家觉得"虽然这次输了，但下一次我离赢更近了"，而不是一棍子打死。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>艾尔海森：理性的人为什么会让我觉得真实</h3>
+        <p>他是我最有感触的角色，不是因为他有多强，而是因为他的故事里有一种很稀缺的价值观：<strong>他不是没有能力改变世界，而是清楚自己愿意为改变付出多少代价</strong>。</p>
+        <p>传说任务里，他当代理贤者是因为"不想让更糟糕的人来做这件事"，但干完该干的事，他立刻就辞了。他不是不在乎——他只是不愿意为了"看起来很厉害"而付出超过他认为值得的代价。他和室友卡维吵架，本质上是两种价值观的碰撞：卡维觉得有才华的人应该去改变更多人，艾尔海森觉得管好自己已经够累了。</p>
+        <div class="quote-block">
+          艾尔海森最后选择辞职，不是因为他不在乎，而是因为他太清楚自己愿意为改变付出多少代价。这种理性又自私的选择，反而比"为了拯救世界牺牲一切"更打动我。
+        </div>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>反差感角色最难设计的地方在于"度"——太冷会让人觉得冷漠、太暖又破坏了人设。艾尔海森的处理方式是：他的照顾永远是通过第三方体现的，而不是直接说出口。这种"不说但做了"比直接表达更有效。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>让我真正佩服的细节：配件背后的性格语言</h3>
+        <p>很多人说原神的角色设计好看，但我觉得真正厉害的不只是好不好看，而是<strong>你能不能从角色身上的每一个物件读出这个人的故事</strong>。</p>
+        <p>艾尔海森胸前挂着的那个绿色书签，是须弥知识之神的象征，对应他书记官的身份和学者气质；迪希雅耳环上那朵沙漠之花，代表她来自沙漠佣兵团的出身；荒泷一斗系着的"荒泷派"头巾，就是他这个帮派大哥的性格证明。</p>
+        <div class="card-simple">
+          <h4>如果我在设计角色配件</h4>
+          <p>我会问自己：玩家第一次注意到这个配件时，能不能猜到它代表什么？猜对了，说明它有记忆点；猜错了但看完解释觉得"合理"，说明它有深度。最糟糕的是玩家根本注意不到它——那它就只是贴图，不是设计。</p>
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>圣遗物改动：官方做了，但我有别的想法</h3>
+        <p>官方确实在优化圣遗物体验：5.5版本的祝圣之霜能让强化的副词条至少命中2条，6.0开始还能在强化前看到第4词条是什么。这些改动在减少"纯看脸"的比例，方向是对的。</p>
+        <p>但说实话，这些改动没有解决我的核心问题。我的痛苦不是"不知道会不会歪"，而是<strong>"我已经刷了三百次秘境了，我的角色到底有没有变强"</strong>——这个进展感，太模糊了。</p>
+        <div class="highlight-text">
+          <strong>如果是我来设计圣遗物：</strong>与其继续优化"强化的确定性"，不如做"强化的反馈感"——比如强化有视觉特效、每10级解锁一个小型角色动作变化、或者有专门的"养成记录"页面让你看到自己角色从0到毕业的全路径。这样玩家看到的不只是"还差多少"，还有"已经走了多远"。
+        </div>
+      </div>
+
+      <div class="think-section">
+        <h3>从玩家到策划：我在原神里学到了什么</h3>
+        <ul>
+          <li><strong>角色即内容：</strong>每个角色附带专属剧情和PV，形成"追番式"期待，这是比任何广告都强的付费驱动</li>
+          <li><strong>弱压力环境的价值：</strong>无PVP、无排行榜，让社恐玩家也能长期留存，这部分用户的付费转化往往更高（因为没有竞争焦虑，只有纯粹的喜欢）</li>
+          <li><strong>反馈设计的优先级：</strong>确定性不如反馈感重要，玩家需要知道自己走了多远，而不只是知道终点在哪里</li>
+          <li><strong>配件是性格语言：</strong>每个物件都应该能让人读出故事，否则它就只是贴图</li>
+        </ul>
+      </div>
+
+    </div><!-- end think panel -->
+
   </article>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <p><strong>盛洁</strong> &middot; 产品经理作品集 &middot; 2026</p>
-  <div class="footer-links">
-    <a href="index.html">首页</a>
-    <a href="prd.html">PRD</a>
-    <a href="analysis-star-rail.html">星穹铁道</a>
-    <a href="analysis-kings.html">王者荣耀</a>
-    <a href="analysis-genshin.html">原神</a>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">盛洁</div>
+          <p>深圳技术大学 · 计算机科学 · 2025 届</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:sj200403272021@163.com">sj200403272021@163.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<style>
-  .tab-nav {
-    display: flex;
-    gap: 8px;
-    margin: 1.5rem auto;
-    max-width: 800px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    padding: 10px 24px;
-    border: 2px solid var(--primary-light);
-    border-radius: 24px;
-    background: transparent;
-    color: var(--primary-light);
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.25s ease;
-  }
-  .tab-btn:hover { background: var(--primary-lighter); transform: translateY(-1px); }
-  .tab-btn.active {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-  }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-</style>
-<script src="main.js"></script>
-<script>
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var tab = this.getAttribute('data-tab');
-      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
-      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.getElementById('panel-' + tab).classList.add('active');
-      this.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.getElementById('panel-' + tab).classList.add('active');
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>

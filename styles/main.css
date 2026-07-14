@@ -818,11 +818,31 @@ img { max-width: 100%; display: block; }
 .game-page-hero-bg {
   position: absolute;
   inset: 0;
-  opacity: 0.08;
   background-image:
-    linear-gradient(rgba(108, 99, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 99, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.game-page-header .stat-chip {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #3a3a3a;
+}
+
+.game-page-header .stat-chip .num {
+  color: var(--header-accent, #3a3a3a) !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: block;
+}
+
+.game-page-header .stat-chip .label {
+  color: var(--header-accent-light, #888) !important;
+  font-size: 0.78rem;
+  display: block;
+  margin-top: 2px;
 }
 
 .game-page-hero-content {
