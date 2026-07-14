@@ -76,6 +76,36 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: 'base',
+          themeVariables: {
+            primaryColor: '#f3eefe',
+            primaryTextColor: '#1a1a3a',
+            primaryBorderColor: '#4a28a0',
+            lineColor: '#4a28a0',
+            secondaryColor: '#fff5e6',
+            tertiaryColor: '#e8f4ff',
+            fontFamily: 'Noto Sans SC, sans-serif'
+          },
+          flowchart: { curve: 'basis', padding: 12 }
+        });
+      }
+    });
+  </script>
+  <style>
+    .mermaid { background: #fff; border: 1px solid rgba(74,40,160,0.15); border-radius: 12px; padding: 20px 16px; margin: 1.2rem 0; overflow-x: auto; }
+    .section-icon { display: inline-block; font-size: 1.2em; margin-right: 6px; vertical-align: middle; }
+    .stat-highlight { display: flex; gap: 12px; flex-wrap: wrap; margin: 1.2rem 0; }
+    .stat-card { flex: 1; min-width: 130px; background: linear-gradient(135deg, #f3eefe 0%, #e8f4ff 100%); border: 1px solid rgba(74,40,160,0.2); border-radius: 12px; padding: 16px 14px; text-align: center; }
+    .stat-card .big-num { font-size: 1.8rem; font-weight: 700; color: #4a28a0; line-height: 1.1; }
+    .stat-card .big-label { font-size: 0.78rem; color: #6b5e9a; margin-top: 4px; }
+    .tag-pill { display: inline-block; background: rgba(74,40,160,0.1); color: #4a28a0; border: 1px solid rgba(74,40,160,0.25); border-radius: 12px; padding: 2px 10px; font-size: 0.78rem; font-weight: 500; margin: 0 2px; }
+  </style>
   <meta name="description" content="基于1031天深度体验，拆解《崩坏·星穹铁道》的副游定位设计、回合制战斗与角色塑造，并以丹恒为案例分析"反差感"角色设计的吸引力。">
 </head>
 <body>
@@ -134,7 +164,7 @@
     <!-- Analysis Panel -->
     <div id="panel-analysis" class="tab-panel active">
 
-      <h3>一、产品定位</h3>
+      <h3>🎯 一、产品定位</h3>
 
       <h4>1.1 双重定位：原神的"同IP副线"独立产品</h3>
       <p>《崩坏：星穹铁道》从立项开始就背着双重任务：</p>
@@ -145,6 +175,24 @@
       <p>这不是个"含糊的多平台二游"，是一个<strong>有清晰自我认知</strong>的产品：它知道自己的战场不在原神那个位置，所以它选了一个完全不同的位置——用回合制 + 轻负担 + 强叙事，重新定义"米家二游除了原神还能是什么"。</p>
 
       <h4>1.2 "副游"定位的三个落地支点</h4>
+      <div class="stat-highlight">
+        <div class="stat-card">
+          <div class="big-num">10-15<span style="font-size:1rem;">min</span></div>
+          <div class="big-label">⏱️ 每日任务</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">0<span style="font-size:1rem;">惩罚</span></div>
+          <div class="big-label">📦 体力溢出</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">6<span style="font-size:1rem;">周</span></div>
+          <div class="big-label">🔄 版本周期</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">90<span style="font-size:1rem;">抽</span></div>
+          <div class="big-label">🎯 角色保底</div>
+        </div>
+      </div>
       <ul>
         <li><strong>时间成本低：</strong>每日任务10-15分钟可清，体力溢出惩罚几乎为零（可以存着），版本主线剧情1-2个晚上可通关</li>
         <li><strong>进度不焦虑：</strong>不追最新角色也不会被版本甩开，遗器（圣遗物）系统可阶段性毕业，"长草期"无负罪感</li>
@@ -174,33 +222,36 @@
 
       <div class="section-divider"></div>
 
-      <h3>二、核心循环</h3>
+      <h3>🔄 二、核心循环</h3>
 
       <h4>2.1 主循环：版本驱动的长周期节奏</h4>
-      <div class="flow-diagram">
-        <div class="flow-step">版本更新(6周)</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">新角色UP+新剧情</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step highlight">抽卡+养成</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">混沌回忆(深渊)</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">下一版本</div>
+      <div class="mermaid">
+flowchart LR
+    A[📦 版本更新<br/>6周] --> B[⭐ 新角色UP<br/>+ 新剧情]
+    B --> C[💎 抽卡<br/>+ 养成]
+    C --> D[⚔️ 混沌回忆<br/>每15天]
+    D --> E[⏭️ 下一版本]
+    E --> A
+    style A fill:#fff5e6,stroke:#d4a200
+    style B fill:#f3eefe,stroke:#4a28a0
+    style C fill:#ffe6f0,stroke:#c44a8a,stroke-width:2px
+    style D fill:#e8f4ff,stroke:#4a8acc
+    style E fill:#e8f4ff,stroke:#4a8acc
       </div>
       <p>这个循环的<strong>驱动力不是"日常"</strong>，而是"版本"——每6周一个爆点。这种节奏非常适合副游：平时可以休息，关键节点上线即可。</p>
 
       <h4>2.2 副本内循环：回合制机制深度</h4>
-      <div class="flow-diagram">
-        <div class="flow-step">配队决策</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">战技点管理</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">buff/buff叠加</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step highlight">角色大招释放</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">通关评价</div>
+      <div class="mermaid">
+flowchart LR
+    A[🎯 配队决策] --> B[⚡ 战技点<br/>管理]
+    B --> C[✨ Buff<br/>叠加]
+    C --> D[💥 角色大招<br/>释放]
+    D --> E[🏆 通关评价]
+    style A fill:#f3eefe,stroke:#4a28a0
+    style B fill:#e8f4ff,stroke:#4a8acc
+    style C fill:#fff5e6,stroke:#d4a200
+    style D fill:#ffe6f0,stroke:#c44a8a,stroke-width:2px
+    style E fill:#e8ffe8,stroke:#3c8a4a
       </div>
       <p>每一回合都是一次<strong>资源-时机-角色配合</strong>的小决策，这种密度是动作游戏无法承载的。星铁用回合制把"决策"从肌肉记忆变成了<strong>策略选择</strong>，这是它的机制乐趣所在。</p>
 
@@ -219,7 +270,7 @@
 
       <div class="section-divider"></div>
 
-      <h3>三、商业化设计</h3>
+      <h3>💰 三、商业化设计</h3>
 
       <h4>3.1 付费结构：情感驱动 + 低门槛</h4>
       <div class="table-wrapper">
@@ -253,7 +304,7 @@
 
       <div class="section-divider"></div>
 
-      <h3>四、可迁移洞察</h3>
+      <h3>💡 四、可迁移洞察</h3>
 
       <h4>4.1 给米哈游内部其他产品的建议</h4>
       <div class="table-wrapper">
