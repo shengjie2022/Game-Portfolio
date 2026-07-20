@@ -52,9 +52,89 @@
     .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
     .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
     .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* === Mobile header fix === */
+    @media (max-width: 600px) {
+      .header-inner { padding: 0 12px !important; height: 52px !important; gap: 8px; }
+      .logo { font-size: 13px !important; white-space: nowrap; overflow: hidden; }
+      .logo-bracket, .logo-role { display: none; }
+      .header-nav { gap: 4px !important; }
+      .nav-link { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+      .nav-contact { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+    }
+
+    /* === Professional polish: typography === */
+    .article-body { line-height: 1.85; }
+    .article-body p { margin-bottom: 1rem; font-size: 0.96rem; letter-spacing: 0.01em; }
+    .article-body h3 { font-size: 1.4rem; font-weight: 700; color: #1a1a3a; margin: 2.5rem 0 1.2rem; padding: 0.5rem 0 0.5rem 0.8rem; border-left: 4px solid #3c5fa8; background: linear-gradient(90deg, #3c5fa81a 0%, transparent 60%); border-radius: 0 6px 6px 0; scroll-margin-top: 90px; }
+    .article-body h4 { font-size: 1.08rem; font-weight: 600; color: #2a2a4a; margin: 1.8rem 0 0.8rem; padding-left: 0.6rem; border-left: 3px solid #3c5fa880; scroll-margin-top: 90px; }
+    .article-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { margin-bottom: 0.5rem; line-height: 1.85; }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #3c5fa84d, transparent); margin: 2.5rem 0; }
+    .insight-block { background: linear-gradient(135deg, #fafaff 0%, #3c5fa814 100%); border-left: 4px solid #3c5fa8; border-radius: 0 10px 10px 0; padding: 1rem 1.3rem; margin: 1.2rem 0; }
+    .insight-block .insight-label { color: #3c5fa8; font-weight: 700; }
+    .info-box { border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .info-box.warning { background: #fff8f0; border: 1px solid #3c5fa84d; }
+    .info-box.highlight { background: #fafaff; border: 1px solid #3c5fa838; }
+
+    .table-wrapper { background: #fff; border: 1px solid #3c5fa833; border-radius: 12px; padding: 0; margin: 1.4rem 0; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .table-wrapper:hover { box-shadow: 0 6px 20px #3c5fa81a; }
+    .table-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+    .table-wrapper thead { background: linear-gradient(135deg, #3c5fa8 0%, #5a7ec8 100%); }
+    .table-wrapper th { color: #fff; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 0.88rem; border: none; }
+    .table-wrapper th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.18); }
+    .table-wrapper tbody tr:nth-child(even) { background: #3c5fa80d; }
+    .table-wrapper tbody tr:hover { background: #3c5fa814; }
+    .table-wrapper td { padding: 13px 16px; border: none; border-top: 1px solid #3c5fa81a; border-bottom: 1px solid #3c5fa80a; color: #3a3a3a; line-height: 1.55; }
+    .table-wrapper tbody tr:first-child td { border-top: 1px solid #3c5fa82e; }
+    .table-wrapper tbody tr:last-child td { border-bottom: none; }
+    .table-wrapper td:not(:last-child) { border-right: 1px solid #3c5fa812; }
+    .table-wrapper td:first-child { font-weight: 600; color: #1a1a3a; background: #3c5fa80a; }
+
+    .think-section { background: linear-gradient(135deg, #fafaff 0%, #3c5fa814 100%); border: 1px solid #3c5fa82e; border-radius: 12px; padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .think-section h3 { color: #1a1a3a; border-bottom: 2px solid #3c5fa840; padding-bottom: 0.4rem; background: none; border-left: none; border-radius: 0; margin-left: 0; }
+    .think-section .highlight-text { background: #fff; border: 1px solid #3c5fa833; border-left: 4px solid #3c5fa8; }
+    .think-section .quote-block { background: #fff; border-left: 4px solid #5a7ec8; color: #4a4a4a; }
+
+    .tab-nav { position: sticky; top: 70px; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 0.8rem 0; margin: 0 -1.5rem 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-bottom: 1px solid #3c5fa826; }
+    .tab-btn { transition: all 0.25s ease; }
+    .tab-btn:hover { transform: translateY(-1px); }
+
+    .game-page-hero-content h1, .game-page-hero-content p { animation: fadeUp 0.6s ease both; }
+    .game-page-hero-content p { animation-delay: 0.1s; }
+    .stat-row { animation: fadeUp 0.6s ease 0.2s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .back-to-top { position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px; border-radius: 50%; background: #3c5fa8; color: #fff; border: none; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 16px #3c5fa84d; opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease; z-index: 90; }
+    .back-to-top.show { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: #5a7ec8; transform: translateY(-2px); }
+
+    html { scroll-behavior: smooth; }
+    ::selection { background: #3c5fa833; color: #1a1a3a; }
+
+    @media (max-width: 900px) {
+      .article-body { padding: 1.5rem 1.2rem 3rem !important; }
+      .article-body h3 { font-size: 1.25rem; }
+      .table-wrapper th, .table-wrapper td { padding: 10px 12px; font-size: 0.85rem; }
+    }
+    @media (max-width: 600px) {
+      .article-body p { font-size: 0.92rem; line-height: 1.8; }
+      .article-body h3 { font-size: 1.15rem; margin: 2rem 0 1rem; }
+      .article-body h4 { font-size: 1rem; }
+      .think-section { padding: 1.1rem 1.2rem; }
+      .table-wrapper { border-radius: 8px; }
+      .table-wrapper th, .table-wrapper td { padding: 9px 10px; font-size: 0.78rem; }
+      .tab-nav { top: 56px; padding: 0.6rem 1.2rem; margin: 0 -1.2rem 1.2rem; }
+      .tab-btn { padding: 7px 16px; font-size: 0.85rem; }
+      .back-to-top { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+    }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{primaryColor:"#fafaff",primaryTextColor:"#1a1a3a",primaryBorderColor:"#3c5fa8",lineColor:"#3c5fa8",fontFamily:"Noto Sans SC, sans-serif"},flowchart:{curve:"basis",padding:12}})}});</script>
   <meta name="description" content="基于822天深度体验，分析《重返未来1999》的叙事设计、版本连续性与"9味"美学，并以牙仙和1.4-1.9版本叙事弧为例，拆解手游叙事的可能性。">
 </head>
 <body>
@@ -109,50 +189,186 @@
 
     <div id="panel-analysis" class="tab-panel active">
 
-      <h3 style="color:#1a1030;font-size:1.1rem;margin-bottom:1rem;">"9味"：一种很难被复制的美学</h3>
-      <p>重返未来1999有一个很难被量化的标签，叫"9味"。这个词的意思是：它的视觉风格和叙事调性，建立了属于自己的一种二游审美标准，而且这个标准只有它自己在用。</p>
-      <p>立绘是它最直接的感官冲击——复古+哥特+超现实，颜色搭配有一种"看了会记住"的独特性。这种视觉风格让它在众多二游里不是"又一个"，而是"这一个"。</p>
-      <p>对于竞品来说，模仿它的视觉容易，模仿它这种"复古但当代"的叙事气质难。</p>
+      <h3>🎯 一、产品定位</h3>
 
-      <h3 style="color:#1a1030;font-size:1.1rem;margin:1.5rem 0 1rem;">版本连续性叙事：把玩家当成认真在看故事的人</h3>
-      <p>重返未来1999的版本叙事有一个很突出的特点：它的每个版本之间是有叙事连续性的。不是"这个版本的剧情和上个版本完全独立"，而是1.4→1.7→1.9这整条叙事线有一个内在的起承转合。</p>
-      <p>这种设计在手游里是奢侈的——它需要策划团队在写每个版本的剧情之前，就想清楚整个叙事弧的走向，而不是临时起意。对于习惯了"每个版本独立剧情"的手游玩家来说，这种连续叙事是有门槛的，但一旦接受了这个门槛，粘性会非常强。</p>
+      <h4>1.1 二游黑马：卡牌 RPG 的"文艺复兴"</h4>
+      <p>《重返未来：1999》（以下简称"1999"）由深蓝互动（广州深蓝互动网络科技）开发，<strong>2023-05-31 国内全平台公测</strong>（信达证券研报，2023-06），海外版本 2023-10-26 上线 170+ 国家。游戏讲述了 1999 年 12 月 31 日"暴雨"降临世界后，主角维尔汀与不同时代、国家的神秘学家伙伴逃离灾厄的故事。</p>
+      <p>2023 年被业内称为"二游大逃杀"——《崩坏：星穹铁道》4 月公测、《尘白禁区》紧随其后，再加上老牌《原神》、《明日方舟》，整个赛道被挤压。但 1999 用一套<strong>"砍礼装池+剧情驱动+复古美术"</strong>的差异化打法跑了出来：<strong>公测前预约 600 万+</strong>（游戏茶馆，2023-06），首日登顶 AppStore 免费榜 2 天，畅销榜最高第 3，<strong>首月全平台流水约 2 亿元</strong>（知乎估算 + 信达证券），是 2023 年仅次于星铁的新二游。</p>
 
-      <h3 style="color:#1a1030;font-size:1.1rem;margin:1.5rem 0 1rem;">福利好的底气：从商业逻辑看</h3>
-      <p>重返未来1999被人称赞的一个点是"福利好、资源多、不怎么需要氪"。</p>
-      <p>这背后的商业逻辑可能是：它很清楚自己的用户画像是"剧情向、情感投入型"玩家，这类玩家对"强度焦虑"的敏感度低，但对付费体验的感知很敏锐。给足福利可以让这类玩家保持好感度，而不必用逼氪来维持流水——因为这类玩家一旦好感度够高，愿意为喜欢的内容付钱，而且付得心甘情愿。</p>
+      <h4>1.2 商业化的"壮士断腕"：主动剥离米家式武器池</h4>
+      <p>1999 最具行业意义的决策是<strong>三测后主动砍掉"礼装池"（武器/圣遗物池）</strong>（知乎"知行合一"，2023-12）。这意味着：玩家只抽角色，没有配套的"配装池"反复收割。这与米哈游的"角色池+武器池+叠命座+刷圣遗物词条"四件套形成鲜明对比。</p>
+      <p>这背后的逻辑是：<strong>"不是米哈游的产品规模，就不要用米哈游式 f2p 商业化"</strong>（同上）。米哈游这套之所以赚钱，不是因为定价合理，而是因为产品质量让玩家"没有其他选择"。中小厂盲目跟进，只会被"米哈游定价凭什么"的舆论反噬。1999 的解法是：<strong>主动放弃武器池的二次收割，把商业化聚焦在"角色情感价值"上</strong>。</p>
+      <div class="compare-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#3c5fa8;font-weight:700;margin-bottom:6px;">⚙️ 米哈游式 f2p</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>付费结构：</strong>角色池 + 武器池 + 命座 + 圣遗物</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>付费深度：</strong>4 层，每层都能拉付费</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>用户认知：</strong>贵、但不得不</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>适用对象：</strong>头部 3A 制作规模</div>
+        </div>
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#3c5fa8;font-weight:700;margin-bottom:6px;">🎭 1999 式 f2p</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>付费结构：</strong>仅角色池 + 通行证</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>付费深度：</strong>1 层，靠情感驱动</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>用户认知：</strong>便宜、福利好</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>适用对象：</strong>中小厂的"内容向"路径</div>
+        </div>
+      </div>
+
+      <h3>🔄 二、核心循环</h3>
+
+      <h4>2.1 主循环：剧情驱动 × 角色养成 × 版本叙事</h4>
+      <p>1999 的核心循环与米家抽卡游戏类似，但<strong>剧情权重被显著拉高</strong>：版本叙事（6 周一个大版本）→ 主线剧情推进（多视角）→ 角色池开放 + 角色故事解锁 → 用户为"喜欢的角色"付费。卡牌玩法是次要的，剧情与角色才是驱动付费的核心。</p>
+      <div class="mermaid">
+flowchart LR
+    A[新版本开启] --> B[主线剧情推进]
+    B --> C[新角色开放]
+    C --> D[角色养成/练度]
+    D --> E[卡牌战斗/梦境训练]
+    E --> F[体力消耗完毕]
+    F --> G[等下一版本]
+    B --> H[支线/角色故事]
+    H --> I[好感度解锁]
+    I --> J[抽卡动力]
+    J --> C
+      </div>
+      <p>从这组流程可以看出，1999 主动把"剧情→角色情感→付费"这条路做长了。区别于米家"角色强度→深渊竞速→抽卡动力"的玩法驱动循环，<strong>1999 是"剧情→情感→付费"</strong>——付费动力不来自强度焦虑，而来自对角色的情感认同。</p>
+
+      <h4>2.2 战斗循环：3 主力 + 卡牌合成 + 激情点攒大招</h4>
+      <p>战斗内的循环相对简化：每回合补充手牌到 7 张，3 个行动点，相同卡牌可合成（最高 3 级），<strong>使用/合成神秘术会增加激情点（5 点满）</strong>，满激情后下回合自动送一张大招卡。整体节奏比米家动作游戏慢，更接近策略回合制。</p>
+      <div class="mermaid">
+flowchart LR
+    A[回合开始] --> B[补充手牌7张]
+    B --> C[选择3张牌]
+    C --> D[使用神秘术/合成]
+    D --> E[激情点 +1]
+    E --> F{激情点满?}
+    F -->|否| G[对手回合]
+    F -->|是| H[下回合自动送大招]
+    G --> A
+    H --> A
+    D --> I[造成伤害/减员]
+    I --> J[对面掉激情]
+    J --> G
+      </div>
+      <p>这与原神的"元素反应循环"和星铁的"行动轴循环"都不一样：1999 的循环是<strong>"积累-释放"</strong>型——激情点是大招的进度条，让玩家在"漫长铺垫"后获得"一次爆点"。这套循环的设计目的不是让玩家"打得快"，而是让玩家"打得有节奏感"——配合英伦复古的视觉，每场战斗像"舞台剧"一样有起承转合。</p>
+
+      <h3>💰 三、商业化设计</h3>
+
+      <h4>3.1 营收结构：国内 67% + 海外 33% 的"文化输出"样本</h4>
+      <p>1999 的营收数据呈现一个非常典型的"内容驱动"特征：</p>
+      <div class="tier-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#3c5fa8;font-weight:700;">🇨🇳 国内市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">6610 万美元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">占全球 67%（约 4.71 亿元）。首月流水 ~2 亿元，主要靠国服（深蓝互动，2024-10）</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#3c5fa8;font-weight:700;">🇯🇵 日本市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">1430 万美元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">占全球 14%（约 1.02 亿元）。海外首月双端总流水 ~8500 万元（点点数据）</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#3c5fa8;font-weight:700;">🇺🇸 美国市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">950 万美元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">占全球 10%（约 6768 万元）。英语配音版本对北美玩家友好（Pocketgamer）</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#3c5fa8;font-weight:700;">📊 全球累计</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">~1 亿美元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">上线一年半（2024-10）AppMagic 统计 9870 万美元，含 Steam 版约 1 亿美元</div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:#7a7a7a;margin-top:8px;">数据来源：AppMagic、网易《上线一年半》，2024-10 / Pocketgamer，2024-10</p>
+
+      <h4>3.2 福利底气："不逼氪"的反向商业逻辑</h4>
+      <p>1999 在玩家圈的口碑标签之一是"福利好"。从商业逻辑看，<strong>这是用户画像倒推的结果</strong>：1999 的核心用户是"剧情向 + 情感投入型"玩家，他们对"强度焦虑"的敏感度低，但对付费体验的感知很敏锐（被其他游戏逼氪过）。给足福利可以让这群玩家<strong>维持好感度</strong>，而当他们真的喜欢某个角色时，愿意为"喜欢"付钱，而且付得心甘情愿。</p>
+      <p>这套逻辑对中小厂的启示是：<strong>福利不是"让利"</strong>，而是"用让利换好感度，用好感度换付费意愿"。对于 1999 这类"剧情 + 美术"驱动的二游，福利本身就是商业策略的一部分。</p>
+
+      <h3>💡 四、可迁移洞察</h3>
+
+      <h4>4.1 给中小厂二游的建议</h4>
+      <div class="insight-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(60,95,168,0.1);">
+          <div class="ic-num" style="color:#3c5fa8;font-weight:800;font-size:1.1rem;margin-bottom:6px;">01</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">主动砍礼装池：放弃"四件套"</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#3c5fa8;font-weight:600;margin-bottom:8px;">迁移场景：中小厂二游商业化设计</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">米哈游的"角色+武器+命座+圣遗物"四件套建立在"产品规模+IP 信任"双重护城河上。中小厂照搬只会触发"你也敢卖这么贵"的舆论反噬。主动放弃武器池，把付费聚焦在"角色情感价值"上，反而能赢得差异化口碑</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(60,95,168,0.3);">📊 首月流水 ~2 亿元、全球累计 ~1 亿美元（AppMagic，2024-10）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(60,95,168,0.1);">
+          <div class="ic-num" style="color:#3c5fa8;font-weight:800;font-size:1.1rem;margin-bottom:6px;">02</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">剧情驱动循环 vs 强度驱动循环</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#3c5fa8;font-weight:600;margin-bottom:8px;">迁移场景：内容向 / 情感向二游</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">米家的循环是"角色强度→深渊竞速→抽卡动力"。1999 反过来：剧情→角色情感→抽卡动力。这套循环不依赖 PVE 难度，让 0 氪党也能享受完整体验，避免"被强度逼氪"的负面口碑</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(60,95,168,0.3);">📊 2023 全年二游流水前 10（知乎"知行合一"，2023-12）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(60,95,168,0.1);">
+          <div class="ic-num" style="color:#3c5fa8;font-weight:800;font-size:1.1rem;margin-bottom:6px;">03</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">"美术调性" = 不可复制的护城河</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#3c5fa8;font-weight:600;margin-bottom:8px;">迁移场景：差异化定位 / 美术驱动</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">1999 的"9味"（英伦复古 + 哥特 + Live2D 立绘）建立了属于它自己的二游审美标准。这种调性的门槛是"做出独立气质"，不是"做出好看画面"——这意味着模仿视觉容易，模仿气质难</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(60,95,168,0.3);">📊 海外收入 33%（日本 14% + 美国 10% + 其他）文化输出样本（AppMagic）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#eaf0fa 100%);border:1px solid rgba(60,95,168,0.25);border-left:5px solid #3c5fa8;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(60,95,168,0.1);">
+          <div class="ic-num" style="color:#3c5fa8;font-weight:800;font-size:1.1rem;margin-bottom:6px;">04</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">连续性叙事 = 留存护城河</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#3c5fa8;font-weight:600;margin-bottom:8px;">迁移场景：长线运营 / 剧情向设计</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">1999 的 1.4→1.7→1.9 整条叙事线有起承转合，不是"版本独立剧情"。这种"连续叙事"对手游是奢侈的——它需要策划在写每个版本前就想清楚整条弧线。但一旦做好，粘性极强，玩家不敢跳版本</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(60,95,168,0.3);">📊 1.9 周年庆机械姬露西带动 iOS 畅销榜冲第 5（AppMagic）</div>
+        </div>
+      </div>
+
+      <h4>4.2 对内容向产品 / 独立游戏的启发</h4>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#eaf0fa 100%);border-left:4px solid #3c5fa8;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#3c5fa8;font-weight:700;">方法论洞察 · "不做头部"也是一种定位</div>
+        <p>1999 主动放弃了与米家"四件套"商业化体系的对抗，选择"做头部不愿做的内容向"——复古英伦 + 砍武器池 + 福利好 + 连续叙事。这给中小厂一个启示：<strong>不要在头部的主战场上和头部拼规模</strong>，而是找到头部"不愿意做"或"做不好"的细分位置，站稳这个位置比"挤进头部"更有商业价值。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#eaf0fa 100%);border-left:4px solid #3c5fa8;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#3c5fa8;font-weight:700;">方法论洞察 · "卡牌慢节奏"在动作时代的反潮流机会</div>
+        <p>当米家全员动作化（星铁的回合制已经算"慢"了），1999 选了更慢的卡牌回合制。3 主力+5 激情点的设计让每场战斗像"舞台剧"。中小厂在动作化拥挤的当下，<strong>卡牌策略这种"慢节奏"反而成了差异化机会</strong>——它适合"边玩边看剧情"的休闲玩家，避开了动作游戏的高操作门槛。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#eaf0fa 100%);border-left:4px solid #3c5fa8;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#3c5fa8;font-weight:700;">方法论洞察 · 内容驱动产品的"产能瓶颈"</div>
+        <p>1999 的护城河是"剧情+美术"，但这恰恰是它最大的产能瓶颈：2D 强表现力的剧情制作成本甚至比 3D 动画还贵（高成本美术 + 多视角叙事 + 多语种配音）。一旦产能跟不上，流水下滑会非常快。<strong>对内容驱动产品来说，"产能稳定性"是核心指标</strong>，比"开服爆发力"更决定长期营收。</p>
+      </div>
 
     </div>
 
     <div id="panel-think" class="tab-panel">
 
       <div class="think-section">
-        <h3>牙仙：有一种角色的好感是不需要理由的</h3>
-        <p>牙仙是我最喜欢的重返未来1999角色。</p>
-        <p>说实话，如果要我在策划文档里写"牙仙为什么吸引我"，我能写出来的理由可能都很泛——温柔、可靠、有故事感。但这些词不是我喜欢她的原因，她是我的原因才是这些词。</p>
-        <p>有些角色的设计就是这样：她不需要做什么特别的事，她只需要在故事的某个瞬间出现在那里，你就会觉得"这个角色是真实的"。</p>
+        <h3>"9味"是什么味道：一种不容易被量化的气质</h3>
+        <p>玩 1999 之前，我对"二游审美"是有固有印象的：日式赛璐璐、韩式 3D 渲染、米家渲染工业化。但 1999 给我的第一感觉是"它不属于这些类别里的任何一个"——英伦复古 + 哥特 + Live2D 立绘，整体调性有一种"看着像在看一部 1920 年代的英国舞台剧"的氛围。</p>
+        <p>这种"9味"不是"美术好看"能概括的——它是<strong>"气质"和"叙事"和"画面"三件套的统一</strong>。立绘是英伦绅士淑女风，剧情是 1929 股市崩盘的悬疑叙事，背景音乐是大提琴+爵士。三个维度合起来才是"9味"。这意味着：<strong>模仿 1999 的视觉容易，模仿这种气质难</strong>——气质不能"做一个一样的立绘"，而是"做一整套沉浸的英伦世界"。</p>
         <div class="quote-block">
-          玩家对角色的感情不是来自"她有哪些属性"，而是来自"她在我脑海里留下了什么画面"。牙仙留给我的画面，是她站在那里的样子，不需要台词。
+          我意识到：对于内容向产品来说，"风格"不是"美术标签"，而是"叙事 + 视觉 + 听觉的整体氛围"。三者必须同时到位，才能立住。
         </div>
       </div>
 
       <div class="think-section">
-        <h3>1.4到1.9：叙事弧线为什么让我追到现在</h3>
-        <p>洞穴的囚徒、今夜星光灿烂、孤独之歌——这三个版本是连在一起的。</p>
-        <p>我不知道制作组是不是一开始就想好了要这样写，但如果不是的话，那他们的版本衔接能力也太强了；如果是的话，那这个叙事规划的提前量是相当大的。</p>
-        <p>这让我意识到一件事：<strong>手游的叙事设计，本质上是在"计划性和即兴发挥"之间找平衡</strong>。重返未来1999明显偏向计划性——它的版本与版本之间有钩子，让你想知道下一章会发生什么。</p>
+        <h3>砍武器池的勇气：一种"放弃四件套"的商业哲学</h3>
+        <p>1999 三测后砍掉"礼装池"（武器/圣遗物池），只留角色池。这件事在 2023 年 6 月公测时是争议很大的——很多人担心"只靠角色池能不能撑起营收"。</p>
+        <p>从结果看，<strong>1999 的首月流水 2 亿元、全球累计近 1 亿美元（2024-10）的成绩证明：单角色池+福利好也能跑通</strong>。这背后是用户画像倒推的结果——1999 的核心用户是"剧情向 + 情感投入型"，对强度焦虑敏感度低、对付费体验敏感度高。给足福利维持好感度，角色池自然能撑住营收。</p>
         <div class="highlight-text">
-          <strong>策划视角：</strong>版本之间留钩子这件事，核心不在于"留悬念"，而在于"让玩家相信这个故事值得追下去"。悬念是技术，信任是结果。如果玩家相信你会在后面给出好的答案，他们才会对钩子有反应。
+          <strong>策划视角：</strong>1999 的"砍武器池"决策反映了一个反常识——<strong>对于中小厂二游，"放弃商业化深度"反而能赢得差异化口碑</strong>。米哈游的"角色+武器+命座+圣遗物"四件套建立在"产品规模+IP 信任"的双重护城河上。中小厂照搬这套，只会被"你也敢卖这么贵"的舆论反噬。主动放弃武器池，把付费聚焦在"角色情感价值"上，反而能吸引"对逼氪敏感"的高质量用户。
         </div>
+        <p>我学到的：<strong>商业化设计的第一性问题不是"怎么赚更多"，而是"赚哪些人的钱"</strong>。选错用户群体，再精妙的商业化设计都会被舆论反噬。</p>
       </div>
 
       <div class="think-section">
-        <h3>从重返未来学到的三件事</h3>
-        <ul>
-          <li><strong>美学是可以成为护城河的：</strong>"9味"不是营销词汇，是它真的有不可替代性。其他游戏可以学它的复古元素，但复制不了它的整体气质</li>
-          <li><strong>叙事连续性是长线IP的必备：</strong>连续叙事比独立叙事更难做，但一旦做成，用户的"想看后续"会变成稳定的留存因子</li>
-          <li><strong>福利好的底气来自用户画像清晰：</strong>知道自己的用户是谁，才知道什么策略是有效的。对剧情向玩家逼氪是最蠢的商业化方式</li>
-        </ul>
+        <h3>连续叙事的奢侈：把玩家当成认真看故事的人</h3>
+        <p>我玩 1999 印象最深的是：1.4→1.7→1.9 整条叙事线有起承转合，不是"每个版本独立剧情"。这与米家"版本独立 + 角色独立故事"的设计完全不同。</p>
+        <p>这种"连续叙事"对手游是奢侈的——它要求策划团队<strong>在写每个版本之前，就想清楚整条叙事弧的走向</strong>，而不是临时起意。它还会导致"跳版本"成本极高——你跳过 1.5，1.6 的剧情就接不上。这种"门槛"对短期留存不利，但对长期粘性极有利。</p>
+        <div class="highlight-text">
+          <strong>我的总结：</strong>
+          <ul style="margin-top:8px;padding-left:1.4rem;">
+            <li><strong>"气质"是统一性</strong>：美术 + 叙事 + 音乐三者必须同时到位，才能立住一种风格</li>
+            <li><strong>商业化要匹配用户画像</strong>：剧情向用户对"强度焦虑"敏感度低，对"付费体验"敏感度高</li>
+            <li><strong>连续叙事是高门槛但高粘性</strong>：用"门槛"换"留存"，比靠福利续命更长期</li>
+            <li><strong>产能稳定性是内容驱动产品的命门</strong>：2D 强表现力剧情比 3D 动画还贵，产能跟不上会快速掉队</li>
+          </ul>
+        </div>
       </div>
 
     </div>

@@ -52,9 +52,89 @@
     .think-section .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; flex: 1; min-width: 120px; }
     .think-section .stat-chip .num { font-size: 1.3rem; font-weight: 700; color: var(--accent-1); }
     .think-section .stat-chip .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* === Mobile header fix === */
+    @media (max-width: 600px) {
+      .header-inner { padding: 0 12px !important; height: 52px !important; gap: 8px; }
+      .logo { font-size: 13px !important; white-space: nowrap; overflow: hidden; }
+      .logo-bracket, .logo-role { display: none; }
+      .header-nav { gap: 4px !important; }
+      .nav-link { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+      .nav-contact { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+    }
+
+    /* === Professional polish: typography === */
+    .article-body { line-height: 1.85; }
+    .article-body p { margin-bottom: 1rem; font-size: 0.96rem; letter-spacing: 0.01em; }
+    .article-body h3 { font-size: 1.4rem; font-weight: 700; color: #1a1a3a; margin: 2.5rem 0 1.2rem; padding: 0.5rem 0 0.5rem 0.8rem; border-left: 4px solid #c89800; background: linear-gradient(90deg, #c898001a 0%, transparent 60%); border-radius: 0 6px 6px 0; scroll-margin-top: 90px; }
+    .article-body h4 { font-size: 1.08rem; font-weight: 600; color: #2a2a4a; margin: 1.8rem 0 0.8rem; padding-left: 0.6rem; border-left: 3px solid #c8980080; scroll-margin-top: 90px; }
+    .article-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { margin-bottom: 0.5rem; line-height: 1.85; }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #c898004d, transparent); margin: 2.5rem 0; }
+    .insight-block { background: linear-gradient(135deg, #fafaff 0%, #c8980014 100%); border-left: 4px solid #c89800; border-radius: 0 10px 10px 0; padding: 1rem 1.3rem; margin: 1.2rem 0; }
+    .insight-block .insight-label { color: #c89800; font-weight: 700; }
+    .info-box { border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .info-box.warning { background: #fff8f0; border: 1px solid #c898004d; }
+    .info-box.highlight { background: #fafaff; border: 1px solid #c8980038; }
+
+    .table-wrapper { background: #fff; border: 1px solid #c8980033; border-radius: 12px; padding: 0; margin: 1.4rem 0; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .table-wrapper:hover { box-shadow: 0 6px 20px #c898001a; }
+    .table-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+    .table-wrapper thead { background: linear-gradient(135deg, #c89800 0%, #e0a820 100%); }
+    .table-wrapper th { color: #fff; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 0.88rem; border: none; }
+    .table-wrapper th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.18); }
+    .table-wrapper tbody tr:nth-child(even) { background: #c898000d; }
+    .table-wrapper tbody tr:hover { background: #c8980014; }
+    .table-wrapper td { padding: 13px 16px; border: none; border-top: 1px solid #c898001a; border-bottom: 1px solid #c898000a; color: #3a3a3a; line-height: 1.55; }
+    .table-wrapper tbody tr:first-child td { border-top: 1px solid #c898002e; }
+    .table-wrapper tbody tr:last-child td { border-bottom: none; }
+    .table-wrapper td:not(:last-child) { border-right: 1px solid #c8980012; }
+    .table-wrapper td:first-child { font-weight: 600; color: #1a1a3a; background: #c898000a; }
+
+    .think-section { background: linear-gradient(135deg, #fafaff 0%, #c8980014 100%); border: 1px solid #c898002e; border-radius: 12px; padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .think-section h3 { color: #1a1a3a; border-bottom: 2px solid #c8980040; padding-bottom: 0.4rem; background: none; border-left: none; border-radius: 0; margin-left: 0; }
+    .think-section .highlight-text { background: #fff; border: 1px solid #c8980033; border-left: 4px solid #c89800; }
+    .think-section .quote-block { background: #fff; border-left: 4px solid #e0a820; color: #4a4a4a; }
+
+    .tab-nav { position: sticky; top: 70px; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 0.8rem 0; margin: 0 -1.5rem 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-bottom: 1px solid #c8980026; }
+    .tab-btn { transition: all 0.25s ease; }
+    .tab-btn:hover { transform: translateY(-1px); }
+
+    .game-page-hero-content h1, .game-page-hero-content p { animation: fadeUp 0.6s ease both; }
+    .game-page-hero-content p { animation-delay: 0.1s; }
+    .stat-row { animation: fadeUp 0.6s ease 0.2s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .back-to-top { position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px; border-radius: 50%; background: #c89800; color: #fff; border: none; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 16px #c898004d; opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease; z-index: 90; }
+    .back-to-top.show { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: #e0a820; transform: translateY(-2px); }
+
+    html { scroll-behavior: smooth; }
+    ::selection { background: #c8980033; color: #1a1a3a; }
+
+    @media (max-width: 900px) {
+      .article-body { padding: 1.5rem 1.2rem 3rem !important; }
+      .article-body h3 { font-size: 1.25rem; }
+      .table-wrapper th, .table-wrapper td { padding: 10px 12px; font-size: 0.85rem; }
+    }
+    @media (max-width: 600px) {
+      .article-body p { font-size: 0.92rem; line-height: 1.8; }
+      .article-body h3 { font-size: 1.15rem; margin: 2rem 0 1rem; }
+      .article-body h4 { font-size: 1rem; }
+      .think-section { padding: 1.1rem 1.2rem; }
+      .table-wrapper { border-radius: 8px; }
+      .table-wrapper th, .table-wrapper td { padding: 9px 10px; font-size: 0.78rem; }
+      .tab-nav { top: 56px; padding: 0.6rem 1.2rem; margin: 0 -1.2rem 1.2rem; }
+      .tab-btn { padding: 7px 16px; font-size: 0.85rem; }
+      .back-to-top { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+    }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{primaryColor:"#fafaff",primaryTextColor:"#1a1a3a",primaryBorderColor:"#c89800",lineColor:"#c89800",fontFamily:"Noto Sans SC, sans-serif"},flowchart:{curve:"basis",padding:12}})}});</script>
   <meta name="description" content="基于1813天深度体验，以辅助玩家视角分析《王者荣耀》的皮肤设计、社群生态与社交粘性，兼谈瑶的核心定位与新年福利策略。">
 </head>
 <body>
@@ -109,46 +189,195 @@
 
     <div id="panel-analysis" class="tab-panel active">
 
-      <h3 style="color:#1a1500;font-size:1.1rem;margin-bottom:1rem;">皮肤不只是外观，是IP价值的实体化</h3>
-      <p>在王者荣耀里，皮肤是一门独立的生意。但它的意义不只是"好看的皮肤能卖钱"——皮肤是玩家对某个角色的情感投入的<strong>外在证明</strong>。</p>
-      <p>我买一个皮肤，不是为了那10点攻击力加成，是因为我喜欢这个英雄，我希望每次选到这个英雄的时候，有一层"这是我的"的仪式感。这种情感需求和原神里抽角色是同一个逻辑，只是王者荣耀把它拆得更碎了——你不需要花150块抽一个角色，只需要花60块买一件"这件衣服"。</p>
+      <h3>🎯 一、产品定位</h3>
 
-      <h3 style="color:#1a1500;font-size:1.1rem;margin:1.5rem 0 1rem;">社交MOBA的粘性来源：不是游戏，是关系链</h3>
-      <p>王者荣耀能维持1813天的活跃，核心不是因为它的玩法有多好——是因为我和朋友在这个游戏里有<strong>共同记忆</strong>。</p>
-      <p>MOBA天然是社交游戏。每一局都是合作，每一次开黑都是关系维护。这种粘性不是游戏机制给的，是人给的。这也是为什么王者荣耀的电竞生态那么重要——它不只是在卖皮肤，它是在持续生产"我们一起看过的比赛"这种共同记忆。</p>
+      <h4>1.1 国民 MOBA：从边缘项目到日活 1 亿</h4>
+      <p>《王者荣耀》于 2015 年 11 月 26 日全平台公测（腾讯官方公告），最初叫《英雄战迹》《王者联盟》，是腾讯天美 L1 工作室用 100 人团队在半年内迭代出来的产品。一开始它在腾讯内部是边缘项目，光子工作室的《全民超神》才是重点扶持对象（中国经营网，2024-10）。</p>
+      <p>但《王者荣耀》用了一招"反氪"——主动去掉英雄养成线，把数值卖给符文和皮肤，而不是卖英雄——结果反而跑赢了。从 2017 年 5 月用户规模 2.01 亿、男女比 1:1.18（极光大数据《王者荣耀研究报告》），到 <strong>2020 年 11 月 1 日官方宣布 DAU 突破 1 亿</strong>，成为"全球首款日活破亿的游戏"（王者荣耀五周年盛典官方公告）。四年后的 2024 年 10 月 27 日九周年活动，官方再次公布 DAU 超 1 亿（中国经营网，2024-10）。这组数据证明：在所有"国民级应用"里——微信、抖音、淘宝、百度——王者荣耀是唯一一款不是生活必需品的游戏。</p>
 
-      <h3 style="color:#1a1500;font-size:1.1rem;margin:1.5rem 0 1rem;">辅助-瑶：最小单位的高光设计</h3>
-      <p>瑶是一个很有意思的角色设计——她完全依赖队友存活，但她有自己不可替代的独特性。</p>
-      <p>这种"强依赖性+独特机制"的组合，在设计上是有风险的：玩家会觉得"这个角色没有我就没有存在感"。但瑶的处理方式是把高光时刻做得足够短、足够亮——每一次附身、每一次刷盾、每一次关键时刻解控，都是一个微小但完整的高光。</p>
-      <p>这不是大型的高光，但足够频繁。频繁的高光可以让每一个玩家都觉得自己"在做贡献"。</p>
+      <h4>1.2 移动 MOBA 的范式创新：短局时 + 公平竞技</h4>
+      <p>王者荣耀能在移动端跑赢端游 MOBA（《英雄联盟》），核心是做了三件事：</p>
+      <p>第一，<strong>对局时间压到 15 分钟</strong>（端游 LOL 至少 30-40 分钟），6 分钟可投降；第二，把 LOL 复杂的"补刀、控线、眼位"简化到"技能命中 + 走位"；第三，借助 QQ/微信关系链的天然导入（2015 年 11 月后新增好友邀请功能），让"找不到人开黑"的问题彻底消失（中国经营网，2024-10）。结果是：王者荣耀把 MOBA 从"核心玩家"拉到了"全民玩家"——小学生和博士生、办公室白领和工厂工人，都能在同一场对局里厮杀。</p>
+      <div class="compare-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#c89800;font-weight:700;margin-bottom:6px;">⚔️ 端游 MOBA（LOL）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>对局时长：</strong>30-40 分钟</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>操作门槛：</strong>补刀 / 控线 / 插眼</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>用户：</strong>核心玩家（80% 为男性）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>留存依赖：</strong>排位 + 段位</div>
+        </div>
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#c89800;font-weight:700;margin-bottom:6px;">📱 王者荣耀（移动 MOBA）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>对局时长：</strong>~15 分钟 / 6 分钟可投降</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>操作门槛：</strong>技能 + 走位（自动补刀）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>用户：</strong>全民玩家（男女 1:1.18）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>留存依赖：</strong>关系链 + 皮肤 + 排位</div>
+        </div>
+      </div>
+
+      <h3>🔄 二、核心循环</h3>
+
+      <h4>2.1 主循环：单局对局 × 赛季 × 关系链</h4>
+      <p>王者荣耀的核心循环分三个层级：单局对局（分钟级）→ 排位赛季（季度级）→ 关系链（年级）。这三层环环相扣，让玩家从"打一局"到"打一个赛季"再到"和朋友打很多年"。</p>
+      <div class="mermaid">
+flowchart LR
+    A[匹配对局] --> B[5v5 战斗]
+    B --> C{胜负?}
+    C -->|胜| D[加星/加段位]
+    C -->|负| E[掉星/掉段位]
+    D --> F[赛季奖励]
+    E --> F
+    F --> G[新赛季开启]
+    G --> A
+    B --> H[战队/好友互动]
+    H --> I[亲密度/师徒]
+    I --> A
+    F --> J[限时皮肤/活动]
+    J --> A
+      </div>
+      <p>这套循环的关键在于"低门槛进、慢释放出"——单局 15 分钟就完事，但赛季要 3 个月，关系链可以维系几年。每一层都覆盖不同时间预算的玩家：想"消磨 15 分钟"的，单局就行；想"冲段位"的，赛季给目标；想"维系感情"的，关系链和开黑就够了。</p>
+
+      <h4>2.2 战斗循环：操作 → 击杀 → 推塔 → 团战</h4>
+      <p>5v5 对局内部的循环是"小循环"：补兵推线 → 消耗对手血量 → 关键技能命中 → 配合队友完成击杀 → 推掉对方防御塔。这种"短反馈 + 团队合作"的循环让 MOBA 区别于单局 ARPG：它的"成就感"不是来自"我变强了"，而是来自"我帮队伍赢了"。</p>
+      <div class="mermaid">
+flowchart LR
+    A[对线补兵] --> B[技能消耗]
+    B --> C[关键控制命中]
+    C --> D[队友跟进]
+    D --> E[完成击杀]
+    E --> F[推塔/入侵野区]
+    F --> G[扩大经济差]
+    G --> H[团战胜利]
+    H --> I[推掉基地]
+    I --> J[胜利结算]
+      </div>
+      <p>这与原神的"角色养成循环"截然不同——MOBA 玩家的每一次胜利都是"和别人合作的结果"，没有"我一个人 carry"的独狼快感。这给商业化留了一个非常重要的空间：<strong>不卖数值</strong>。因为一旦卖数值，5v5 的公平竞技就崩了。所以王者荣耀把所有的变现都堆到了"皮肤"这个不影响对局公平性的维度上。</p>
+
+      <h3>💰 三、商业化设计</h3>
+
+      <h4>3.1 皮肤分级：从 6 元到数万的"奢侈品矩阵"</h4>
+      <p>王者荣耀的皮肤体系是它商业化最核心的资产。根据 2024 年的公开数据，皮肤分为 5 个档位：</p>
+      <div class="tier-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#c89800;font-weight:700;">🌟 荣耀典藏</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">~2000+ 元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">需荣耀水晶兑换（保底约 21660 点券，361 幸运值）。目前 11 款，是身份的终极象征</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#c89800;font-weight:700;">💎 传说限定</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">1788 点券</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 178 元。年限 / FMVP / KPL 系列。特效 + 语音 + 独立回城，最顶级配置</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#c89800;font-weight:700;">✨ 传说</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">1688 点券</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 143 元。直售传说，独立回城特效。55 款累计，是 0 氪玩家最可能入手的顶级档</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#c89800;font-weight:700;">🎖️ 史诗</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">888 点券</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 75 元。125+ 款，是销量最大的档位。特效 + 独立语音，性价比最优</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#c89800;font-weight:700;">⚡ 勇者</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">488-588 点券</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 41-49 元。基础特效 + 10 攻击加成。KPL 系列常 6 元秒杀，是 0 氪党的福利</div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:#7a7a7a;margin-top:8px;">数据来源：知乎《王者荣耀：史上最贵的三款皮肤》、指法芬芳张大仙《王者典藏幸运值要多少》（2025-05）</p>
+
+      <h4>3.2 商业模式的"反常识"：低战力加成 + 抽卡限定</h4>
+      <p>王者荣耀的付费设计有个反常识：<strong>皮肤只给 +10 攻击力</strong>，最多 +30。在一局 30 分钟对局里，10 点攻击力几乎可以忽略。这意味着皮肤对竞技公平性的影响约等于零——零氪玩家可以靠操作吊打 V10 玩家。</p>
+      <p>但反过来，<strong>抽卡机制（积分夺宝）才是真正的"奢侈品"陷阱</strong>：荣耀水晶需要 361 幸运值保底，60 荣耀积分 = 60 点券，所以一颗水晶保底约 21660 点券（2166 元）。这与原神的 648 元充值档思路类似：<strong>让大部分人买小额的传说、史诗（30-200 元），让少数核心玩家追"荣耀典藏"（2000+ 元）</strong>。这造成了一个健康的营收结构：6 元秒杀 / 50 元史诗 / 200 元传说 / 2000 元典藏，覆盖了从学生到老板的全部人群（搜狐《王者皮肤价格降低》，2024-07）。</p>
+
+      <h4>3.3 营收规模：上线 8 年累计 720 亿元</h4>
+      <p>从财务看，王者荣耀是腾讯的现金牛：2017 年收入约 10 亿美元（71.3 亿元）→ 2020 年 15 亿美元（106.9 亿元）→ 2022 年峰值 22.2 亿美元（158.3 亿元）（AppMagic 数据，搜狐，2024-10）。<strong>上线前 8 年累计收入约 101.1 亿美元（720.8 亿元）</strong>，超过绝大多数上市公司一年的营收。2023 年收入下滑到 14.8 亿美元（105.5 亿元），但 2024 年开始回稳——上半年 iOS 端收入 8.4 亿美元（59.9 亿元），9 月单月 1.3 亿美元（9.3 亿元），稳居中国手游收入榜第一（指法芬芳张大仙，2025-05）。</p>
+      <p>更有意思的是 2017 年首年，游戏团队人均年终奖 140 万（最低 60 万，核心员工 290 万）（北京晨报，转引自搜狐，2017）——这组数字后来被官方否认过真实性，但腾讯从未公开真实的年终奖数据。无论真假，它反映了一个事实：<strong>王者荣耀的利润率高到能让一家公司"传说级"地给员工发钱</strong>。</p>
+
+      <h3>💡 四、可迁移洞察</h3>
+
+      <h4>4.1 给 MOBA/竞技类产品的建议</h4>
+      <div class="insight-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(200,155,60,0.1);">
+          <div class="ic-num" style="color:#c89800;font-weight:800;font-size:1.1rem;margin-bottom:6px;">01</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">低战力加成 + 皮肤付费</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#c89800;font-weight:600;margin-bottom:8px;">迁移场景：5v5 / 公平竞技 / 合作对局</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">MOBA 是社交游戏，"打赢朋友的爽感"是核心驱动力。一旦卖数值，公平性崩塌，社交驱动力归零。王者荣耀用 +10 攻击的微加成证明：付费只影响"仪式感"（皮肤），不影响"实力"</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(200,155,60,0.3);">📊 上线 8 年累计 720.8 亿元营收（AppMagic）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(200,155,60,0.1);">
+          <div class="ic-num" style="color:#c89800;font-weight:800;font-size:1.1rem;margin-bottom:6px;">02</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">关系链 = MOBA 的真正护城河</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#c89800;font-weight:600;margin-bottom:8px;">迁移场景：强社交产品 / 多人协作</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">MOBA 的粘性来源不是玩法，是关系链。"和朋友开黑"比"打 5v5"更让人上瘾。微信/QQ 的关系链导入是王者荣耀压倒《全民超神》的关键。中小厂做 MOBA 必败于腾讯，就是输在"你没有关系链"</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(200,155,60,0.3);">📊 2017-05 用户 2.01 亿，男女 1:1.18（极光大数据）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(200,155,60,0.1);">
+          <div class="ic-num" style="color:#c89800;font-weight:800;font-size:1.1rem;margin-bottom:6px;">03</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">皮肤 IP 化 = 跨界联名 + 传统文化</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#c89800;font-weight:600;margin-bottom:8px;">迁移场景：IP 长线运营 / 跨界联名</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">王者荣耀用皮肤把游戏变成了 IP 载体：2022 年和南昌滕王阁联动的"弈星-滕王阁序"让滕王阁国庆接待人次同比 +10%；2024 年和李白故居江油联动的"李白-谪仙醉月"让江油旅游收入同比 +29.82%</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(200,155,60,0.3);">📊 2022 滕王阁、2024 江油（江油市文广旅局）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5dd 100%);border:1px solid rgba(200,155,60,0.25);border-left:5px solid #c89800;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(200,155,60,0.1);">
+          <div class="ic-num" style="color:#c89800;font-weight:800;font-size:1.1rem;margin-bottom:6px;">04</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">电竞生态 = 持续生产共同记忆</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#c89800;font-weight:600;margin-bottom:8px;">迁移场景：长生命周期运营 / 玩家社区</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">KPL 联赛（2016-09 首届）+ 高校赛 + 城市赛 + 亚运会电竞（2023 杭州首金）形成完整赛事体系。电竞不只是营销，它在持续生产"我们一起看的比赛"这种共同记忆——这是 MOBA 比 RPG 更难被取代的原因</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(200,155,60,0.3);">📊 KPL 自 2016 年举办至今 9 年（腾讯电竞）</div>
+        </div>
+      </div>
+
+      <h4>4.2 对独立游戏 / 中小厂的启发</h4>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fffaf2 0%,#fff0db 100%);border-left:4px solid #c89800;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#c89800;font-weight:700;">方法论洞察 · 边缘项目的赛马机制</div>
+        <p>《王者荣耀》最初是腾讯天美的"边缘项目"，《全民超神》才是嫡系——结果边缘的跑赢了嫡系。这给中小厂一个启示：<strong>不要被"重要"项目绑架</strong>，反而要保留几个"看起来不重要"的实验项目，让它们自由生长。这与腾讯内部的"赛马机制"哲学一致：QQ 秀、QQ 空间、微信、王者荣耀都不是决策层战略决策出来的产品。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fffaf2 0%,#fff0db 100%);border-left:4px solid #c89800;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#c89800;font-weight:700;">方法论洞察 · 短局时 + 移动端 = 全民玩家</div>
+        <p>MOBA 在端游上是"30-40 分钟的硬核游戏"，到了移动端被压缩到 15 分钟可投降，结果用户规模从 2000 万飙升到 2 亿。中小厂要思考：<strong>你的品类里有没有"短局时"的简化版机会</strong>？把 30 分钟对局简化到 5 分钟、把硬核操作简化为"一指流"——这不是降级，是"扩大目标用户"的机会。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fffaf2 0%,#fff0db 100%);border-left:4px solid #c89800;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#c89800;font-weight:700;">方法论洞察 · 辅助的"高频小高光"设计</div>
+        <p>辅助英雄（以 2019-04-16 上线、588 点券的瑶为代表）被设计成"完全依赖队友 + 独特机制"，但通过<strong>短而频繁的高光</strong>（附身、刷盾、解控）让每个玩家都感受到"我在做贡献"。中小厂做合作类游戏时，<strong>不要让辅助/辅助位变成"工具人"</strong>，要给辅助位独立的高光时刻——这是降低辅助位玩家流失的关键。</p>
+      </div>
 
     </div>
 
     <div id="panel-think" class="tab-panel">
 
       <div class="think-section">
-        <h3>皮肤为什么让人愿意买</h3>
-        <p>我玩了1813天，皮肤买了125个。我不是那种为了强度氪金的人，我买皮肤只有一个原因：<strong>我觉得这个皮肤好看，而且它代表的那个角色我确实在用</strong>。</p>
-        <p>这让我意识到一个设计逻辑：皮肤购买决策的核心是"使用频率 × 情感认同"，不是"性价比"。</p>
-        <div class="highlight-text">
-          <strong>策划视角：</strong>皮肤这种商品和游戏本体不同，它没有使用价值（买了皮肤不会让你的角色变强），只有情绪价值。情绪价值的定价逻辑是：这个皮肤让我感觉好多少？好一点点就值这个价。所以皮肤设计最重要的不是加多少特效，是能不能在选择界面里被一眼看中。
+        <h3>1813 天 + 125 皮肤 + 1719 场：一个副游玩家的真实体感</h3>
+        <p>说实话，我玩王者荣耀的方式很"非典型"：从不追赛季、不冲段位、有喜欢的皮肤就买、没有就偶尔打两把。这种"不追进度"的状态能坚持 1813 天，本身就说明了这款游戏在"主动玩"之外的另一层价值——<strong>它是一个社交锚点</strong>。</p>
+        <p>我和固定开黑的 4 个朋友，从 2017 年一直玩到今天。我们的关系不是"一起玩游戏的人"，而是"通过游戏维系的朋友"。这款游戏在我们之间承担的是"每周固定见一次"的仪式感——皮肤送我们聊天话题、对局给我们交流机会、战令送我们共同的进度感。</p>
+        <div class="quote-block">
+          我发现：对很多成年人来说，王者荣耀不是"想玩的游戏"，而是"维系一段关系的方式"。这才是它真正难以被取代的地方。
         </div>
       </div>
 
       <div class="think-section">
-        <h3>我为什么把王者荣耀当副游玩</h3>
-        <p>说起来也奇怪，我玩王者荣耀1719场，但从来不追赛季、不冲段位、有喜欢的皮肤就买、没有就偶尔打两把。</p>
-        <p>我能在这种"不追进度"的状态下坚持这么久，是因为王者荣耀的社交粘性足够强——不是因为游戏本身，而是因为朋友在玩。这种"用社交关系维持游戏活跃"的逻辑，是王者荣耀最难被复制的护城河。</p>
-        <p>新年版本的福利活动是另一个留存点。福利多的版本我会多上线几次，不是因为福利本身有多值钱，是因为"大家一起领福利"本身是一种社交仪式感。</p>
+        <h3>皮肤购买的"使用频率 × 情感认同"公式</h3>
+        <p>我买的 125 个皮肤里，几乎没有"一次性英雄"的皮肤——也就是说，<strong>我不会为一个我从不玩的英雄花 88 元</strong>。这让我意识到：皮肤消费的核心不是"皮肤好不好看"，而是"我用不用这个英雄"。</p>
+        <p>把这套逻辑推到一般化：<strong>皮肤 = 长期使用频率 × 情感认同度</strong>。使用频率决定"看到皮肤的时间"，情感认同决定"愿意为它付多少钱"。两个变量相乘，结果是皮肤的真实需求强度。</p>
+        <div class="highlight-text">
+          <strong>策划视角：</strong>皮肤这种商品和游戏本体不同——它没有"使用价值"（买了皮肤不会让你变强），只有"情绪价值"。情绪价值的定价逻辑是：这个皮肤让我感觉好多少？好一点点就值这个价。所以皮肤设计最重要的不是加多少特效，是<strong>能不能在选择界面里被一眼看中</strong>。王者荣耀 6 元秒杀皮肤的销量经常超过 1688 传说限定，恰好印证了这一点——选皮肤的第一步是"被看到"，不是"被喜欢"。
+        </div>
+        <p>我在设计自己的内购系统时，会把这条公式记在心里：<strong>玩家愿意为"看到皮肤"付费，而不是为"皮肤本身"付费</strong>。这意味着，UI 设计比美术设计更重要。</p>
       </div>
 
       <div class="think-section">
-        <h3>作为策划，我怎么看王者荣耀</h3>
-        <ul>
-          <li><strong>皮肤生态是独立的产品线</strong>：皮肤不依赖游戏版本更新，可以随时发售，这让王者荣耀的商业化不完全依赖内容更新</li>
-          <li><strong>辅助设计的范本</strong>：瑶证明了"高频小高光"比"低频大高光"更适合休闲/辅助玩家，不需要多操作，但能持续感受到"我在做贡献"</li>
-          <li><strong>皮肤购买的核心驱动</strong>：不是性价比，是"我现在用不用这个英雄"——这是我在设计任何内购系统时都应该记住的</li>
-        </ul>
+        <h3>辅助瑶给我的"高频小高光"启发</h3>
+        <p>瑶是我玩得最多的辅助位（2019-04-16 上线、588 点券、首周折扣 388 点券）。一开始我以为是"工具人"——完全依赖队友存活，自己没存在感。但玩久了发现不是：<strong>附身、刷盾、解控</strong>这三个动作每一个都只有 1-2 秒，但足够亮眼、足够频繁。</p>
+        <p>这与传统 RPG 的"大招高光"形成对比：MOBA 玩家的成就感是<strong>"每秒都能感觉到自己有用"</strong>，不是"每 5 分钟一次大爆发"。这种"高频小高光"在设计上叫"瞬时反馈"——它不需要多复杂的机制，但能让每个玩家都觉得"我在做贡献"。</p>
+        <div class="highlight-text">
+          <strong>我的总结：</strong>
+          <ul style="margin-top:8px;padding-left:1.4rem;">
+            <li><strong>皮肤生态是独立的产品线</strong>：皮肤不依赖游戏版本更新，可以随时发售，这让王者荣耀的商业化不完全依赖内容更新节奏</li>
+            <li><strong>辅助的"高频小高光"范本</strong>：瑶证明了"频繁小亮点"比"低频大爆发"更适合休闲/辅助玩家——不需要多操作，但能持续感受到"我在做贡献"</li>
+            <li><strong>皮肤购买的核心驱动</strong>：不是性价比，是"我现在用不用这个英雄"——这是我在设计任何内购系统时都应该记住的</li>
+            <li><strong>关系链是真正的护城河</strong>：MOBA 的"我和朋友开黑"价值比"我打 5v5"价值更高——设计时要把社交闭环放在玩法闭环之上</li>
+          </ul>
+        </div>
       </div>
 
     </div>

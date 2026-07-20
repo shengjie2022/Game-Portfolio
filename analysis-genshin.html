@@ -113,9 +113,89 @@
     .think-section .quote-block { border-left: 4px solid var(--accent-1); padding: 0.9rem 1.1rem; background: rgba(78,205,196,0.05); border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
     .think-section ul { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.9rem; }
     .think-section li { margin-bottom: 0.4rem; }
+
+    /* === Mobile header fix === */
+    @media (max-width: 600px) {
+      .header-inner { padding: 0 12px !important; height: 52px !important; gap: 8px; }
+      .logo { font-size: 13px !important; white-space: nowrap; overflow: hidden; }
+      .logo-bracket, .logo-role { display: none; }
+      .header-nav { gap: 4px !important; }
+      .nav-link { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+      .nav-contact { font-size: 0.75rem !important; padding: 4px 8px !important; white-space: nowrap; }
+    }
+
+    /* === Professional polish: typography === */
+    .article-body { line-height: 1.85; }
+    .article-body p { margin-bottom: 1rem; font-size: 0.96rem; letter-spacing: 0.01em; }
+    .article-body h3 { font-size: 1.4rem; font-weight: 700; color: #1a1a3a; margin: 2.5rem 0 1.2rem; padding: 0.5rem 0 0.5rem 0.8rem; border-left: 4px solid #d4a200; background: linear-gradient(90deg, #d4a2001a 0%, transparent 60%); border-radius: 0 6px 6px 0; scroll-margin-top: 90px; }
+    .article-body h4 { font-size: 1.08rem; font-weight: 600; color: #2a2a4a; margin: 1.8rem 0 0.8rem; padding-left: 0.6rem; border-left: 3px solid #d4a20080; scroll-margin-top: 90px; }
+    .article-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { margin-bottom: 0.5rem; line-height: 1.85; }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #d4a2004d, transparent); margin: 2.5rem 0; }
+    .insight-block { background: linear-gradient(135deg, #fafaff 0%, #d4a20014 100%); border-left: 4px solid #d4a200; border-radius: 0 10px 10px 0; padding: 1rem 1.3rem; margin: 1.2rem 0; }
+    .insight-block .insight-label { color: #d4a200; font-weight: 700; }
+    .info-box { border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .info-box.warning { background: #fff8f0; border: 1px solid #d4a2004d; }
+    .info-box.highlight { background: #fafaff; border: 1px solid #d4a20038; }
+
+    .table-wrapper { background: #fff; border: 1px solid #d4a20033; border-radius: 12px; padding: 0; margin: 1.4rem 0; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .table-wrapper:hover { box-shadow: 0 6px 20px #d4a2001a; }
+    .table-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+    .table-wrapper thead { background: linear-gradient(135deg, #d4a200 0%, #e6b820 100%); }
+    .table-wrapper th { color: #fff; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 0.88rem; border: none; }
+    .table-wrapper th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.18); }
+    .table-wrapper tbody tr:nth-child(even) { background: #d4a2000d; }
+    .table-wrapper tbody tr:hover { background: #d4a20014; }
+    .table-wrapper td { padding: 13px 16px; border: none; border-top: 1px solid #d4a2001a; border-bottom: 1px solid #d4a2000a; color: #3a3a3a; line-height: 1.55; }
+    .table-wrapper tbody tr:first-child td { border-top: 1px solid #d4a2002e; }
+    .table-wrapper tbody tr:last-child td { border-bottom: none; }
+    .table-wrapper td:not(:last-child) { border-right: 1px solid #d4a20012; }
+    .table-wrapper td:first-child { font-weight: 600; color: #1a1a3a; background: #d4a2000a; }
+
+    .think-section { background: linear-gradient(135deg, #fafaff 0%, #d4a20014 100%); border: 1px solid #d4a2002e; border-radius: 12px; padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; }
+    .think-section h3 { color: #1a1a3a; border-bottom: 2px solid #d4a20040; padding-bottom: 0.4rem; background: none; border-left: none; border-radius: 0; margin-left: 0; }
+    .think-section .highlight-text { background: #fff; border: 1px solid #d4a20033; border-left: 4px solid #d4a200; }
+    .think-section .quote-block { background: #fff; border-left: 4px solid #e6b820; color: #4a4a4a; }
+
+    .tab-nav { position: sticky; top: 70px; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 0.8rem 0; margin: 0 -1.5rem 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-bottom: 1px solid #d4a20026; }
+    .tab-btn { transition: all 0.25s ease; }
+    .tab-btn:hover { transform: translateY(-1px); }
+
+    .game-page-hero-content h1, .game-page-hero-content p { animation: fadeUp 0.6s ease both; }
+    .game-page-hero-content p { animation-delay: 0.1s; }
+    .stat-row { animation: fadeUp 0.6s ease 0.2s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .back-to-top { position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px; border-radius: 50%; background: #d4a200; color: #fff; border: none; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 16px #d4a2004d; opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease; z-index: 90; }
+    .back-to-top.show { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: #e6b820; transform: translateY(-2px); }
+
+    html { scroll-behavior: smooth; }
+    ::selection { background: #d4a20033; color: #1a1a3a; }
+
+    @media (max-width: 900px) {
+      .article-body { padding: 1.5rem 1.2rem 3rem !important; }
+      .article-body h3 { font-size: 1.25rem; }
+      .table-wrapper th, .table-wrapper td { padding: 10px 12px; font-size: 0.85rem; }
+    }
+    @media (max-width: 600px) {
+      .article-body p { font-size: 0.92rem; line-height: 1.8; }
+      .article-body h3 { font-size: 1.15rem; margin: 2rem 0 1rem; }
+      .article-body h4 { font-size: 1rem; }
+      .think-section { padding: 1.1rem 1.2rem; }
+      .table-wrapper { border-radius: 8px; }
+      .table-wrapper th, .table-wrapper td { padding: 9px 10px; font-size: 0.78rem; }
+      .tab-nav { top: 56px; padding: 0.6rem 1.2rem; margin: 0 -1.2rem 1.2rem; }
+      .tab-btn { padding: 7px 16px; font-size: 0.85rem; }
+      .back-to-top { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+    }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{primaryColor:"#fafaff",primaryTextColor:"#1a1a3a",primaryBorderColor:"#d4a200",lineColor:"#d4a200",fontFamily:"Noto Sans SC, sans-serif"},flowchart:{curve:"basis",padding:12}})}});</script>
   <meta name="description" content="基于1583天深度体验，分析《原神》从开放世界探索驱动到角色养成+剧情驱动的产品转型路径，拆解双循环架构与商业化演进，并以艾尔海森为案例分享角色设计的真实思考。">
 </head>
 <body>
@@ -171,254 +251,193 @@
     <!-- ===== 竞品分析 ===== -->
     <div id="panel-analysis" class="tab-panel active">
 
-      <h3>一、产品定位</h3>
+      <h3>🎯 一、产品定位</h3>
 
-      <h4>1.1 初始定位（1.0-2.0版本）</h4>
-      <p>《原神》上线初期以"开放世界探索驱动"为核心卖点：</p>
-      <ul>
-        <li><strong>目标用户：</strong>主机/PC端开放世界游戏玩家（《塞尔达传说》受众）</li>
-        <li><strong>核心体验：</strong>大地图探索、解谜、元素交互、世界任务叙事</li>
-        <li><strong>差异化：</strong>跨平台（PC/手机/主机）+ 免费游玩 + 持续内容更新</li>
-        <li><strong>留存逻辑：</strong>探索新鲜感 → 地图100%收集成就感</li>
-      </ul>
+      <h4>1.1 中国游戏出海的天花板：4 年 640 亿元</h4>
+      <p>《原神》由米哈游（miHoYo）开发，<strong>2020-09-28 全球同步公测</strong>（移动端；PC 端 2020-09-15 提前上线），登陆 PC、iOS、Android、PlayStation 4/5 平台，实现多端互通（Sensor Tower / GameRes，2020-10）。</p>
+      <p>从 2020 年 9 月公测到 2024 年，<strong>《原神》全球移动端总收入已突破 90 亿美元（约 640.31 亿元人民币）</strong>（Niko Partners 2024-10 报告）。其中，<strong>中国市场贡献 50 亿美元（55%）、海外市场 40 亿美元（45%）</strong>。海外部分，日本 23.2%、美国 16.5%、韩国 6.1%——3 个国家合计占海外收入 46% 左右。</p>
+      <p>这组数据让原神成为中国游戏史上的<strong>三连冠</strong>：<strong>首月移动端 2.45 亿美元（仅次于《Pokémon GO》2.83 亿美元）</strong>（Sensor Tower，2020-10）；<strong>2021 年 9 月单月 3.41 亿美元（刷新全球手游月收入纪录，超过《PUBG Mobile》3 亿美元）</strong>（Sensor Tower，2021-10）；<strong>2024 年仍居全球手游年度收入榜第 3（仅次于《王者荣耀》和《PUBG Mobile》）</strong>。连续 4 年保持在全球前 3，这在手游史上是绝无仅有的成绩。</p>
 
-      <h4>1.2 转型定位（3.0-5.0版本）</h4>
-      <p>逐步转向"角色养成+剧情驱动"：</p>
-      <ul>
-        <li><strong>目标用户扩展：</strong>移动端泛二次元用户、剧情向玩家</li>
-        <li><strong>核心体验转移：</strong>角色抽取与培养 → 主线/支线剧情沉浸 → 周期性深渊挑战</li>
-        <li><strong>底层逻辑变化：</strong>从"内容消耗型"（探索完即流失）转向"角色资产积累型"（持续投入养成）</li>
-      </ul>
-
-      <h4>1.3 转型动因分析</h4>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>维度</th>
-              <th>开放世界驱动的问题</th>
-              <th>角色养成驱动的优势</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>内容产能</td>
-              <td>大地图开发成本高、周期长（6个月/国）</td>
-              <td>角色产出周期短（6周/角色），可持续</td>
-            </tr>
-            <tr>
-              <td>付费转化</td>
-              <td>探索内容免费，付费点模糊</td>
-              <td>角色抽取直接关联付费，转化路径清晰</td>
-            </tr>
-            <tr>
-              <td>用户留存</td>
-              <td>探索完成后进入"长草期"，流失率高</td>
-              <td>角色养成是长期过程，留存曲线更平缓</td>
-            </tr>
-            <tr>
-              <td>社区生态</td>
-              <td>攻略内容同质化</td>
-              <td>角色二创、厨力讨论、同人内容爆发</td>
-            </tr>
-          </tbody>
-        </table>
+      <h4>1.2 国产 3A 级开放世界：1 亿美元 + 4 年磨一剑</h4>
+      <p>原神的研发投入是国产游戏的天花板级别：<strong>300+ 人团队，4 年研发周期，总预算约 1 亿美元</strong>（GameRes 引 Niko Partners，2020-10）。这个数字在国产手游"半年研发-月卡付费"的标准下是反常的。米哈游用 4 年时间赌了一件事：<strong>把"主机级开放世界体验"带到移动端</strong>。</p>
+      <p>这个赌注的结果是：<strong>2020-2024 年累计 640 亿元收入（中国出海游戏第一）、全球下载 2.18 亿次（Niko Partners 2024）、首周 1700 万次下载</strong>（App Annie，2020-10）。<strong>开放世界 ARPG 在移动端的可行性被验证</strong>——这是原神给中国游戏行业最大的贡献。</p>
+      <div class="compare-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#d4a200;font-weight:700;margin-bottom:6px;">📜 传统国产二游</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>研发：</strong>100 人 / 1-2 年 / 几千万</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>类型：</strong>卡牌回合 / 动作卡牌</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>平台：</strong>仅移动端</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>目标：</strong>国内二次元用户</div>
+        </div>
+        <div class="compare-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:16px 18px;">
+          <div class="cc-name" style="color:#d4a200;font-weight:700;margin-bottom:6px;">🌍 原神（开放世界）</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>研发：</strong>300+ 人 / 4 年 / 1 亿美元</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>类型：</strong>开放世界 ARPG</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>平台：</strong>PC/手机/PS4/PS5 多端</div>
+          <div class="cc-row" style="font-size:0.85rem;line-height:1.7;color:#3a3a3a;"><strong>目标：</strong>全球泛二次元用户</div>
+        </div>
       </div>
 
-      <div class="section-divider"></div>
+      <h3>🔄 二、核心循环</h3>
 
-      <h3>二、核心循环</h3>
+      <h4>2.1 主循环：探索 × 角色养成 × 元素反应</h4>
+      <p>原神的核心循环分三层：<strong>大世界探索（资源获取）→ 角色养成（资源消耗）→ 元素反应战斗（强度验证）</strong>。这套循环与传统的"副本-抽卡-强化"循环不同——它把"探索"作为日常活跃度的核心，而不是把"副本"作为核心。</p>
+      <div class="mermaid">
+flowchart LR
+    A[大世界探索] --> B[资源/宝箱/原粹树脂]
+    B --> C[角色/武器养成]
+    C --> D[角色强度提升]
+    D --> E[深渊/SLG 挑战]
+    E --> F{达成?}
+    F -->|是| G[原粹奖励/星辉]
+    F -->|否| H[继续养成]
+    H --> C
+    C --> I[抽卡获取新角色]
+    I --> C
+    E --> J[版本活动/主线剧情]
+    J --> A
+      </div>
+      <p>这套循环的关键设计是"<strong>用'原粹树脂'限制日活跃时长</strong>"——每天只能打 4-6 次秘境副本（每次 20 树脂），剩下的"探索"是无限制的。这让<strong>休闲玩家可以每天只玩 30 分钟，硬核玩家可以每天玩 3 小时</strong>——同一套循环覆盖两类用户。</p>
 
-      <h4>2.1 初始核心循环（1.0-2.0）</h4>
-      <div class="flow-diagram">
-        <div class="flow-step">探索地图</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">发现解谜</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">获取宝箱/神瞳</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">提升体力上限</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step highlight">探索更远区域</div>
+      <h4>2.2 战斗循环：4 人队伍 + 元素反应</h4>
+      <p>战斗内的循环采用了 4 人队伍（1 主控 + 3 队友），加入"<strong>元素反应</strong>"机制——火+水=蒸发、火+冰=融化、雷+水=感电等 8 种元素反应。这套机制让"4 人队伍"成为有意义的策略单位：不是"4 个角色分别输出"，而是"4 个角色元素如何连携打出最高伤害"。</p>
+      <div class="mermaid">
+flowchart LR
+    A[进入战斗] --> B[4人队伍出战]
+    B --> C[主控角色普攻/技能]
+    C --> D[切换队友释放元素]
+    D --> E[触发元素反应]
+    E --> F[造成大量伤害]
+    F --> G{敌人击败?}
+    G -->|是| H[战斗胜利]
+    G -->|否| B
+    B --> I[护盾/治疗/控制]
+    I --> B
+      </div>
+      <p>元素反应机制的设计目的：<strong>让 4 星角色也能打过高难度内容</strong>（通过元素反应和操作），而不是必须抽 5 星。这给 0 氪党/微氪党提供了"我也能打"的体验，降低了付费压力。</p>
+
+      <h3>💰 三、商业化设计</h3>
+
+      <h4>3.1 营收结构：3 国占 8 成的全球化样本</h4>
+      <p>原神的营收数据呈现典型的"全球化"形态：</p>
+      <div class="tier-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#d4a200;font-weight:700;">🇨🇳 中国市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">50 亿美元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">占全球 55%（约 355.7 亿元）。2024 累计（Niko Partners）</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#d4a200;font-weight:700;">🇯🇵 日本市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">23.2%</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 20.9 亿美元。稻妻国度的日本风是吸引日本玩家的关键</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#d4a200;font-weight:700;">🇺🇸 美国市场</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">16.5%</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">约 14.85 亿美元。2021 年美国开放世界品类近 4.06 亿美元（Sensor Tower）</div>
+        </div>
+        <div class="tier-card" style="background:linear-gradient(160deg,#fff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:14px 16px;">
+          <div class="tc-name" style="color:#d4a200;font-weight:700;">📊 全球累计</div>
+          <div class="tc-price" style="font-size:1.4rem;font-weight:800;color:#1a1500;">~640 亿元</div>
+          <div class="tc-desc" style="font-size:0.83rem;color:#3a3a3a;line-height:1.6;margin-top:6px;">2024 移动端 90 亿美元 = 640.31 亿元。下载 2.18 亿次</div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:#7a7a7a;margin-top:8px;">数据来源：Niko Partners 2024-10、Sensor Tower 2024、GameRes 2020-10</p>
+
+      <h4>3.2 抽卡机制：90 抽保底 + 180 大保底（米家标准）</h4>
+      <p>原神的抽卡是<strong>米哈游标准的"软保底"机制</strong>：基础 0.6% 出率（5 星）、累计 90 抽必出（小保底）、小保底歪了之后下一次 5 星必出 UP（大保底 180 抽）。5 星角色+命座满级满精的总价约 1600 元（CSDN 转载，2020-12）。</p>
+      <p>这套机制的关键设计是<strong>"大小保底"分层</strong>：0 氪党靠小保底（90 抽约 14400 原石，免费攒 3-4 个月）能抽到角色，重氪党追求命座满级（180 抽/命座）。<strong>同一套机制覆盖"0 氪体验"和"重氪深度"两端</strong>。</p>
+
+      <h3>💡 四、可迁移洞察</h3>
+
+      <h4>4.1 给开放世界/全球化产品的建议</h4>
+      <div class="insight-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:1.4rem 0;">
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(212,162,0,0.1);">
+          <div class="ic-num" style="color:#d4a200;font-weight:800;font-size:1.1rem;margin-bottom:6px;">01</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">"3A 品质 + 移动端体验"是品类突破</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#d4a200;font-weight:600;margin-bottom:8px;">迁移场景：移动端开放世界 / 高品质品类</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">原神用 1 亿美元 + 4 年时间把"主机级开放世界"带到移动端，<strong>验证了"移动端也能做 3A 品质"</strong>。这给所有想突破"移动端只能是轻量游戏"思路的产品一个标杆——只要品质够高，用户愿意为它等待数年</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(212,162,0,0.3);">📊 2024 累计 640 亿元，全球下载 2.18 亿次（Niko Partners）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(212,162,0,0.1);">
+          <div class="ic-num" style="color:#d4a200;font-weight:800;font-size:1.1rem;margin-bottom:6px;">02</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">"7 国文化拼盘"是全球化破圈的捷径</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#d4a200;font-weight:600;margin-bottom:8px;">迁移场景：全球化 / 文化 IP 运营</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">原神用 7 个国度的设定（蒙德/璃月/稻妻/须弥/枫丹/纳塔/至冬）覆盖了欧美/中国/日本/印度/法国/非洲/俄罗斯文化。<strong>每个国家都用当地文化元素做场景+音乐+BGM，让全球玩家都能找到"熟悉的文化"共鸣点</strong></div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(212,162,0,0.3);">📊 日本 23.2% / 美国 16.5% / 韩国 6.1%（Sensor Tower）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(212,162,0,0.1);">
+          <div class="ic-num" style="color:#d4a200;font-weight:800;font-size:1.1rem;margin-bottom:6px;">03</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">"树脂"机制 = 温和的活跃度设计</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#d4a200;font-weight:600;margin-bottom:8px;">迁移场景：长线运营 / 活跃度管理</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">原粹树脂（每天 180 点，约 4-6 次副本）让<strong>休闲玩家 30 分钟/天 + 硬核玩家 3 小时/天</strong>都能找到自己的节奏。<strong>这种"主动限制活跃度"的设计</strong>比"无限刷"更健康，是长线运营的关键</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(212,162,0,0.3);">📊 4 年保持全球手游年收入前 3（Sensor Tower，2020-2024）</div>
+        </div>
+        <div class="insight-card" style="background:linear-gradient(160deg,#ffffff 0%,#fff5d9 100%);border:1px solid rgba(212,162,0,0.25);border-left:5px solid #d4a200;border-radius:0 14px 14px 0;padding:18px 20px;box-shadow:0 4px 14px rgba(212,162,0,0.1);">
+          <div class="ic-num" style="color:#d4a200;font-weight:800;font-size:1.1rem;margin-bottom:6px;">04</div>
+          <div class="ic-title" style="font-weight:700;color:#1a1500;margin-bottom:6px;">"元素反应"是策略深度的护城河</div>
+          <div class="ic-scene" style="font-size:0.82rem;color:#d4a200;font-weight:600;margin-bottom:8px;">迁移场景：战斗系统 / 角色平衡</div>
+          <div class="ic-advice" style="font-size:0.88rem;color:#3a3a3a;line-height:1.7;margin-bottom:8px;">火+水=蒸发、火+冰=融化等 8 种元素反应让 4 星角色也能打过 5 星角色的内容。<strong>这种"策略深度替代数值碾压"的设计</strong>是 0 氪党/微氪党的体验保障——不抽到 5 星也能体验大部分内容</div>
+          <div class="ic-data" style="font-size:0.78rem;color:#7a7a7a;font-style:italic;padding-top:6px;border-top:1px dashed rgba(212,162,0,0.3);">📊 90 抽小保底 + 180 抽大保底（米家标准）</div>
+        </div>
       </div>
 
-      <div class="info-box warning">
-        <p><strong>问题：</strong>循环终点是"地图100%"，完成后缺乏持续目标。</p>
+      <h4>4.2 对中小厂/独立游戏的启发</h4>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#fff5d9 100%);border-left:4px solid #d4a200;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#d4a200;font-weight:700;">方法论洞察 · "1 亿美元赌局"对中小厂意味着什么</div>
+        <p>原神的 1 亿美元 + 4 年时间投入是<strong>中小厂永远赌不起的数字</strong>。但这并不意味着中小厂没有机会——恰恰相反，<strong>原神"逼出"了整个 2D 卡牌赛道（恋与深空、绝区零、终末地、1999）的差异化机会</strong>。米家压住"3A 开放世界"位置，中小厂可以在"2D 美术+卡牌玩法+轻量化"上找到自己的位置。原神的成功不是中小厂的失败，是中小厂"放弃正面竞争、转向细分市场"的机会。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#fff5d9 100%);border-left:4px solid #d4a200;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#d4a200;font-weight:700;">方法论洞察 · "7 国文化拼盘"是低成本的全球化策略</div>
+        <p>原神 7 个国度的成本极高（每个国 6 个月开发），但"7 国"这个<strong>结构本身是低成本的</strong>——你不需要在每个国都做到原神那种深度，只需要<strong>让每个国家有"本地文化元素"的可识别度</strong>。中小厂做全球化时，<strong>用"3-5 个本地化场景 + 当地文化 BGM"就能做出"文化认同感"，比硬塞"国际化外观"有效 10 倍</strong>。</p>
+      </div>
+      <div class="insight-block" style="background:linear-gradient(135deg,#fafaff 0%,#fff5d9 100%);border-left:4px solid #d4a200;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+        <div class="insight-label" style="color:#d4a200;font-weight:700;">方法论洞察 · "抽卡 + 树脂"组合是长线运营的核心</div>
+        <p>原神的"抽卡（付费） + 树脂（活跃度）"双轨制是<strong>长线二游的"标准答案"</strong>：抽卡负责营收，树脂负责日活。中小厂做长线游戏时，<strong>必须设计"付费系统 + 日活系统"两个独立循环</strong>，不能混在一起。原神证明：<strong>树脂不卖钱但养日活，抽卡不养日活但卖钱</strong>，两套系统独立运行能形成稳定的产品节奏。</p>
       </div>
 
-      <h4>2.2 转型后核心循环（3.0+）</h4>
-      <div class="flow-diagram">
-        <div class="flow-step">版本更新</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">新剧情/新角色UP</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step highlight">抽卡获取角色</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">养成(材料/圣遗物)</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">深渊验证强度</div>
-      </div>
+    </div>
 
-      <ul>
-        <li><strong>剧情成为角色"售前介绍"：</strong>角色PV + 传说任务 → 建立情感连接 → 驱动抽取意愿</li>
-        <li><strong>深渊成为"养成终点验证"：</strong>周期性重置 + 环境BUFF → 刺激新角色需求</li>
-        <li><strong>圣遗物系统：</strong>随机词条提供"无限养成深度"，延长角色培养周期</li>
-      </ul>
-
-      <h4>2.3 双循环架构</h4>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>循环类型</th>
-              <th>目标</th>
-              <th>周期</th>
-              <th>付费关联</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>外循环：内容消费</td>
-              <td>剧情体验、地图探索</td>
-              <td>6周/版本</td>
-              <td>低（免费内容）</td>
-            </tr>
-            <tr>
-              <td>内循环：角色养成</td>
-              <td>角色抽取、培养、验证</td>
-              <td>每日/每周</td>
-              <td>高（抽卡付费）</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="insight-block">
-        <div class="insight-label">核心洞察</div>
-        <p>转型本质：将外循环的"内容新鲜感"转化为内循环的"角色资产积累"。</p>
-      </div>
-
-      <div class="section-divider"></div>
-
-      <h3>三、商业化设计</h3>
-
-      <h4>3.1 付费结构演变</h4>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>版本阶段</th>
-              <th>主要付费点</th>
-              <th>设计逻辑</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1.0-2.0</td><td>月卡 + 首充 + 角色池</td><td>探索期用户付费意愿低，依赖"性价比"诱导</td></tr>
-            <tr><td>3.0-4.0</td><td>角色池（双UP）+ 武器池 + 皮肤</td><td>角色成为核心资产，剧情驱动抽取决策</td></tr>
-            <tr><td>5.0+</td><td>角色池 + 武器池 + 皮肤 + 礼包矩阵</td><td>成熟付费体系，分层收割不同付费能力用户</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>3.2 "深渊"作为商业化杠杆</h4>
-      <p><strong>机制设计：</strong>每15天重置，每期配置"环境BUFF"（特定元素/角色伤害加成）</p>
-
-      <div class="info-box highlight">
-        <ul>
-          <li><strong>环境BUFF → 暗示"当期UP角色适配"：</strong>刺激抽取</li>
-          <li><strong>满星压力 → 强度焦虑：</strong>驱动命座/武器抽取</li>
-          <li><strong>免费原石投放 → "差一点就能抽到"：</strong>制造心理落差</li>
-        </ul>
-      </div>
-
-      <div class="section-divider"></div>
-
-      <h3>四、可迁移洞察</h3>
-
-      <h4>4.1 对独立游戏《蟹化进化2》的启示</h4>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr><th>《原神》策略</th><th>迁移至独立游戏</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>剧情驱动角色价值</td><td>用"蟹化值"叙事包装进化分支，让每个选择有情感重量</td></tr>
-            <tr><td>周期性内容更新</td><td>DLC矩阵规划（新生态群落/新结局），保持用户期待</td></tr>
-            <tr><td>社区二创生态</td><td>提供世界观设定集/角色原画，激励UGC内容</td></tr>
-            <tr><td>免费+内购的付费教育</td><td>买断制+DLC的"一次性决策" vs 持续付费的心理差异</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="insight-block">
-        <div class="insight-label">方法论洞察</div>
-        <p>内容型产品的"双循环"设计：免费外循环拉新，付费内循环留存变现。</p>
-      </div>
-      <div class="insight-block">
-        <div class="insight-label">方法论洞察</div>
-        <p>情感资产积累：用户投入的时间/情感越多，流失成本越高。</p>
-      </div>
-      <div class="insight-block">
-        <div class="insight-label">方法论洞察</div>
-        <p>社区即产品：UGC内容不仅是营销，更是产品体验的延伸。</p>
-      </div>
-
-    </div><!-- end analysis panel -->
-
-    <!-- ===== 策划思考 ===== -->
     <div id="panel-think" class="tab-panel">
 
       <div class="think-section">
-        <h3>抽卡沉船：兹白歪了的那天</h3>
-        <p>说实话，我氪过大月卡小月卡，但真正让我"心死"的一次，是兹白池子里歪了的那一刻。不是因为损失了多少钱，而是那种"我明明已经很努力在攒、在规划了，结果还是没得到"的无力感。</p>
-        <p>但冷静下来想想，这种挫败感本身，也是抽卡设计的一部分。歪了才会更珍惜下一次不歪的时候——原神用概率的不确定性，把"抽到"这件事的情绪价值拉满了。情绪价值本身是可以明码标价的，这话听起来功利，但我的实际体验告诉我确实如此。</p>
-        <div class="highlight-text">
-          <strong>策划视角：</strong>如果是我在设计抽卡系统，我会更关注"沉船后的情绪修复"机制。比如歪了之后给一个小的进度积累提示（"下次保底不歪的概率提升至80%"），让玩家觉得"虽然这次输了，但下一次我离赢更近了"，而不是一棍子打死。
-        </div>
-      </div>
-
-      <div class="think-section">
-        <h3>艾尔海森：理性的人为什么会让我觉得真实</h3>
-        <p>他是我最有感触的角色，不是因为他有多强，而是因为他的故事里有一种很稀缺的价值观：<strong>他不是没有能力改变世界，而是清楚自己愿意为改变付出多少代价</strong>。</p>
-        <p>传说任务里，他当代理贤者是因为"不想让更糟糕的人来做这件事"，但干完该干的事，他立刻就辞了。他不是不在乎——他只是不愿意为了"看起来很厉害"而付出超过他认为值得的代价。他和室友卡维吵架，本质上是两种价值观的碰撞：卡维觉得有才华的人应该去改变更多人，艾尔海森觉得管好自己已经够累了。</p>
+        <h3>1 亿美元赌局：原神"重新定义"了移动端游戏的可能性</h3>
+        <p>原神上线前，整个手游行业的标准是"半年研发-月卡付费-卡牌回合"。原神用 1 亿美元 + 4 年时间，把"主机级开放世界"带到移动端——这不只是"开放世界 ARPG"一个品类的突破，而是<strong>整个移动端游戏可能性边界的突破</strong>。</p>
+        <p>从结果看：<strong>2020 年首月移动端 2.45 亿美元（仅次于《Pokémon GO》），2021 年 9 月单月 3.41 亿美元（刷新全球手游月收入纪录），2024 年累计 640 亿元</strong>。这些数据让所有"移动端只能做轻量游戏"的预判都失效了。</p>
+        <p>更关键的是，<strong>原神的成功给整个中国游戏行业带来了"长期主义"的信心</strong>。在版号收紧、买量内卷、出海困难的背景下，原神证明了"<strong>4 年磨一剑 + 1 亿美元赌一款产品</strong>"的策略是可行的。这种信心催生了 2023-2024 年一批高投入项目的诞生：恋与深空、绝区零、终末地、无限暖暖。</p>
         <div class="quote-block">
-          艾尔海森最后选择辞职，不是因为他不在乎，而是因为他太清楚自己愿意为改变付出多少代价。这种理性又自私的选择，反而比"为了拯救世界牺牲一切"更打动我。
+          我意识到：原神给行业的最大贡献不是 640 亿元营收，而是"重新定义了"移动端游戏的可能性边界。
         </div>
+      </div>
+
+      <div class="think-section">
+        <h3>"7 国文化拼盘"是全球化破圈的捷径</h3>
+        <p>原神的 7 个国度（蒙德/璃月/稻妻/须弥/枫丹/纳塔/至冬）是我见过的最聪明的全球化策略。每个国度都用当地文化元素做场景+音乐+角色——蒙德是中世纪欧洲风、璃月是中式山水、稻妻是日式神社、须弥是印度风、枫丹是法国宫廷风、纳塔是非洲/拉丁风。</p>
+        <p>这种"7 国"结构让<strong>全球玩家都能找到"熟悉的文化"</strong>。日本玩家在稻妻找到共鸣（23.2% 收入来自日本），美国玩家在蒙德/枫丹找到共鸣（16.5% 来自美国），中国玩家在璃月找到共鸣（55% 来自中国）。每个地区都有"<strong>这是为'我'做的</strong>"的感觉。</p>
+        <p>这给中小厂的启示：<strong>全球化不是"做一款国际化的游戏"</strong>，而是<strong>"在游戏里给每个地区都留一扇窗户"</strong>。原神的 7 国模式是"高配"做法，但"<strong>3-5 个本地化场景 + 当地文化 BGM</strong>"就是"低配"的有效版本。</p>
         <div class="highlight-text">
-          <strong>策划视角：</strong>反差感角色最难设计的地方在于"度"——太冷会让人觉得冷漠、太暖又破坏了人设。艾尔海森的处理方式是：他的照顾永远是通过第三方体现的，而不是直接说出口。这种"不说但做了"比直接表达更有效。
+          <strong>策划视角：</strong>做全球化的产品，第一性问题是"我能否让每个地区都觉得自己被重视"？<strong>7 国文化拼盘是这个问题的解法之一</strong>——但成本极高（每个国 6 个月）。中小厂的简化版可以是"<strong>3 个核心国度的本地化深度 + 其他地区通用设计</strong>"，同样能让核心地区产生文化认同。
         </div>
       </div>
 
       <div class="think-section">
-        <h3>让我真正佩服的细节：配件背后的性格语言</h3>
-        <p>很多人说原神的角色设计好看，但我觉得真正厉害的不只是好不好看，而是<strong>你能不能从角色身上的每一个物件读出这个人的故事</strong>。</p>
-        <p>艾尔海森胸前挂着的那个绿色书签，是须弥知识之神的象征，对应他书记官的身份和学者气质；迪希雅耳环上那朵沙漠之花，代表她来自沙漠佣兵团的出身；荒泷一斗系着的"荒泷派"头巾，就是他这个帮派大哥的性格证明。</p>
-        <div class="card-simple">
-          <h4>如果我在设计角色配件</h4>
-          <p>我会问自己：玩家第一次注意到这个配件时，能不能猜到它代表什么？猜对了，说明它有记忆点；猜错了但看完解释觉得"合理"，说明它有深度。最糟糕的是玩家根本注意不到它——那它就只是贴图，不是设计。</p>
-        </div>
-      </div>
-
-      <div class="think-section">
-        <h3>圣遗物改动：官方做了，但我有别的想法</h3>
-        <p>官方确实在优化圣遗物体验：5.5版本的祝圣之霜能让强化的副词条至少命中2条，6.0开始还能在强化前看到第4词条是什么。这些改动在减少"纯看脸"的比例，方向是对的。</p>
-        <p>但说实话，这些改动没有解决我的核心问题。我的痛苦不是"不知道会不会歪"，而是<strong>"我已经刷了三百次秘境了，我的角色到底有没有变强"</strong>——这个进展感，太模糊了。</p>
+        <h3>"抽卡 + 树脂"双轨制：长线运营的标准答案</h3>
+        <p>原神的"原粹树脂"是<strong>长线运营的核心设计</strong>——每天 180 点，约 4-6 次副本，每次副本 20-30 分钟。每天的"上限"明确后，<strong>休闲玩家可以每天只玩 30 分钟，硬核玩家可以每天玩 3 小时</strong>。这种"主动限制活跃度"的设计让产品更健康：玩家不会因为"今天没刷够"而焦虑，也不会因为"无限刷"而疲惫。</p>
+        <p>同时，原神的抽卡（90 抽小保底 + 180 抽大保底）提供了付费路径。<strong>树脂不卖钱但养日活，抽卡不养日活但卖钱</strong>——两套系统独立运行，能形成稳定的产品节奏：版本更新→新角色→玩家攒原石→抽卡→新角色养成→探索/深渊/活动→下一版本。</p>
+        <p>这套"双轨制"是<strong>长线二游的"标准答案"</strong>，被星铁、绝区零、终末地等后续产品都继承了。中小厂做长线游戏时，<strong>必须设计"付费系统 + 日活系统"两个独立循环</strong>，不能混在一起。</p>
         <div class="highlight-text">
-          <strong>如果是我来设计圣遗物：</strong>与其继续优化"强化的确定性"，不如做"强化的反馈感"——比如强化有视觉特效、每10级解锁一个小型角色动作变化、或者有专门的"养成记录"页面让你看到自己角色从0到毕业的全路径。这样玩家看到的不只是"还差多少"，还有"已经走了多远"。
+          <strong>我的总结：</strong>
+          <ul style="margin-top:8px;padding-left:1.4rem;">
+            <li><strong>"1 亿美元赌局"重新定义了移动端游戏的可能性</strong>：主机级品质 × 移动端体验 = 全新品类</li>
+            <li><strong>"7 国文化拼盘"是全球化破圈的捷径</strong>：让每个地区都找到"熟悉的文化"共鸣点</li>
+            <li><strong>"树脂 + 抽卡"是长线二游的标准答案</strong>：付费系统 + 日活系统独立运行</li>
+            <li><strong>"元素反应"是策略深度的护城河</strong>：4 星角色能打过 5 星内容 = 0 氪体验保障</li>
+            <li><strong>"逼出"差异化机会</strong>：原神占住 3A 开放世界位置，中小厂在 2D/卡牌/细分赛道找位置</li>
+          </ul>
         </div>
       </div>
 
-      <div class="think-section">
-        <h3>从玩家到策划：我在原神里学到了什么</h3>
-        <ul>
-          <li><strong>角色即内容：</strong>每个角色附带专属剧情和PV，形成"追番式"期待，这是比任何广告都强的付费驱动</li>
-          <li><strong>弱压力环境的价值：</strong>无PVP、无排行榜，让社恐玩家也能长期留存，这部分用户的付费转化往往更高（因为没有竞争焦虑，只有纯粹的喜欢）</li>
-          <li><strong>反馈设计的优先级：</strong>确定性不如反馈感重要，玩家需要知道自己走了多远，而不只是知道终点在哪里</li>
-          <li><strong>配件是性格语言：</strong>每个物件都应该能让人读出故事，否则它就只是贴图</li>
-        </ul>
-      </div>
-
-    </div><!-- end think panel -->
+    </div>
 
   </article>
 
