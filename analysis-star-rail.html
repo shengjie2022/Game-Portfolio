@@ -77,13 +77,13 @@
     /* === Professional polish: typography === */
     .article-body { line-height: 1.85; }
     .article-body p { margin-bottom: 1rem; font-size: 0.96rem; letter-spacing: 0.01em; }
-    .article-body h3 { font-size: 1.4rem; font-weight: 700; color: #1a1a3a; margin: 2.5rem 0 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(74,40,160,0.15); scroll-margin-top: 90px; }
-    .article-body h4 { font-size: 1.08rem; font-weight: 600; color: #2a2a4a; margin: 1.8rem 0 0.8rem; scroll-margin-top: 90px; }
+    .article-body h3 { font-size: 1.4rem; font-weight: 700; color: #1a1a3a; margin: 2.5rem 0 1.2rem; padding: 0.5rem 0 0.5rem 0.8rem; border-left: 4px solid #4a28a0; background: linear-gradient(90deg, rgba(74,40,160,0.06) 0%, transparent 60%); border-radius: 0 6px 6px 0; scroll-margin-top: 90px; }
+    .article-body h4 { font-size: 1.08rem; font-weight: 600; color: #2a2a4a; margin: 1.8rem 0 0.8rem; padding-left: 0.6rem; border-left: 3px solid rgba(74,40,160,0.4); scroll-margin-top: 90px; }
     .article-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
     .article-body li { margin-bottom: 0.5rem; line-height: 1.85; }
 
     /* === Professional polish: visual hierarchy === */
-    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(74,40,160,0.2), transparent); margin: 2.5rem 0; }
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(74,40,160,0.25), transparent); margin: 2.5rem 0; }
     .insight-block { background: linear-gradient(135deg, #faf8ff 0%, #f3eefe 100%); border-left: 4px solid #4a28a0; border-radius: 0 10px 10px 0; padding: 1rem 1.3rem; margin: 1.2rem 0; transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .insight-block:hover { transform: translateX(2px); box-shadow: 0 4px 12px rgba(74,40,160,0.08); }
     .insight-block .insight-label { color: #4a28a0; }
@@ -91,17 +91,27 @@
     .info-box.warning { background: #fff8f0; border: 1px solid rgba(212,162,0,0.25); }
     .info-box.highlight { background: #faf8ff; border: 1px solid rgba(74,40,160,0.18); }
 
-    /* === Professional polish: table refinement === */
-    .table-wrapper { box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: box-shadow 0.2s ease; }
-    .table-wrapper:hover { box-shadow: 0 4px 12px rgba(74,40,160,0.08); }
-    .table-wrapper th { background: linear-gradient(135deg, #4a28a0 0%, #6b3ed8 100%); color: #fff; padding: 12px 14px; }
-    .table-wrapper td { padding: 11px 14px; transition: background 0.15s ease; }
-    .table-wrapper tr:hover td { background: rgba(74,40,160,0.04); }
+    /* === Professional polish: TABLE (card-style with group borders) === */
+    .table-wrapper { background: #fff; border: 1px solid rgba(74,40,160,0.18); border-radius: 12px; padding: 0; margin: 1.4rem 0; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: box-shadow 0.25s ease, border-color 0.25s ease; }
+    .table-wrapper:hover { box-shadow: 0 6px 20px rgba(74,40,160,0.1); border-color: rgba(74,40,160,0.32); }
+    .table-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+    .table-wrapper thead { background: linear-gradient(135deg, #4a28a0 0%, #6b3ed8 100%); }
+    .table-wrapper th { color: #fff; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.02em; border: none; }
+    .table-wrapper th:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.18); }
+    .table-wrapper tbody tr { transition: background 0.15s ease; }
+    .table-wrapper tbody tr:nth-child(even) { background: #faf9ff; }
+    .table-wrapper tbody tr:hover { background: rgba(74,40,160,0.06); }
+    .table-wrapper td { padding: 13px 16px; border: none; border-top: 1px solid rgba(74,40,160,0.08); border-bottom: 1px solid rgba(74,40,160,0.04); color: #3a3a3a; line-height: 1.55; }
+    .table-wrapper tbody tr:first-child td { border-top: 1px solid rgba(74,40,160,0.15); }
+    .table-wrapper tbody tr:last-child td { border-bottom: none; }
+    .table-wrapper td:not(:last-child) { border-right: 1px solid rgba(74,40,160,0.06); }
+    .table-wrapper td:first-child { font-weight: 600; color: #1a1a3a; background: rgba(74,40,160,0.03); }
+    .table-wrapper tbody tr:nth-child(even) td:first-child { background: rgba(74,40,160,0.05); }
 
     /* === Professional polish: think section === */
     .think-section { background: #faf8ff; border: 1px solid rgba(74,40,160,0.1); border-radius: 12px; padding: 1.4rem 1.6rem; margin-bottom: 1.6rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .think-section:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,40,160,0.08); }
-    .think-section h3 { color: #1a1a3a; border-bottom: 2px solid rgba(74,40,160,0.2); padding-bottom: 0.4rem; }
+    .think-section h3 { color: #1a1a3a; border-bottom: 2px solid rgba(74,40,160,0.2); padding-bottom: 0.4rem; background: none; border-left: none; border-radius: 0; margin-left: 0; }
     .think-section .highlight-text { background: #fff; border: 1px solid rgba(74,40,160,0.15); border-left: 4px solid #4a28a0; }
     .think-section .quote-block { background: #fff; border-left: 4px solid #6b3ed8; color: #4a4a6a; }
 
@@ -135,6 +145,7 @@
       .stat-card { min-width: calc(50% - 4px); }
       .tab-nav { top: 60px; }
       .mermaid { padding: 14px 10px; }
+      .table-wrapper th, .table-wrapper td { padding: 10px 12px; font-size: 0.85rem; }
     }
 
     /* === Responsive: mobile === */
@@ -145,7 +156,9 @@
       .stat-card { min-width: 100%; }
       .stat-card .big-num { font-size: 1.5rem; }
       .think-section { padding: 1.1rem 1.2rem; }
-      .table-wrapper th, .table-wrapper td { padding: 8px 10px; font-size: 0.82rem; }
+      .table-wrapper { border-radius: 8px; }
+      .table-wrapper th, .table-wrapper td { padding: 9px 10px; font-size: 0.78rem; }
+      .table-wrapper td:not(:last-child), .table-wrapper th:not(:last-child) { border-right-width: 1px; }
       .tab-nav { top: 56px; padding: 0.6rem 1.2rem; margin: 0 -1.2rem 1.2rem; }
       .tab-btn { padding: 7px 16px; font-size: 0.85rem; }
       .back-to-top { right: 16px; bottom: 16px; width: 40px; height: 40px; }
