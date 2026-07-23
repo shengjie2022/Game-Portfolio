@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《时间当铺》系统设计文档 · 盛洁</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --card: #ffffff;
+  --text: #14171e;
+  --muted: #5a6272;
+  --line: #e5e1d8;
+  --primary: #c97b3f;
+  --accent: #2f6f5e;
+  --time: #4a6fa5;
+  --wave: #7c6fa5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; }
+.back-nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(247,245,240,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 24px;
+  z-index: 50;
+}
+.back-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--time);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.back-nav a:hover { text-decoration: underline; }
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 32px 0 48px;
+  position: relative;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 280px;
+  background: radial-gradient(ellipse at center, rgba(74,111,165,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.meta-item svg { width: 16px; height: 16px; stroke: var(--primary); }
+
+/* Nav Pills */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px 0 40px;
+  flex-wrap: wrap;
+}
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.nav a:hover, .nav a.active {
+  background: var(--time);
+  color: white;
+  border-color: var(--time);
+}
+.nav a svg { width: 14px; height: 14px; }
+
+/* Sections */
+.section { margin-bottom: 48px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-header svg { width: 22px; height: 22px; stroke: var(--primary); }
+.section-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+.section-intro {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Flow Diagram */
+.flow-box {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  min-width: 600px;
+}
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+.flow-node {
+  background: linear-gradient(135deg, var(--time) 0%, #3a5a8a 100%);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.flow-node.orange { background: linear-gradient(135deg, var(--primary) 0%, #a67c52 100%); }
+.flow-node.green { background: linear-gradient(135deg, var(--accent) 0%, #1e4d40 100%); }
+.flow-node.purple { background: linear-gradient(135deg, var(--wave) 0%, #5a4f7a 100%); }
+.flow-node.gray { background: #e8e4dc; color: var(--muted); }
+.flow-node small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+.flow-label {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.flow-arrow {
+  padding: 0 8px;
+  color: var(--primary);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Cards Grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
+}
+.card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 svg { width: 18px; height: 18px; stroke: var(--primary); }
+.card p, .card li {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.card ul { list-style: none; margin-top: 8px; }
+.card li { padding: 4px 0; }
+.card li::before {
+  content: '→ ';
+  color: var(--primary);
+}
+
+/* Data Structure */
+.data-box {
+  background: #1e1e2e;
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #cdd6f4;
+  overflow-x: auto;
+}
+.data-box .comment { color: #6c7086; }
+.data-box .key { color: #89b4fa; }
+.data-box .string { color: #a6e3a1; }
+.data-box .number { color: #fab387; }
+.data-box .bool { color: #cba6f7; }
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.data-table th {
+  background: #f8f6f1;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table code {
+  background: #f0ede6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--time);
+}
+.data-table .tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tag-blue { background: rgba(74,111,165,0.12); color: var(--time); }
+.tag-orange { background: rgba(201,123,63,0.12); color: var(--primary); }
+.tag-green { background: rgba(47,111,94,0.12); color: var(--accent); }
+.tag-purple { background: rgba(124,111,165,0.12); color: var(--wave); }
+
+/* Insight Box */
+.insight {
+  background: linear-gradient(135deg, rgba(74,111,165,0.05) 0%, rgba(201,123,63,0.05) 100%);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin-top: 24px;
+}
+.insight h4 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.insight p { font-size: 14px; color: var(--text); }
+
+/* Ability Tags */
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.ability-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+.ability-item .val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--time);
+}
+.ability-item .label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 40px 0;
+}
+
+/* Footer */
+.footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .flow-row { min-width: 500px; }
+  h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<div class="back-nav">
+  <div class="container" style="padding: 0;">
+    <a href="index.html#analysis">
+      ← 返回系统分析
+    </a>
+  </div>
+</div>
+<div class="container">
+
+<!-- Header -->
+<header class="header">
+  <span class="badge">系统设计文档</span>
+  <h1>《时间当铺》系统设计</h1>
+  <p class="subtitle">从机制设计到文档落地 — 一位策划的系统设计思路展示</p>
+  <div class="meta">
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      v4.3 版本
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      独立制作
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+      完整GDD
+    </div>
+  </div>
+</header>
+
+<!-- Nav -->
+<div class="nav">
+  <a href="#loop" class="active">核心循环</a>
+  <a href="#queue">访客队列</a>
+  <a href="#pressure">紧迫度</a>
+  <a href="#ripple">蝴蝶效应</a>
+  <a href="#meta">跨周目存档</a>
+  <a href="#qa">测试文档</a>
+</div>
+
+<!-- 一、核心循环 -->
+<section class="section" id="loop">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <h2>一、时间交易循环</h2>
+  </div>
+  <p class="section-intro">游戏核心循环设计：每日接待客人 → 进入记忆选择 → 产生涟漪 → 推进剧情。通过时间约束制造紧迫感，通过蝴蝶效应制造因果感。</p>
+  
+  <div class="flow-box">
+    <div class="flow-row">
+      <div class="flow-step">
+        <div class="flow-node">每日开始</div>
+        <span class="flow-label">读取队列</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-node">接待客人</div>
+        <span class="flow-label">最多3人</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-node orange">进入记忆</div>
+        <span class="flow-label">二选一抉择</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-node green">产生涟漪</div>
+        <span class="flow-label">蝴蝶效应</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-node">结束今天</div>
+        <span class="flow-label">-8碎片</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="insight">
+    <h4>设计意图</h4>
+    <p>时间碎片每日消耗 8 点的设计，让 30 天总时长形成天然压力。访客队列让玩家需要在"今天见谁"上做策略选择，而不是无脑全接。老客户优先机制增强叙事连贯性。</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 二、访客队列 -->
+<section class="section" id="queue">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <h2>二、每日访客队列系统</h2>
+  </div>
+  <p class="section-intro">队列系统让玩家在"接待谁"上产生策略决策，超出上限的客人进入明日队列，老客户拥有优先权。</p>
+  
+  <div class="data-box">
+<span class="comment">// 队列管理数据结构</span>
+<span class="key">tomorrowQueue</span>: <span class="string">string[]</span>   <span class="comment">// 明日待接待客人ID列表</span>
+<span class="key">dailyCount</span>: <span class="number">number</span>        <span class="comment">// 今日已接待人数</span>
+
+<span class="comment">// 核心函数</span>
+<span class="key">addToQueue</span>(<span class="key">clientId</span>)       <span class="comment">// 添加到明日队列</span>
+<span class="key">processDailyQueue</span>()      <span class="comment">// 每日开始时读取队列</span>
+<span class="key">sortByPriority</span>()          <span class="comment">// 老客户优先排序</span>
+  </div>
+  
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        队列规则
+      </h3>
+      <ul>
+        <li>每日最大接待量：3人</li>
+        <li>超限自动进入明日队列</li>
+        <li>老客户（下周回归）优先于新客户</li>
+        <li>新周目队列重置</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        设计意图
+      </h3>
+      <ul>
+        <li>制造"今天见谁"的策略决策</li>
+        <li>队列预览仅显示图标，保持悬念</li>
+        <li>老客户优先增强叙事记忆感</li>
+        <li>为隐藏角色设置前置条件</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 三、时间紧迫度 -->
+<section class="section" id="pressure">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <h2>三、时间紧迫度系统</h2>
+  </div>
+  <p class="section-intro">三级紧迫度状态，通过视觉+BGM双重反馈，让玩家直观感知时间压力。</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>剩余天数</th>
+        <th>紧迫度</th>
+        <th>视觉效果</th>
+        <th>音效</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&gt; 10天</td>
+        <td><span class="tag tag-blue">正常</span></td>
+        <td>无特殊效果</td>
+        <td>常规BGM</td>
+      </tr>
+      <tr>
+        <td>6–10天</td>
+        <td><span class="tag tag-orange">注意</span></td>
+        <td>橙色边框</td>
+        <td>常规BGM</td>
+      </tr>
+      <tr>
+        <td>≤5天</td>
+        <td><span class="tag tag-purple">紧迫</span></td>
+        <td>红色边框 + 脉冲动画 + 图标闪烁</td>
+        <td>紧迫版BGM</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="data-box" style="margin-top: 16px;">
+<span class="comment">// 当 timePressure 进入"紧迫"状态</span>
+<span class="key">if</span> (<span class="key">remainingDays</span> <= <span class="number">5</span> && <span class="key">currentBGM</span> !== <span class="string">'urgent'</span>) {
+  <span class="key">fadeOutCurrentBGM</span>(<span class="number">1000</span>);   <span class="comment">// 渐出当前BGM</span>
+  <span class="key">playBGM</span>(<span class="string">'urgent_shop'</span>);    <span class="comment">// 切换紧迫版BGM</span>
+}
+  </div>
+  
+  <div class="insight">
+    <h4>设计洞察</h4>
+    <p>紧迫度切换使用 1 秒渐变而非突然切换，BGM 平滑过渡让玩家感知变化而非被惊吓。三级状态（正常→注意→紧迫）让玩家有心理预期，不会产生"突然死亡"的挫败感。</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 四、蝴蝶效应 -->
+<section class="section" id="ripple">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+    <h2>四、蝴蝶效应涟漪系统</h2>
+  </div>
+  <p class="section-intro">每个选择产生"时间涟漪"，跨时空影响其他角色的命运。涟漪组合是解锁隐藏角色的钥匙。</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>涟漪ID</th>
+        <th>触发来源</th>
+        <th>用途</th>
+        <th>影响</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>chenbo_reunion</code></td>
+        <td>陈波主线结局</td>
+        <td><span class="tag tag-blue">剧情触发</span></td>
+        <td>解锁陈波重逢场景</td>
+      </tr>
+      <tr>
+        <td><code>shiyuren_unlock</code></td>
+        <td>涟漪组合解锁</td>
+        <td><span class="tag tag-purple">隐藏角色</span></td>
+        <td>失忆者出现在明日队列</td>
+      </tr>
+      <tr>
+        <td><code>shiyuren_memory_restore</code></td>
+        <td>失忆者故事线</td>
+        <td><span class="tag tag-green">结局分支</span></td>
+        <td>失忆者结局分支</td>
+      </tr>
+      <tr>
+        <td><code>chen_doctor</code></td>
+        <td>陈伯选择学医</td>
+        <td><span class="tag tag-orange">前置条件</span></td>
+        <td>解锁失忆者条件之一</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="flow-box" style="margin-top: 16px;">
+    <div class="flow-row">
+      <div class="flow-step">
+        <div class="flow-node gray">陈伯选择学医</div>
+        <span class="flow-label"><code>chen_doctor</code></span>
+      </div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-step">
+        <div class="flow-node gray">林小姐完成</div>
+        <span class="flow-label"><code>linxiaojie_complete</code></span>
+      </div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-step">
+        <div class="flow-node gray">林小小完成</div>
+        <span class="flow-label"><code>linlin_complete</code></span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="flow-node purple">失忆者解锁<small>隐藏角色</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 五、跨周目存档 -->
+<section class="section" id="meta">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+    <h2>五、跨周目MetaSave系统</h2>
+  </div>
+  <p class="section-intro">双层存档架构：局内存档（单周目）+ MetaSave（跨周目持久化）。新周目读取 MetaSave，解锁隐藏内容。</p>
+  
+  <div class="data-box">
+<span class="comment">// MetaSave 数据结构</span>
+<span class="key">MetaSave</span> {
+  <span class="comment">// 基础字段</span>
+  <span class="key">currentDay</span>: <span class="number">number</span>,
+  <span class="key">timeFragments</span>: <span class="number">number</span>,
+  <span class="key">ripples</span>: <span class="string">string[]</span>,
+  <span class="key">completedCharacters</span>: <span class="string">string[]</span>,
+
+  <span class="comment">// v4.3 新增字段</span>
+  <span class="key">chenboReunionSeen</span>: <span class="bool">boolean</span>,       <span class="comment">// 陈波重逢结局</span>
+  <span class="key">chenboAfterSeen</span>: <span class="bool">boolean</span>,       <span class="comment">// 陈波 After 结局</span>
+  <span class="key">shiyurenUnlocked</span>: <span class="bool">boolean</span>,       <span class="comment">// 失忆者解锁</span>
+  <span class="key">shiyurenEndingsSeen</span>: <span class="bool">object</span>,     <span class="comment">// 失忆者结局记录</span>
+  <span class="key">dailyQueueSeen</span>: <span class="string">array</span>,          <span class="comment">// 今日已见队列</span>
+  <span class="key">shiyurenTrackCompleted</span>: <span class="bool">boolean</span>  <span class="comment">// 失忆者故事线完成</span>
+}
+  </div>
+  
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        局内存档
+      </h3>
+      <p>单周目内的游戏进度：当前天数、时间碎片、已接待角色。存储在 localStorage，随周目重置。</p>
+    </div>
+    <div class="card">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+        MetaSave
+      </h3>
+      <p>跨周目持久化数据：涟漪记录、结局解锁、隐藏角色状态。新周目读取此数据，实现"记忆延续"。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 六、测试文档 -->
+<section class="section" id="qa">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <h2>六、测试要点（QA文档）</h2>
+  </div>
+  <p class="section-intro">系统策划需要具备 QA 意识——边界情况处理、异常流程验证、数据一致性检查。</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>测试项</th>
+        <th>操作步骤</th>
+        <th>预期结果</th>
+        <th>类型</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>每日队列</td>
+        <td>连续接待3人</td>
+        <td>第4人进入明日队列</td>
+        <td><span class="tag tag-blue">边界测试</span></td>
+      </tr>
+      <tr>
+        <td>队列优先级</td>
+        <td>第2天查看队列</td>
+        <td>老客户优先出现</td>
+        <td><span class="tag tag-green">逻辑测试</span></td>
+      </tr>
+      <tr>
+        <td>紧迫度UI</td>
+        <td>剩余5天时结束一天</td>
+        <td>UI变红+BGM切换</td>
+        <td><span class="tag tag-purple">体验测试</span></td>
+      </tr>
+      <tr>
+        <td>BGM渐变</td>
+        <td>进入紧迫状态</td>
+        <td>1秒渐变，无突变</td>
+        <td><span class="tag tag-orange">体验测试</span></td>
+      </tr>
+      <tr>
+        <td>涟漪传播</td>
+        <td>失忆者故事线</td>
+        <td>与其他角色涟漪正确联动</td>
+        <td><span class="tag tag-green">逻辑测试</span></td>
+      </tr>
+      <tr>
+        <td>MetaSave持久化</td>
+        <td>新周目读取</td>
+        <td>v4.3字段正确保留</td>
+        <td><span class="tag tag-blue">数据测试</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- 能力总结 -->
+<section class="section">
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+    <h2>系统文档能力总结</h2>
+  </div>
+  
+  <div class="ability-grid">
+    <div class="ability-item">
+      <div class="val">流程图</div>
+      <div class="label">核心循环图 / 状态流转</div>
+    </div>
+    <div class="ability-item">
+      <div class="val">规则表</div>
+      <div class="label">队列规则 / 紧迫度分级</div>
+    </div>
+    <div class="ability-item">
+      <div class="val">数据结构</div>
+      <div class="label">JSON Schema / 字段说明</div>
+    </div>
+    <div class="ability-item">
+      <div class="val">状态机</div>
+      <div class="label">紧迫度切换逻辑</div>
+    </div>
+    <div class="ability-item">
+      <div class="val">数值设计</div>
+      <div class="label">碎片消耗 / 解锁条件</div>
+    </div>
+    <div class="ability-item">
+      <div class="val">QA文档</div>
+      <div class="label">边界测试 / 异常流程</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>《时间当铺》系统设计文档 · 盛洁作品集</p>
+  <p style="margin-top: 6px; font-size: 12px;">叙事解谜 · 像素风 · HTML5 Canvas</p>
+</footer>
+
+</div>
+</body>
+</html>
